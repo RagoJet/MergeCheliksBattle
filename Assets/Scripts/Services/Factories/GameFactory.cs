@@ -29,6 +29,12 @@ namespace Services.Factories
             return creature;
         }
 
+        public PrepareForBattleMenu CreatePrepareForBattleMenu()
+        {
+            return InstantiateObject(
+                _assetProvider.GetAsset<PrepareForBattleMenu>(Constants.AssetPaths.PREPARE_FOR_BATTLE_MENU));
+        }
+
         public CellGrid CreateCellGrid()
         {
             CellGrid cellGrid = _assetProvider.GetAsset<CellGrid>(Constants.AssetPaths.CELL_GRID);
@@ -59,9 +65,9 @@ namespace Services.Factories
             return obj;
         }
 
-        private T InstantiateObject<T>(T asset) where T : MonoBehaviour
+        private T InstantiateObject<T>(T asset, Transform parent = null) where T : MonoBehaviour
         {
-            return InstantiateObject<T>(asset, Vector3.zero, Quaternion.identity);
+            return InstantiateObject<T>(asset, Vector3.zero, Quaternion.identity, parent);
         }
     }
 }

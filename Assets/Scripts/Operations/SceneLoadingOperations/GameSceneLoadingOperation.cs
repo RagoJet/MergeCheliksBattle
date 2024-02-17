@@ -19,10 +19,12 @@ namespace Operations.SceneLoadingOperations
             await SceneManager.LoadSceneAsync(Constants.Scenes.GAME, LoadSceneMode.Additive);
             onProgress.Invoke(0.9f);
 
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(Constants.Scenes.GAME));
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
             CellGrid cellGrid = gameFactory.CreateCellGrid();
             CreatureMaster creatureMaster = gameFactory.CreateCreatureMaster();
             creatureMaster.Construct(cellGrid);
+            gameFactory.CreatePrepareForBattleMenu();
         }
     }
 }

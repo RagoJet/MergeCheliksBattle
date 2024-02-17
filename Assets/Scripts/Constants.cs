@@ -7,6 +7,7 @@ public static class Constants
         public const string CREATURE_DESCRIPTIONS = "SO/Creatures/CREATUREDESCRIPTIONS";
         public const string CELL_GRID = "CellGrid";
         public const string CREATURE_MASTER = "CreatureMaster";
+        public const string PREPARE_FOR_BATTLE_MENU = "PrepareForBattleMenu";
     }
 
     public sealed class Scenes

@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Gameplay.Creatures
@@ -9,6 +11,7 @@ namespace Gameplay.Creatures
         private CreatureDescription _description;
         private Collider _collider;
         private Cell _currentCell;
+        private Tween _tween;
         public int Level => _description.Level;
 
         private void Awake()
@@ -25,12 +28,14 @@ namespace Gameplay.Creatures
 
         public void ReturnToCell()
         {
-            transform.position = _currentCell.GetPosition;
+            _tween.Kill();
+            _tween = transform.DOMove(_currentCell.GetPosition, 0.5f);
         }
 
         public void GetUp()
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 4, transform.position.z);
+            _tween.Kill();
+            _tween = transform.DOMoveY(_currentCell.GetPosition.y + 5, 0.3f);
         }
 
         public void SetNewCell(Cell cell)
@@ -55,6 +60,11 @@ namespace Gameplay.Creatures
         public void ColliderOn()
         {
             _collider.enabled = true;
+        }
+
+        public void OnDisable()
+        {
+            _tween.Kill();
         }
     }
 }
