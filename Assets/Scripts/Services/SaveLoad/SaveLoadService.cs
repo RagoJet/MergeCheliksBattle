@@ -9,8 +9,13 @@ namespace Services.SaveLoad
         private const string myPath = "/MyGame.json";
         private List<ISaveable> _saveables = new List<ISaveable>();
 
-        private DataProgress _dataProgress = new DataProgress();
+        private DataProgress _dataProgress;
+        public DataProgress DataProgress => _dataProgress;
 
+        public SaveLoadService()
+        {
+            _dataProgress = new DataProgress();
+        }
 
         public void SaveProgress()
         {
@@ -23,7 +28,7 @@ namespace Services.SaveLoad
             File.WriteAllText(Application.persistentDataPath + myPath, JSONString);
         }
 
-        public DataProgress LoadProgress()
+        public void LoadProgress()
         {
             string pathToData = Application.persistentDataPath + myPath;
             if (File.Exists(pathToData))
@@ -35,8 +40,6 @@ namespace Services.SaveLoad
                     _dataProgress = dataProgressFromJson;
                 }
             }
-
-            return _dataProgress;
         }
 
         public void Register(ISaveable saveable)

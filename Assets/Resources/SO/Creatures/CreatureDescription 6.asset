@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4211c6f426364449a1e887a6d1ed0824, type: 3}
+  m_Name: CreatureDescription 6
+  m_EditorClassIdentifier: 
+  _creaturePrefab: {fileID: 8274505265262159132, guid: 048a261cee2895d46aa7b120558b44a3,
+    type: 3}
+  _level: 6
+  _damage: 0
+  _maxHealth: 0
+  _moveSpeed: 0
