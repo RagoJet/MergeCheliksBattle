@@ -24,7 +24,8 @@ namespace Operations.SceneLoadingOperations
             CellGrid cellGrid = gameFactory.CreateCellGrid();
             CreatureMaster creatureMaster = gameFactory.CreateCreatureMaster();
             creatureMaster.Construct(cellGrid);
-            gameFactory.CreatePrepareForBattleMenu();
+            gameFactory.CreatePrepareForBattleMenu().Construct(cellGrid, creatureMaster);
+            gameFactory.CreateInfoPanel();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Services.Factories
 {
     public interface IGameFactory : IService
     {
+        public InfoPanel CreateInfoPanel();
         public PrepareForBattleMenu CreatePrepareForBattleMenu();
         public CellGrid CreateCellGrid();
         public CreatureMaster CreateCreatureMaster();

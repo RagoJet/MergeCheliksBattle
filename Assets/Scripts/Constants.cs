@@ -2,6 +2,7 @@ public static class Constants
 {
     public sealed class AssetPaths
     {
+        public const string INFO_PANEL = "InfoPanel";
         public const string LOADING_SCREEN = "LoadingScreen";
         public const string CELL = "Cell";
         public const string CREATURE_DESCRIPTIONS = "SO/Creatures/CREATUREDESCRIPTIONS";

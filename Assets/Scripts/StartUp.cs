@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gameplay;
 using Operations;
 using Operations.SceneLoadingOperations;
 using Services;
@@ -24,10 +25,11 @@ public class StartUp : MonoBehaviour
     public void RegisterOperation()
     {
         AllServices containerServices = AllServices.Container;
+        containerServices.Register<ISaveLoadService>(new SaveLoadService());
         containerServices.Register<EventBus>(new EventBus());
+        containerServices.Register<Storage>(new Storage());
         containerServices.Register<ILoadingScreenProvider>(new LoadingScreenProvider());
         containerServices.Register<IAssetProvider>(new AssetProvider());
         containerServices.Register<IGameFactory>(new GameFactory());
-        containerServices.Register<ISaveLoadService>(new SaveLoadService());
     }
 }

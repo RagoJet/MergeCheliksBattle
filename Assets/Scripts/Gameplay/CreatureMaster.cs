@@ -9,6 +9,7 @@ namespace Gameplay
     public class CreatureMaster : MonoBehaviour
     {
         private CellGrid _cellGrid;
+
         private Creature _targetCreature;
         private bool _hasCreature;
 
@@ -89,19 +90,22 @@ namespace Gameplay
                             _targetCreature.SetNewCell(cell);
                             _targetCreature.ReturnToCell();
                         }
-
-                        else if (cell.currentCreature == _targetCreature)
+                        else if (cell == _targetCreature.CurrentCell)
                         {
                             _targetCreature.ReturnToCell();
                         }
                         else if (cell.currentCreature.Level == _targetCreature.Level)
                         {
-                            Creature newCreature = MergeCreatures(_targetCreature, cell.currentCreature, cell);
-                            _currentCreatures.Add(newCreature);
+                            Creature movingCreature = _targetCreature;
+                            _targetCreature.SetTo(cell.GetPosition,
+                                () => { MergeCreatures(movingCreature, cell.currentCreature, cell); });
                         }
                         else
                         {
-                            _targetCreature.ReturnToCell();
+                            Cell tempCell = _targetCreature.CurrentCell;
+                            Creature tempCreature = cell.currentCreature;
+                            _targetCreature.SetNewCell(cell);
+                            tempCreature.SetNewCell(tempCell);
                         }
                     }
                 }
@@ -115,7 +119,7 @@ namespace Gameplay
             }
         }
 
-        private Creature MergeCreatures(Creature creature1, Creature creature2, Cell cell)
+        private void MergeCreatures(Creature creature1, Creature creature2, Cell cell)
         {
             int newLevel = creature1.Level + 1;
 
@@ -124,7 +128,31 @@ namespace Gameplay
             _creaturesPool.AddToPool(creature1);
             _creaturesPool.AddToPool(creature2);
 
-            return _creaturesPool.GetAndSet(newLevel, cell);
+            Creature newCreature = _creaturesPool.GetAndSet(newLevel, cell);
+            _currentCreatures.Add(newCreature);
+        }
+
+        public void CreateFirstLevelCreature(Cell cell)
+        {
+            int level = 0;
+            Creature newCreature = _creaturesPool.GetAndSet(level, cell);
+            _currentCreatures.Add(newCreature);
+        }
+
+        public void CollidersCreatureOn()
+        {
+            foreach (var creature in _currentCreatures)
+            {
+                creature.ColliderOn();
+            }
+        }
+
+        public void CollidersCreatureOff()
+        {
+            foreach (var creature in _currentCreatures)
+            {
+                creature.ColliderOff();
+            }
         }
     }
 }

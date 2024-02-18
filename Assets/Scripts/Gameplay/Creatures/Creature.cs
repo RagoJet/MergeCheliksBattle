@@ -11,8 +11,10 @@ namespace Gameplay.Creatures
         private CreatureDescription _description;
         private Collider _collider;
         private Cell _currentCell;
+        public Cell CurrentCell => _currentCell;
         private Tween _tween;
         public int Level => _description.Level;
+
 
         private void Awake()
         {
@@ -29,13 +31,19 @@ namespace Gameplay.Creatures
         public void ReturnToCell()
         {
             _tween.Kill();
-            _tween = transform.DOMove(_currentCell.GetPosition, 0.5f);
+            _tween = transform.DOMove(_currentCell.GetPosition, 0.3f);
         }
 
         public void GetUp()
         {
             _tween.Kill();
-            _tween = transform.DOMoveY(_currentCell.GetPosition.y + 5, 0.3f);
+            _tween = transform.DOMoveY(_currentCell.GetPosition.y + 5, 0.5f);
+        }
+
+        public void SetTo(Vector3 pos, Action onSetTo = null)
+        {
+            _tween.Kill();
+            _tween = transform.DOMove(pos, 0.25f).OnComplete(() => onSetTo?.Invoke());
         }
 
         public void SetNewCell(Cell cell)

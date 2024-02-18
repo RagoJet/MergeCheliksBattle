@@ -38,5 +38,20 @@ namespace Gameplay
         {
             return _cells.FirstOrDefault(x => x.currentCreature == null);
         }
+
+        public bool TryGetAvailableCell(out Cell theCell)
+        {
+            foreach (var cell in _cells)
+            {
+                if (cell.currentCreature == null)
+                {
+                    theCell = cell;
+                    return true;
+                }
+            }
+
+            theCell = null;
+            return false;
+        }
     }
 }

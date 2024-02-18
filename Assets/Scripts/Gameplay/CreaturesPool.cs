@@ -26,7 +26,9 @@ namespace Gameplay
             }
 
             _list.Remove(creature);
+            creature.transform.position = cell.GetPosition;
             creature.SetNewCell(cell);
+            creature.ColliderOn();
             creature.gameObject.SetActive(true);
             return creature;
         }

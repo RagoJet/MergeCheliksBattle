@@ -29,6 +29,11 @@ namespace Services.Factories
             return creature;
         }
 
+        public InfoPanel CreateInfoPanel()
+        {
+            return InstantiateObject(_assetProvider.GetAsset<InfoPanel>(Constants.AssetPaths.INFO_PANEL));
+        }
+
         public PrepareForBattleMenu CreatePrepareForBattleMenu()
         {
             return InstantiateObject(

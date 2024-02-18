@@ -505,6 +505,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c0e51ccf4ae3f4f98975047a8079f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priceCreature: 200
+  _startBattleButton: {fileID: 468454366279310308}
+  _buyCreatureButton: {fileID: 133203246820190716}
 --- !u!1 &7303587519835551591
 GameObject:
   m_ObjectHideFlags: 0
