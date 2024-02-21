@@ -530,9 +530,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2900479757916546023}
-  - component: {fileID: 6144017839791492619}
   - component: {fileID: -4103623754602420681}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fishguard_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,27 +554,6 @@ Transform:
   - {fileID: 5278544250687334450}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6144017839791492619
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4867501928176642207}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.3, y: 2, z: 1}
-  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &-4103623754602420681
 MonoBehaviour:
   m_ObjectHideFlags: 0

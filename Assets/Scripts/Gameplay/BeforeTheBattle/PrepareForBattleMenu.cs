@@ -1,8 +1,9 @@
+using Gameplay.Cells;
 using Services;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay
+namespace Gameplay.BeforeTheBattle
 {
     public class PrepareForBattleMenu : MonoBehaviour
     {
@@ -31,9 +32,10 @@ namespace Gameplay
 
         private void StartBattle()
         {
-            Destroy(_grid.gameObject);
-            _creatureMaster.CollidersCreatureOff();
-            Destroy(_creatureMaster.gameObject);
+            _grid.gameObject.SetActive(false);
+            _creatureMaster.gameObject.SetActive(false);
+            _startBattleButton.gameObject.SetActive(false);
+            _buyCreatureButton.gameObject.SetActive(false);
         }
 
         private void TryBuyCreature()

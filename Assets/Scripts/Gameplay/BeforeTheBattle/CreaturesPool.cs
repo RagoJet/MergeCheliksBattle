@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Gameplay.Cells;
 using Gameplay.Creatures;
 using Services;
 using Services.Factories;
 
-namespace Gameplay
+namespace Gameplay.BeforeTheBattle
 {
     public class CreaturesPool
     {
@@ -13,7 +14,7 @@ namespace Gameplay
         public void AddToPool(Creature creature)
         {
             _list.Add(creature);
-            creature.ReleaseCell();
+            creature.ReleaseCurrentCell();
             creature.gameObject.SetActive(false);
         }
 
@@ -28,7 +29,6 @@ namespace Gameplay
             _list.Remove(creature);
             creature.transform.position = cell.GetPosition;
             creature.SetNewCell(cell);
-            creature.ColliderOn();
             creature.gameObject.SetActive(true);
             return creature;
         }

@@ -4,7 +4,7 @@ using Services;
 using Services.Factories;
 using UnityEngine;
 
-namespace Gameplay
+namespace Gameplay.Cells
 {
     public class CellGrid : MonoBehaviour
     {

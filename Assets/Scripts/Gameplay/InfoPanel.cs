@@ -1,3 +1,4 @@
+using System;
 using Services;
 using Services.SaveLoad;
 using TMPro;
@@ -18,6 +19,11 @@ namespace Gameplay
         private void UpdateGoldText(int money)
         {
             _moneyText.text = $"Gold: {money}";
+        }
+
+        private void OnDisable()
+        {
+            AllServices.Container.Get<EventBus>().OnChangeMoney -= UpdateGoldText;
         }
     }
 }

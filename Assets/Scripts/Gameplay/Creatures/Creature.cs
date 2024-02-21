@@ -1,25 +1,20 @@
 using System;
 using DG.Tweening;
+using Gameplay.Cells;
+using Services;
 using UnityEngine;
 
 namespace Gameplay.Creatures
 {
-    [RequireComponent(typeof(Collider))]
     public class Creature : MonoBehaviour
     {
         private int _health;
         private CreatureDescription _description;
-        private Collider _collider;
         private Cell _currentCell;
         public Cell CurrentCell => _currentCell;
         private Tween _tween;
         public int Level => _description.Level;
 
-
-        private void Awake()
-        {
-            _collider = GetComponent<Collider>();
-        }
 
         public void Construct(CreatureDescription description, Cell cell)
         {
@@ -28,7 +23,7 @@ namespace Gameplay.Creatures
             cell.currentCreature = this;
         }
 
-        public void ReturnToCell()
+        public void BackToCell()
         {
             _tween.Kill();
             _tween = transform.DOMove(_currentCell.GetPosition, 0.3f);
@@ -50,24 +45,13 @@ namespace Gameplay.Creatures
         {
             _currentCell = cell;
             cell.currentCreature = this;
-            ReturnToCell();
+            BackToCell();
         }
 
-        public void ReleaseCell()
+        public void ReleaseCurrentCell()
         {
             _currentCell.currentCreature = null;
             _currentCell = null;
-        }
-
-
-        public void ColliderOff()
-        {
-            _collider.enabled = false;
-        }
-
-        public void ColliderOn()
-        {
-            _collider.enabled = true;
         }
 
         public void OnDisable()

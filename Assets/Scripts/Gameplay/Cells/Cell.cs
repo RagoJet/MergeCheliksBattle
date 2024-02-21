@@ -1,7 +1,7 @@
 using Gameplay.Creatures;
 using UnityEngine;
 
-namespace Gameplay
+namespace Gameplay.Cells
 {
     [RequireComponent(typeof(Collider))]
     public class Cell : MonoBehaviour

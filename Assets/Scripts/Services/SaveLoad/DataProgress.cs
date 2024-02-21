@@ -6,14 +6,13 @@ namespace Services.SaveLoad
     [Serializable]
     public class DataProgress
     {
-        public int money = 1000;
+        public int money = 600;
         public List<CellDTO> _cellsDTO = new List<CellDTO>();
 
         public DataProgress()
         {
             _cellsDTO.Add(new CellDTO(6, 0));
             _cellsDTO.Add(new CellDTO(9, 0));
-            _cellsDTO.Add(new CellDTO(0, 3));
         }
     }
 
