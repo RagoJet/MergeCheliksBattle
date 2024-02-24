@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
+using Gameplay.BeforeTheBattle.CreaturesState;
 using Gameplay.Cells;
 using Gameplay.Creatures;
 using Services;
 using Services.SaveLoad;
 using States;
-using States.CreaturesState;
 using UnityEngine;
 
 namespace Gameplay.BeforeTheBattle
@@ -25,13 +26,14 @@ namespace Gameplay.BeforeTheBattle
         private CreaturesPool _creaturesPool;
         private List<Creature> _currentCreatures = new List<Creature>();
 
+        public List<Creature> CurrentCreatures => _currentCreatures;
+
         private void Awake()
         {
             _creaturesPool = new CreaturesPool();
-            AllServices.Container.Get<EventBus>().OnDeathCreature += _creaturesPool.AddToPool;
-
             _islandLayerMask = 1 << LayerMask.NameToLayer("Island");
             _cellLayerMask = 1 << LayerMask.NameToLayer("Cell");
+            AllServices.Container.Get<EventBus>().OnDeathCreature += _creaturesPool.AddToPool;
         }
 
         private void Start()
@@ -59,10 +61,10 @@ namespace Gameplay.BeforeTheBattle
                 () => draggingCreature == false && CheckCellIsEmpty());
 
             _stateMachine.AddTransition(hasCreatureState, swapCreaturesState,
-                () => draggingCreature == false && AnotherLevelHit());
+                () => draggingCreature == false && CheckAnotherLevelHit());
 
             _stateMachine.AddTransition(hasCreatureState, mergeCreaturesState,
-                () => draggingCreature == false && SameLevelHit());
+                () => draggingCreature == false && CheckSameLevelHit());
 
             _stateMachine.AddAnyTransition(noCreatureState, () => creatureProcessed);
             _stateMachine.SetState(noCreatureState);
@@ -107,7 +109,7 @@ namespace Gameplay.BeforeTheBattle
         }
 
 
-        private bool SameLevelHit()
+        private bool CheckSameLevelHit()
         {
             if (cellTarget.currentCreature == null)
             {
@@ -117,7 +119,7 @@ namespace Gameplay.BeforeTheBattle
             return cellTarget.currentCreature.Level == creatureTarget.Level;
         }
 
-        private bool AnotherLevelHit()
+        private bool CheckAnotherLevelHit()
         {
             if (cellTarget.currentCreature == null)
             {

@@ -2,7 +2,9 @@ using Gameplay;
 using Gameplay.BeforeTheBattle;
 using Gameplay.Cells;
 using Gameplay.Creatures;
+using Gameplay.Crowds;
 using Services.AssetManagement;
+using Services.JoySticks;
 using Services.LoadingScreenNS;
 using UnityEngine;
 
@@ -29,6 +31,29 @@ namespace Services.Factories
             creature.Construct(creatureDescription, cell);
 
             return creature;
+        }
+
+        public CrowdOfCreatures CreateCrowdOfCreatures(Vector3 pos)
+        {
+            return InstantiateObject(
+                _assetProvider.GetAsset<CrowdOfCreatures>(Constants.AssetPaths.CROWD_OF_CREATURES), pos,
+                Quaternion.identity);
+        }
+
+        public CrowdOfEnemies CreateCrowdOfEnemies(Vector3 pos)
+        {
+            return InstantiateObject(_assetProvider.GetAsset<CrowdOfEnemies>(Constants.AssetPaths.CROWD_OF_ENEMIES),
+                pos, Quaternion.identity);
+        }
+
+        public SpawnerCrowds CreateSpawnerCrowds()
+        {
+            return InstantiateObject(_assetProvider.GetAsset<SpawnerCrowds>(Constants.AssetPaths.SPAWNER_CROWDS));
+        }
+
+        public MyJoyStick CreateMyJoystick()
+        {
+            return InstantiateObject(_assetProvider.GetAsset<MyJoyStick>(Constants.AssetPaths.MY_JOYSTICK));
         }
 
         public InfoPanel CreateInfoPanel()

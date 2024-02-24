@@ -1,14 +1,13 @@
 using System;
 using DG.Tweening;
 using Gameplay.Cells;
-using Services;
+using Gameplay.Crowds;
 using UnityEngine;
 
 namespace Gameplay.Creatures
 {
-    public class Creature : MonoBehaviour
+    public class Creature : Unit
     {
-        private int _health;
         private CreatureDescription _description;
         private Cell _currentCell;
         public Cell CurrentCell => _currentCell;
@@ -21,6 +20,12 @@ namespace Gameplay.Creatures
             _description = description;
             _currentCell = cell;
             cell.currentCreature = this;
+            Refresh();
+        }
+
+        public override void Refresh()
+        {
+            _health = _description.MaxHealth;
         }
 
         public void BackToCell()

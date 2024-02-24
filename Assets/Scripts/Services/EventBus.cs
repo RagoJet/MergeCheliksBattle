@@ -1,10 +1,12 @@
 using System;
 using Gameplay.Creatures;
+using Services.SaveLoad;
 
 namespace Services
 {
     public class EventBus : IService
     {
+        public event Action OnCompleteLevel;
         public event Action<int> OnChangeMoney;
 
 
@@ -19,6 +21,12 @@ namespace Services
         public void AfterDeathCreature(Creature creature)
         {
             OnDeathCreature?.Invoke(creature);
+        }
+
+        public void CompleteLevel()
+        {
+            AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame++;
+            OnCompleteLevel.Invoke();
         }
     }
 }

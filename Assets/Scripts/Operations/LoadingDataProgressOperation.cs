@@ -11,7 +11,7 @@ namespace Operations
 
         public async UniTask Load(Action<float> onProgress)
         {
-            onProgress.Invoke(0.8f);
+            onProgress.Invoke(0.9f);
             ISaveLoadService saveLoadService = AllServices.Container.Get<ISaveLoadService>();
             saveLoadService.LoadProgress();
             await UniTask.CompletedTask;

@@ -1,5 +1,7 @@
 using Gameplay.Cells;
+using Gameplay.Crowds;
 using Services;
+using Services.JoySticks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +11,7 @@ namespace Gameplay.BeforeTheBattle
     {
         private CellGrid _grid;
         private CreatureMaster _creatureMaster;
+        private SpawnerCrowds _spawnerCrowds;
         private Storage _storage;
 
         [SerializeField] private int _priceCreature = 200;
@@ -16,17 +19,17 @@ namespace Gameplay.BeforeTheBattle
         [SerializeField] private Button _startBattleButton;
         [SerializeField] private Button _buyCreatureButton;
 
-
         private void Awake()
         {
             _startBattleButton.onClick.AddListener(StartBattle);
             _buyCreatureButton.onClick.AddListener(TryBuyCreature);
         }
 
-        public void Construct(CellGrid grid, CreatureMaster creatureMaster)
+        public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds)
         {
             _grid = grid;
             _creatureMaster = creatureMaster;
+            _spawnerCrowds = spawnerCrowds;
             _storage = AllServices.Container.Get<Storage>();
         }
 
@@ -34,8 +37,11 @@ namespace Gameplay.BeforeTheBattle
         {
             _grid.gameObject.SetActive(false);
             _creatureMaster.gameObject.SetActive(false);
-            _startBattleButton.gameObject.SetActive(false);
-            _buyCreatureButton.gameObject.SetActive(false);
+            _spawnerCrowds.SpawnCreaturesCrowd(_grid.transform.position, _creatureMaster.CurrentCreatures);
+            _spawnerCrowds.SpawnEnemyCrowds();
+            AllServices.Container.Get<IJoyStick>().SwitchOn();
+
+            gameObject.SetActive(false);
         }
 
         private void TryBuyCreature()

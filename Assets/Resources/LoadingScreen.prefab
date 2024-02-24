@@ -360,7 +360,7 @@ MonoBehaviour:
   _canvas: {fileID: 1616882299215652405}
   _progressFill: {fileID: 5426608579234266347}
   _loadingInfo: {fileID: 513137138676438664}
-  _barSpeed: 1.4
+  _barSpeed: 1
 --- !u!1 &2105156628074706475
 GameObject:
   m_ObjectHideFlags: 0
