@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Gameplay.Creatures
+namespace Gameplay.Units.Creatures
 {
     [CreateAssetMenu(fileName = "CreatureDescriptions", menuName = "CreatureDescriptions")]
     public class CreatureDescriptions : ScriptableObject

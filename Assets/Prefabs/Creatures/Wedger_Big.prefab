@@ -345,12 +345,12 @@ Transform:
   m_GameObject: {fileID: 1979353233922063391}
   serializedVersion: 2
   m_LocalRotation: {x: 0.062352862, y: -0, z: -0, w: 0.99805415}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.9999998, z: 0.99999976}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7940938659258165747}
-  m_Father: {fileID: 7044064863888247015}
+  m_Father: {fileID: 1753393178458732141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2131111019361121475
 GameObject:
@@ -409,12 +409,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2760020946586695478}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7044064863888247015}
+  m_Father: {fileID: 1753393178458732141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &1928613379876310415
 SkinnedMeshRenderer:
@@ -714,39 +714,6 @@ Transform:
   - {fileID: 4386663760305883656}
   m_Father: {fileID: 1848970569921759656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5754714568909627041
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7044064863888247015}
-  m_Layer: 0
-  m_Name: Wedger_H
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7044064863888247015
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5754714568909627041}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1513354914525327281}
-  - {fileID: 7754994907362091835}
-  m_Father: {fileID: 1753393178458732141}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5869553313680190779
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +788,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1753393178458732141}
   - component: {fileID: 5881356717304263112}
+  - component: {fileID: 7870920337185330063}
+  - component: {fileID: 7887979432054701211}
+  - component: {fileID: 8319936363496468037}
   m_Layer: 0
   m_Name: Wedger_Big
   m_TagString: Untagged
@@ -841,7 +811,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7044064863888247015}
+  - {fileID: 1513354914525327281}
+  - {fileID: 7754994907362091835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5881356717304263112
@@ -856,6 +827,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd47c076ea8c4c4f9f489f3fa3b2670f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7870920337185330063
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334709187281155861}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 3d227175a957b3042af2d99f7eff621c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7887979432054701211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334709187281155861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3501e716cdd9462a81864cbdfa680d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &8319936363496468037
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334709187281155861}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6750492197305690424
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Gameplay.BeforeTheBattle.CreaturesState;
 using Gameplay.Cells;
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using Services;
 using Services.SaveLoad;
 using States;

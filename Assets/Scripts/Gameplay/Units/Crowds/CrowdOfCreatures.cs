@@ -1,10 +1,9 @@
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using Services;
 using Services.JoySticks;
 using UnityEngine;
 
-
-namespace Gameplay.Crowds
+namespace Gameplay.Units.Crowds
 {
     public class CrowdOfCreatures : CrowdOfUnits<Creature>
     {

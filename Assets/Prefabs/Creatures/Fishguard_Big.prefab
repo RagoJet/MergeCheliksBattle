@@ -42,6 +42,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2537185802537155668}
   - component: {fileID: 2037358802523711564}
+  - component: {fileID: 5974435596324149910}
+  - component: {fileID: 1010459763343359711}
+  - component: {fileID: 5196382822407872891}
   m_Layer: 0
   m_Name: Fishguard_Big
   m_TagString: Untagged
@@ -62,7 +65,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2004176339871633381}
+  - {fileID: 348205440762483160}
+  - {fileID: 8679824362594627973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2037358802523711564
@@ -77,6 +81,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd47c076ea8c4c4f9f489f3fa3b2670f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5974435596324149910
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54700162194272272}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 44c5f95f341a41044824919b30cc7a0d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1010459763343359711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54700162194272272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3501e716cdd9462a81864cbdfa680d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &5196382822407872891
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54700162194272272}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &200295969428134766
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,12 +353,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918817766434051384}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2004176339871633381}
+  m_Father: {fileID: 2537185802537155668}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &8585692974607000268
 SkinnedMeshRenderer:
@@ -720,13 +779,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5937207895140820954}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.038419362, y: 0, z: -0, w: 0.99926174}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_LocalRotation: {x: -0.038419362, y: -0, z: -0, w: 0.99926174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2411991080912582504}
-  m_Father: {fileID: 2004176339871633381}
+  m_Father: {fileID: 2537185802537155668}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6541320685419558725
 GameObject:
@@ -858,39 +917,6 @@ Transform:
   - {fileID: 1738327398476076835}
   - {fileID: 690464261429097446}
   m_Father: {fileID: 1517295014944729389}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7546044597552998475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2004176339871633381}
-  m_Layer: 0
-  m_Name: "FishGuard_\u0412"
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2004176339871633381
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7546044597552998475}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 348205440762483160}
-  - {fileID: 8679824362594627973}
-  m_Father: {fileID: 2537185802537155668}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7721067018344767489
 GameObject:

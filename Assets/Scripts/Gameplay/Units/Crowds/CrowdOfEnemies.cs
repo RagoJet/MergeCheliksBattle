@@ -1,6 +1,6 @@
-using Gameplay.Enemies;
+using Gameplay.Units.Enemies;
 
-namespace Gameplay.Crowds
+namespace Gameplay.Units.Crowds
 {
     public class CrowdOfEnemies : CrowdOfUnits<Enemy>
     {

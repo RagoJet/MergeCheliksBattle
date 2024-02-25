@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using Gameplay;
 using Gameplay.BeforeTheBattle;
 using Gameplay.Cells;
-using Gameplay.Crowds;
+using Gameplay.Units.Crowds;
 using Services;
 using Services.Factories;
 using Services.JoySticks;

@@ -1,4 +1,4 @@
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using UnityEngine;
 
 namespace Gameplay.Cells

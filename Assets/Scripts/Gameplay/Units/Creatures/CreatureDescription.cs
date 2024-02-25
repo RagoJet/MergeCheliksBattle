@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gameplay.Creatures
+namespace Gameplay.Units.Creatures
 {
     [CreateAssetMenu(fileName = "CreatureDescription", menuName = "CreatureDescription")]
     public class CreatureDescription : ScriptableObject

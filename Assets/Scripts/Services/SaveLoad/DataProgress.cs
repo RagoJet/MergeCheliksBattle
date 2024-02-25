@@ -12,8 +12,10 @@ namespace Services.SaveLoad
 
         public DataProgress()
         {
-            _cellsDTO.Add(new CellDTO(6, 0));
-            _cellsDTO.Add(new CellDTO(9, 0));
+            _cellsDTO.Add(new CellDTO(6, 2));
+            _cellsDTO.Add(new CellDTO(9, 6));
+            // _cellsDTO.Add(new CellDTO(6, 0));
+            // _cellsDTO.Add(new CellDTO(9, 0));
         }
     }
 

@@ -121,12 +121,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340994927721089272}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5992359444254822734}
+  m_Father: {fileID: 4440531596562385436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &965946664887235395
 SkinnedMeshRenderer:
@@ -296,39 +296,6 @@ Transform:
   m_Children:
   - {fileID: 4831762704121679564}
   m_Father: {fileID: 6874035145638798848}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1733520308324087230
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5992359444254822734}
-  m_Layer: 0
-  m_Name: 03_Nosedman_B
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5992359444254822734
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733520308324087230}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1958181288631035851}
-  - {fileID: 8939577953245953953}
-  m_Father: {fileID: 4440531596562385436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760806748257990101
 GameObject:
@@ -642,12 +609,12 @@ Transform:
   m_GameObject: {fileID: 5016595485323044164}
   serializedVersion: 2
   m_LocalRotation: {x: 0.01601803, y: -0, z: -0, w: 0.99987173}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4024653173888573329}
-  m_Father: {fileID: 5992359444254822734}
+  m_Father: {fileID: 4440531596562385436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5759982144299586048
 GameObject:
@@ -820,6 +787,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4440531596562385436}
   - component: {fileID: -888198771016368980}
+  - component: {fileID: 9039393784460454629}
+  - component: {fileID: 2793780656922623084}
+  - component: {fileID: 1875598696789172038}
   m_Layer: 0
   m_Name: Nosedman_Big
   m_TagString: Untagged
@@ -840,7 +810,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5992359444254822734}
+  - {fileID: 1958181288631035851}
+  - {fileID: 8939577953245953953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-888198771016368980
@@ -855,6 +826,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd47c076ea8c4c4f9f489f3fa3b2670f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &9039393784460454629
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816206294080717362}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 9cb507988ceb38a4581af8ad0e66227f, type: 3}
+  m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2793780656922623084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816206294080717362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3501e716cdd9462a81864cbdfa680d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &1875598696789172038
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816206294080717362}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7508728843730025822
 GameObject:
   m_ObjectHideFlags: 0

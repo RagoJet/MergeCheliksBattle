@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using Services;
 using Services.Factories;
 using UnityEngine;
 
-namespace Gameplay.Crowds
+namespace Gameplay.Units.Crowds
 {
     public class SpawnerCrowds : MonoBehaviour
     {

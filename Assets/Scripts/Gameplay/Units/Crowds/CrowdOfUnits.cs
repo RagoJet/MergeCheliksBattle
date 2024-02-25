@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.Crowds
+namespace Gameplay.Units.Crowds
 {
     public class CrowdOfUnits<T> : MonoBehaviour where T : Unit
     {

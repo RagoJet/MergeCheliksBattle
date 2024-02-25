@@ -1,8 +1,8 @@
 using Gameplay;
 using Gameplay.BeforeTheBattle;
 using Gameplay.Cells;
-using Gameplay.Creatures;
-using Gameplay.Crowds;
+using Gameplay.Units.Creatures;
+using Gameplay.Units.Crowds;
 using Services.AssetManagement;
 using Services.JoySticks;
 using Services.LoadingScreenNS;

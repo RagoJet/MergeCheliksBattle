@@ -1,5 +1,5 @@
 using System;
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using Services.SaveLoad;
 
 namespace Services

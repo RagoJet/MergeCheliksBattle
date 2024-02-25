@@ -1,5 +1,5 @@
 using Gameplay.Cells;
-using Gameplay.Crowds;
+using Gameplay.Units.Crowds;
 using Services;
 using Services.JoySticks;
 using UnityEngine;

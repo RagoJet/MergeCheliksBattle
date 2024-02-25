@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Gameplay.Crowds
+namespace Gameplay.Units
 {
-    [RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
+    [RequireComponent(typeof(UnitAnimator), typeof(NavMeshAgent))]
     public class Unit : MonoBehaviour
     {
         protected int _health;
-        private Animator _animator;
         private NavMeshAgent _agent;
+        private UnitAnimator _unitAnimator;
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
             _agent.enabled = false;
         }
@@ -24,7 +24,11 @@ namespace Gameplay.Crowds
 
         public void GoTo(Vector3 pos)
         {
-            _agent.SetDestination(pos);
+            _unitAnimator.SetDataOfVelocity(_agent.velocity.sqrMagnitude);
+            if ((transform.position - pos).sqrMagnitude > 0.3f)
+            {
+                _agent.SetDestination(pos);
+            }
         }
 
         public virtual void Refresh()

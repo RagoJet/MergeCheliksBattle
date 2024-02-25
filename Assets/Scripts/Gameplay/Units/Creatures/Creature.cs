@@ -1,10 +1,9 @@
 using System;
 using DG.Tweening;
 using Gameplay.Cells;
-using Gameplay.Crowds;
 using UnityEngine;
 
-namespace Gameplay.Creatures
+namespace Gameplay.Units.Creatures
 {
     public class Creature : Unit
     {

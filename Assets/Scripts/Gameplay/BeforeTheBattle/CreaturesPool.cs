@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Gameplay.Cells;
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using Services;
 using Services.Factories;
 

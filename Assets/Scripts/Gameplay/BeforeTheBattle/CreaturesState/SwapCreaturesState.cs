@@ -1,5 +1,5 @@
 using Gameplay.Cells;
-using Gameplay.Creatures;
+using Gameplay.Units.Creatures;
 using States;
 
 namespace Gameplay.BeforeTheBattle.CreaturesState
