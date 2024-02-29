@@ -7,25 +7,10 @@ namespace Gameplay.Units.Creatures
 {
     public class Creature : Unit
     {
-        private CreatureDescription _description;
         private Cell _currentCell;
         public Cell CurrentCell => _currentCell;
         private Tween _tween;
-        public int Level => _description.Level;
-
-
-        public void Construct(CreatureDescription description, Cell cell)
-        {
-            _description = description;
-            _currentCell = cell;
-            cell.currentCreature = this;
-            Refresh();
-        }
-
-        public override void Refresh()
-        {
-            _health = _description.MaxHealth;
-        }
+        public int Level => _data.Level;
 
         public void BackToCell()
         {

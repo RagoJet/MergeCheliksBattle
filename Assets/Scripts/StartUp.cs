@@ -13,6 +13,7 @@ public class StartUp : MonoBehaviour
 {
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         RegisterOperation();
         Queue<ILoadingOperation> operationQueue = new Queue<ILoadingOperation>();
         operationQueue.Enqueue(new LoadingDataProgressOperation());

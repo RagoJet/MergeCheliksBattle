@@ -6,7 +6,7 @@ namespace Gameplay.Units
     public class UnitAnimator : MonoBehaviour
     {
         private Animator _animator;
-        private static readonly int NoBusy = Animator.StringToHash("NoBusy");
+        private static readonly int Freedom = Animator.StringToHash("Freedom");
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Death = Animator.StringToHash("Death");
         private static readonly int Speed = Animator.StringToHash("Speed");
@@ -14,11 +14,29 @@ namespace Gameplay.Units
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            Health health = GetComponent<Health>();
+            health.OnDie += SetDeathTrigger;
         }
 
         public void SetDataOfVelocity(float value)
         {
             _animator.SetFloat(Speed, value);
+        }
+
+        public void SetDeathTrigger()
+        {
+            _animator.SetTrigger(Death);
+        }
+
+        public void SetAttackTrigger()
+        {
+            _animator.SetTrigger(Attack);
+        }
+
+        public void SetFreeTrigger()
+        {
+            _animator.ResetTrigger(Attack);
+            _animator.SetTrigger(Freedom);
         }
     }
 }

@@ -728,6 +728,7 @@ GameObject:
   - component: {fileID: 1338295856499610482}
   - component: {fileID: 4077267889860966092}
   - component: {fileID: 2484233484829935113}
+  - component: {fileID: 3097662217462705869}
   m_Layer: 0
   m_Name: Monkeydong_Small
   m_TagString: Untagged
@@ -811,7 +812,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -819,6 +820,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3097662217462705869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826284069090985847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf27ff9a95064111b2471986078d5e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5928525629845340686
 GameObject:
   m_ObjectHideFlags: 0

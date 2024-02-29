@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
-using Gameplay.BeforeTheBattle.CreaturesState;
+using Gameplay.BeforeTheBattle.MasterOfCreaturesStates;
 using Gameplay.Cells;
+using Gameplay.Units;
 using Gameplay.Units.Creatures;
 using Services;
 using Services.SaveLoad;
@@ -24,9 +24,9 @@ namespace Gameplay.BeforeTheBattle
 
         private CellGrid _cellGrid;
         private CreaturesPool _creaturesPool;
-        private List<Creature> _currentCreatures = new List<Creature>();
+        private List<Unit> _currentCreatures = new List<Unit>();
 
-        public List<Creature> CurrentCreatures => _currentCreatures;
+        public List<Unit> CurrentCreatures => _currentCreatures;
 
         private void Awake()
         {
@@ -84,7 +84,7 @@ namespace Gameplay.BeforeTheBattle
             {
                 Creature creature = _creaturesPool.GetAndSet(cellDTO.levelOfCreature,
                     _cellGrid.GetCellByIndex(cellDTO.indexOfCell));
-                _currentCreatures.Add(creature);
+                CurrentCreatures.Add(creature);
             }
         }
 
@@ -92,22 +92,21 @@ namespace Gameplay.BeforeTheBattle
         {
             int newLevel = creature1.Level + 1;
 
-            _currentCreatures.Remove(creature1);
-            _currentCreatures.Remove(creature2);
+            CurrentCreatures.Remove(creature1);
+            CurrentCreatures.Remove(creature2);
             _creaturesPool.AddToPool(creature1);
             _creaturesPool.AddToPool(creature2);
 
             Creature newCreature = _creaturesPool.GetAndSet(newLevel, cell);
-            _currentCreatures.Add(newCreature);
+            CurrentCreatures.Add(newCreature);
         }
 
         public void CreateFirstLevelCreature(Cell cell)
         {
             int level = 0;
             Creature newCreature = _creaturesPool.GetAndSet(level, cell);
-            _currentCreatures.Add(newCreature);
+            CurrentCreatures.Add(newCreature);
         }
-
 
         private bool CheckSameLevelHit()
         {
@@ -128,7 +127,6 @@ namespace Gameplay.BeforeTheBattle
 
             return cellTarget.currentCreature.Level != creatureTarget.Level;
         }
-
 
         private bool CheckCellIsEmpty()
         {

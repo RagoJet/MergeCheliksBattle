@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff319f3fb8548eb9f05cfd762e3a8e1, type: 3}
+  m_Name: EnemyDescriptions
+  m_EditorClassIdentifier: 
+  _humansList:
+  - {fileID: 11400000, guid: 6141e900a87f19d4ea867ebcfbe92f93, type: 2}
+  - {fileID: 11400000, guid: 2843c799281d00944ab94a6b95ddded9, type: 2}
+  - {fileID: 11400000, guid: d6eee92ca16f2634f8060d3bdec099b0, type: 2}
+  - {fileID: 11400000, guid: 3e607a079bc2b314a8c294b57836ac59, type: 2}
+  - {fileID: 11400000, guid: 0767ad7457dc750489433c8ddc804f81, type: 2}
+  - {fileID: 11400000, guid: 57f78feaac079de49a55873e3c4a2551, type: 2}
+  - {fileID: 11400000, guid: 91cb10bc66d1f0145962d180eb430e99, type: 2}
+  - {fileID: 11400000, guid: 3a59b3a241c9a6c4fac37d36028dc7bc, type: 2}
+  _elvesList: []
+  _undeadList: []
+  _orcsList: []

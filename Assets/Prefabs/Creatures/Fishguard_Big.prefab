@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 5974435596324149910}
   - component: {fileID: 1010459763343359711}
   - component: {fileID: 5196382822407872891}
+  - component: {fileID: 6511447618772356090}
   m_Layer: 0
   m_Name: Fishguard_Big
   m_TagString: Untagged
@@ -128,7 +129,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -136,6 +137,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6511447618772356090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54700162194272272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf27ff9a95064111b2471986078d5e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &200295969428134766
 GameObject:
   m_ObjectHideFlags: 0

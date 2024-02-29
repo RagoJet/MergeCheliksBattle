@@ -26,10 +26,13 @@ namespace Gameplay.BeforeTheBattle
                 creature = AllServices.Container.Get<IGameFactory>().CreateCreature(level, cell);
             }
 
+
             _list.Remove(creature);
+
             creature.transform.position = cell.GetPosition;
             creature.SetNewCell(cell);
             creature.gameObject.SetActive(true);
+            creature.Refresh();
             return creature;
         }
     }

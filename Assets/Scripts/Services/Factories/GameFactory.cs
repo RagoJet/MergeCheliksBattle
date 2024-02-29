@@ -1,8 +1,10 @@
 using Gameplay;
 using Gameplay.BeforeTheBattle;
 using Gameplay.Cells;
+using Gameplay.Units;
 using Gameplay.Units.Creatures;
 using Gameplay.Units.Crowds;
+using Gameplay.Units.Enemies;
 using Services.AssetManagement;
 using Services.JoySticks;
 using Services.LoadingScreenNS;
@@ -14,21 +16,55 @@ namespace Services.Factories
     {
         private IAssetProvider _assetProvider;
         private CreatureDescriptions _creatureDescriptions;
+        private EnemyDescriptions _enemyDescriptions;
 
         public GameFactory()
         {
             _assetProvider = AllServices.Container.Get<IAssetProvider>();
             _creatureDescriptions =
                 _assetProvider.GetAsset<CreatureDescriptions>(Constants.AssetPaths.CREATURE_DESCRIPTIONS);
+            _enemyDescriptions =
+                _assetProvider.GetAsset<EnemyDescriptions>(Constants.AssetPaths.ENEMY_DESCRIPTIONS);
         }
 
+        public Enemy CreateHuman(int level, Vector3 pos)
+        {
+            UnitData data = _enemyDescriptions.GetHumanData(level);
+            return CreateEnemy(data, pos);
+        }
+
+        public Enemy CreateElf(int level, Vector3 pos)
+        {
+            UnitData data = _enemyDescriptions.GetElvesData(level);
+            return CreateEnemy(data, pos);
+        }
+
+        public Enemy CreateUndead(int level, Vector3 pos)
+        {
+            UnitData data = _enemyDescriptions.GetUndeadData(level);
+            return CreateEnemy(data, pos);
+        }
+
+        public Enemy CreateOrc(int level, Vector3 pos)
+        {
+            UnitData data = _enemyDescriptions.GetOrcData(level);
+            return CreateEnemy(data, pos);
+        }
+
+        private Enemy CreateEnemy(UnitData data, Vector3 pos)
+        {
+            Enemy enemy = Object.Instantiate(data.UnitPrefab, pos, Quaternion.identity) as Enemy;
+            enemy.SetData(data);
+            return enemy;
+        }
 
         public Creature CreateCreature(int level, Cell cell, Transform parent = null)
         {
-            CreatureDescription creatureDescription = _creatureDescriptions.GetCreatureData(level);
-            Creature creature = Object.Instantiate(creatureDescription.CreaturePrefab, cell.GetPosition,
-                Quaternion.identity, parent);
-            creature.Construct(creatureDescription, cell);
+            UnitData data = _creatureDescriptions.GetCreatureData(level);
+            Creature creature = Object.Instantiate(data.UnitPrefab, cell.GetPosition,
+                Quaternion.identity, parent) as Creature;
+            creature.SetNewCell(cell);
+            creature.SetData(data);
 
             return creature;
         }
@@ -46,9 +82,10 @@ namespace Services.Factories
                 pos, Quaternion.identity);
         }
 
-        public SpawnerCrowds CreateSpawnerCrowds()
+        public SpawnerCrowds CreateSpawnerCrowds(Vector3 pos)
         {
-            return InstantiateObject(_assetProvider.GetAsset<SpawnerCrowds>(Constants.AssetPaths.SPAWNER_CROWDS));
+            return InstantiateObject(_assetProvider.GetAsset<SpawnerCrowds>(Constants.AssetPaths.SPAWNER_CROWDS), pos,
+                Quaternion.identity);
         }
 
         public MyJoyStick CreateMyJoystick()

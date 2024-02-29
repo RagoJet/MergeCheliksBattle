@@ -1,12 +1,12 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Gameplay;
 using Gameplay.BeforeTheBattle;
 using Gameplay.Cells;
 using Gameplay.Units.Crowds;
 using Services;
 using Services.Factories;
 using Services.JoySticks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Operations.SceneLoadingOperations
@@ -34,11 +34,10 @@ namespace Operations.SceneLoadingOperations
 
             gameFactory.CreateInfoPanel();
 
-
             CellGrid cellGrid = gameFactory.CreateCellGrid();
             CreatureMaster creatureMaster = gameFactory.CreateCreatureMaster();
             creatureMaster.Construct(cellGrid);
-            SpawnerCrowds spawnerCrowds = gameFactory.CreateSpawnerCrowds();
+            SpawnerCrowds spawnerCrowds = gameFactory.CreateSpawnerCrowds(new Vector3(0, 3, 0));
             gameFactory.CreatePrepareForBattleMenu().Construct(cellGrid, creatureMaster, spawnerCrowds);
         }
     }

@@ -6,17 +6,18 @@ namespace Gameplay.Units.Creatures
 {
     [CreateAssetMenu(fileName = "CreatureDescriptions", menuName = "CreatureDescriptions")]
     public class CreatureDescriptions : ScriptableObject
+
     {
-        [SerializeField] private List<CreatureDescription> _listOfCreatureDescriptions;
+        [SerializeField] private List<UnitData> _listOfDescriptions;
 
         private void OnValidate()
         {
-            _listOfCreatureDescriptions = _listOfCreatureDescriptions.OrderBy(x => x.Level).ToList();
+            _listOfDescriptions = _listOfDescriptions.OrderBy(x => x.Level).ToList();
         }
 
-        public CreatureDescription GetCreatureData(int level)
+        public UnitData GetCreatureData(int level)
         {
-            return _listOfCreatureDescriptions[level];
+            return _listOfDescriptions[level];
         }
     }
 }

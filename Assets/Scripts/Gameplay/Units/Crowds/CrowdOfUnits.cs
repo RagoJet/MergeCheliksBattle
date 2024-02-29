@@ -1,26 +1,39 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using States;
 using UnityEngine;
-using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 namespace Gameplay.Units.Crowds
 {
-    public class CrowdOfUnits<T> : MonoBehaviour where T : Unit
+    [RequireComponent(typeof(BoxCollider))]
+    public class CrowdOfUnits : MonoBehaviour
     {
-        protected List<T> _units = new List<T>();
-        private List<Vector3> dotsPos = new List<Vector3>();
-        private float _offset = 3;
-        private int _rowCount = 4;
-        private int _columnCount = 4;
+        protected List<Unit> units = new List<Unit>();
+        protected bool fightMode;
 
-        private float _timeToFormat = 0.1f;
+        protected StateMachine _stateMachine = new StateMachine();
+        public CrowdOfUnits targetCrowd;
+
+        private float _timeFromLastFormat;
 
         [SerializeField] private Image _areaImage;
         private Tween _tween;
 
 
+        private BoxCollider _collider;
+        private Vector3 _sizeOfCollider;
+
+        private List<Vector3> dotsPos = new List<Vector3>();
+        private float _offset = 3;
+        private int _rowCount = 4;
+        private int _columnCount = 4;
+
         private void Awake()
         {
+            _collider = GetComponent<BoxCollider>();
+            _sizeOfCollider = _collider.size;
             List<Vector3> positions = new List<Vector3>();
 
             Vector3 startPosition = new Vector3((1 - _columnCount) * _offset / 2f, 0, (1 - _rowCount) * _offset / 2f);
@@ -51,46 +64,100 @@ namespace Gameplay.Units.Crowds
             dotsPos.Add(positions[8]);
         }
 
-        public void Construct(List<T> units)
+        public void Construct(List<Unit> newUnits)
         {
-            _units = units;
-            foreach (var unit in units)
+            units = newUnits;
+            foreach (var unit in newUnits)
             {
-                unit.ReadyToBattle();
+                unit.NavMeshAgentOn();
             }
 
-            FormatUnits();
             ResizeAreaImage();
+        }
+
+        public void RemoveFromCrowd(Unit unit)
+        {
+            units.Remove(unit);
+            ResizeAreaImage();
+        }
+
+        public Unit GetOpponentFromTargetCrowd(Vector3 pos)
+        {
+            Unit unit = targetCrowd.GetClosestAliveOpponent(pos);
+
+            if (unit == null)
+            {
+                fightMode = false;
+            }
+
+            return unit;
+        }
+
+        public Unit GetClosestAliveOpponent(Vector3 pos)
+        {
+            Unit AliveUnit = null;
+            foreach (var unit in units)
+            {
+                if (unit.GetComponent<Health>().IsAlive)
+                {
+                    AliveUnit = unit;
+                    break;
+                }
+            }
+
+            if (AliveUnit == null)
+            {
+                return null;
+            }
+
+            float closestSqrDistance = (pos - AliveUnit.transform.position).sqrMagnitude;
+            foreach (var unit in units)
+            {
+                if ((pos - unit.transform.position).sqrMagnitude < closestSqrDistance &&
+                    unit.GetComponent<Health>().IsAlive)
+                {
+                    AliveUnit = unit;
+                }
+            }
+
+            return AliveUnit;
+        }
+
+        public void StartFight(CrowdOfUnits crowdOfUnits)
+        {
+            targetCrowd = crowdOfUnits;
+            fightMode = true;
+            foreach (var unit in units)
+            {
+                unit.StartFight();
+            }
         }
 
         private void ResizeAreaImage()
         {
-            if (_areaImage == null)
-            {
-                return;
-            }
-
             _tween.Kill();
-            float xSize = _units.Count * 0.2f;
+            float xSize = units.Count * 0.2f;
+            _collider.size = _sizeOfCollider * (1 + units.Count * 0.15f);
             _tween = _areaImage.rectTransform.DOScale(1 + xSize, 1f);
         }
 
 
-        protected void OnUpdate()
+        protected void FormatUnits()
         {
-            if (Time.time - _timeToFormat >= 0)
+            if (Time.time - _timeFromLastFormat >= 0.3f)
             {
-                FormatUnits();
-                _timeToFormat = Time.time;
+                for (int i = 0; i < units.Count; i++)
+                {
+                    units[i].GoTo(transform.TransformPoint(dotsPos[i]));
+                }
+
+                _timeFromLastFormat = Time.time;
             }
         }
 
-        protected void FormatUnits()
+        private void OnDisable()
         {
-            for (int i = 0; i < _units.Count; i++)
-            {
-                _units[i].GoTo(transform.TransformPoint(dotsPos[i]));
-            }
+            _tween.Kill();
         }
     }
 }
