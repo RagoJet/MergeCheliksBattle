@@ -1,6 +1,6 @@
 using States;
 
-namespace Gameplay.BeforeTheBattle.MasterOfCreaturesStates
+namespace Gameplay.Cells.MasterOfCreaturesStates
 {
     public class MergeCreaturesState : IState
     {

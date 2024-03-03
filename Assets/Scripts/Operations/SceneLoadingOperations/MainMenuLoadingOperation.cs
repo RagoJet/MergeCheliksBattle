@@ -10,7 +10,14 @@ namespace Operations.SceneLoadingOperations
 
         public async UniTask Load(Action<float> onProgress)
         {
-            onProgress.Invoke(0.9f);
+            onProgress.Invoke(0.2f);
+            Scene gameScene = SceneManager.GetSceneByName(Constants.Scenes.GAME);
+            if (gameScene.IsValid())
+            {
+                await SceneManager.UnloadSceneAsync(gameScene);
+            }
+
+            onProgress.Invoke(0.8f);
             await SceneManager.LoadSceneAsync(Constants.Scenes.MAIN_MENU, LoadSceneMode.Additive);
         }
     }

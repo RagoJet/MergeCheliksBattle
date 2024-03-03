@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
+using Configs;
 using Services;
 using Services.Factories;
 using UnityEngine;
@@ -8,15 +8,16 @@ namespace Gameplay.Cells
 {
     public class CellGrid : MonoBehaviour
     {
-        [SerializeField] private int _rows;
-        [SerializeField] private int _collumns;
-        [SerializeField] private float _offset;
-
         private List<Cell> _cells = new List<Cell>();
 
         private void Awake()
         {
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
+            IStaticDataFactory dataFactory = AllServices.Container.Get<IStaticDataFactory>();
+            GridStaticData staticData = dataFactory.GetGridStaticData();
+            int _collumns = staticData.Collumns;
+            int _rows = staticData.Rows;
+            float _offset = staticData.Offset;
             Vector3 startPosition = transform.position +
                                     new Vector3((1 - _collumns) * _offset / 2f, 0, (_rows - 1) * _offset / 2f);
             for (int i = 0; i < _rows; i++)

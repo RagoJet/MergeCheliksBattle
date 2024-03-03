@@ -1,6 +1,6 @@
 using Gameplay;
-using Gameplay.BeforeTheBattle;
 using Gameplay.Cells;
+using Gameplay.MenuUI;
 using Gameplay.Units;
 using Gameplay.Units.Creatures;
 using Gameplay.Units.Crowds;
@@ -22,121 +22,129 @@ namespace Services.Factories
         {
             _assetProvider = AllServices.Container.Get<IAssetProvider>();
             _creatureDescriptions =
-                _assetProvider.GetAsset<CreatureDescriptions>(Constants.AssetPaths.CREATURE_DESCRIPTIONS);
+                _assetProvider.GetAsset<CreatureDescriptions>(Constants.StaticData.CREATURE_DESCRIPTIONS);
             _enemyDescriptions =
-                _assetProvider.GetAsset<EnemyDescriptions>(Constants.AssetPaths.ENEMY_DESCRIPTIONS);
+                _assetProvider.GetAsset<EnemyDescriptions>(Constants.StaticData.ENEMY_DESCRIPTIONS);
         }
 
         public Enemy CreateHuman(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetHumanData(level);
-            return CreateEnemy(data, pos);
+            return CreateUnit(data, pos) as Enemy;
         }
 
         public Enemy CreateElf(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetElvesData(level);
-            return CreateEnemy(data, pos);
+            return CreateUnit(data, pos) as Enemy;
         }
 
         public Enemy CreateUndead(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetUndeadData(level);
-            return CreateEnemy(data, pos);
+            return CreateUnit(data, pos) as Enemy;
         }
 
         public Enemy CreateOrc(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetOrcData(level);
-            return CreateEnemy(data, pos);
+            return CreateUnit(data, pos) as Enemy;
         }
 
-        private Enemy CreateEnemy(UnitData data, Vector3 pos)
+        private Unit CreateUnit(UnitData data, Vector3 pos)
         {
-            Enemy enemy = Object.Instantiate(data.UnitPrefab, pos, Quaternion.identity) as Enemy;
-            enemy.SetData(data);
-            return enemy;
+            Unit unit = Object.Instantiate(data.UnitPrefab, pos, Quaternion.identity);
+            unit.SetData(data);
+            unit.Refresh();
+            return unit;
         }
 
         public Creature CreateCreature(int level, Cell cell, Transform parent = null)
         {
             UnitData data = _creatureDescriptions.GetCreatureData(level);
-            Creature creature = Object.Instantiate(data.UnitPrefab, cell.GetPosition,
-                Quaternion.identity, parent) as Creature;
+            Creature creature = CreateUnit(data, cell.GetPosition) as Creature;
             creature.SetNewCell(cell);
-            creature.SetData(data);
 
             return creature;
         }
 
         public CrowdOfCreatures CreateCrowdOfCreatures(Vector3 pos)
         {
-            return InstantiateObject(
+            return Object.Instantiate(
                 _assetProvider.GetAsset<CrowdOfCreatures>(Constants.AssetPaths.CROWD_OF_CREATURES), pos,
                 Quaternion.identity);
         }
 
         public CrowdOfEnemies CreateCrowdOfEnemies(Vector3 pos)
         {
-            return InstantiateObject(_assetProvider.GetAsset<CrowdOfEnemies>(Constants.AssetPaths.CROWD_OF_ENEMIES),
+            return Object.Instantiate(_assetProvider.GetAsset<CrowdOfEnemies>(Constants.AssetPaths.CROWD_OF_ENEMIES),
                 pos, Quaternion.identity);
         }
 
         public SpawnerCrowds CreateSpawnerCrowds(Vector3 pos)
         {
-            return InstantiateObject(_assetProvider.GetAsset<SpawnerCrowds>(Constants.AssetPaths.SPAWNER_CROWDS), pos,
+            return Object.Instantiate(_assetProvider.GetAsset<SpawnerCrowds>(Constants.AssetPaths.SPAWNER_CROWDS), pos,
                 Quaternion.identity);
+        }
+
+        public CurrentSessionManager CreateSessionManager()
+        {
+            return Object.Instantiate(
+                _assetProvider.GetAsset<CurrentSessionManager>(Constants.AssetPaths.SESSION_MANAGER));
+        }
+
+        public Wallet CreateWallet()
+        {
+            return Object.Instantiate(_assetProvider.GetAsset<Wallet>(Constants.AssetPaths.WALLET));
         }
 
         public MyJoyStick CreateMyJoystick()
         {
-            return InstantiateObject(_assetProvider.GetAsset<MyJoyStick>(Constants.AssetPaths.MY_JOYSTICK));
-        }
-
-        public InfoPanel CreateInfoPanel()
-        {
-            return InstantiateObject(_assetProvider.GetAsset<InfoPanel>(Constants.AssetPaths.INFO_PANEL));
-        }
-
-        public PrepareForBattleMenu CreatePrepareForBattleMenu()
-        {
-            return InstantiateObject(
-                _assetProvider.GetAsset<PrepareForBattleMenu>(Constants.AssetPaths.PREPARE_FOR_BATTLE_MENU));
+            return Object.Instantiate(_assetProvider.GetAsset<MyJoyStick>(Constants.AssetPaths.MY_JOYSTICK));
         }
 
         public CellGrid CreateCellGrid()
         {
             CellGrid cellGrid = _assetProvider.GetAsset<CellGrid>(Constants.AssetPaths.CELL_GRID);
-            return InstantiateObject(cellGrid, cellGrid.transform.position, Quaternion.identity);
+            return Object.Instantiate(cellGrid, cellGrid.transform.position, Quaternion.identity);
         }
 
         public CreatureMaster CreateCreatureMaster()
         {
-            return InstantiateObject(_assetProvider.GetAsset<CreatureMaster>(Constants.AssetPaths.CREATURE_MASTER));
+            return Object.Instantiate(_assetProvider.GetAsset<CreatureMaster>(Constants.AssetPaths.CREATURE_MASTER));
+        }
+
+
+        public Cell CreateCell(Vector3 pos, Transform parent)
+        {
+            return Object.Instantiate(_assetProvider.GetAsset<Cell>(Constants.AssetPaths.CELL), pos,
+                Quaternion.identity, parent);
         }
 
         public LoadingScreen CreateLoadingScreen()
         {
-            return InstantiateObject(_assetProvider.GetAsset<LoadingScreen>(Constants.AssetPaths.LOADING_SCREEN));
+            return Object.Instantiate(_assetProvider.GetAsset<LoadingScreen>(Constants.AssetPaths.LOADING_SCREEN));
         }
 
-        public Cell CreateCell(Vector3 pos, Transform parent)
+        public LoseMenu CreateLoseMenu()
         {
-            return InstantiateObject(_assetProvider.GetAsset<Cell>(Constants.AssetPaths.CELL), pos,
-                Quaternion.identity, parent);
+            return Object.Instantiate(_assetProvider.GetAsset<LoseMenu>(Constants.AssetPaths.LOSE_MENU));
         }
 
-
-        private T InstantiateObject<T>(T asset, Vector3 pos, Quaternion rotation, Transform parent = null)
-            where T : MonoBehaviour
+        public WinMenu CreateWinMenu()
         {
-            T obj = Object.Instantiate(asset, pos, rotation, parent);
-            return obj;
+            return Object.Instantiate(_assetProvider.GetAsset<WinMenu>(Constants.AssetPaths.WIN_MENU));
         }
 
-        private T InstantiateObject<T>(T asset, Transform parent = null) where T : MonoBehaviour
+        public PrepareForBattleMenu CreatePrepareForBattleMenu()
         {
-            return InstantiateObject<T>(asset, Vector3.zero, Quaternion.identity, parent);
+            return Object.Instantiate(
+                _assetProvider.GetAsset<PrepareForBattleMenu>(Constants.AssetPaths.PREPARE_FOR_BATTLE_MENU));
+        }
+
+        public InfoPanel CreateInfoPanel()
+        {
+            return Object.Instantiate(_assetProvider.GetAsset<InfoPanel>(Constants.AssetPaths.INFO_PANEL));
         }
     }
 }

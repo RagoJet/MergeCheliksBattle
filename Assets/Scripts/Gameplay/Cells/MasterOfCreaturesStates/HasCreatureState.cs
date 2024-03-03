@@ -1,8 +1,7 @@
-using Gameplay.Cells;
 using States;
 using UnityEngine;
 
-namespace Gameplay.BeforeTheBattle.MasterOfCreaturesStates
+namespace Gameplay.Cells.MasterOfCreaturesStates
 {
     public class HasCreatureState : IState
     {

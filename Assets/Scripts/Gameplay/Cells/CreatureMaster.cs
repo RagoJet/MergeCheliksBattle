@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Gameplay.BeforeTheBattle.MasterOfCreaturesStates;
-using Gameplay.Cells;
+using Gameplay.Cells.MasterOfCreaturesStates;
 using Gameplay.Units;
 using Gameplay.Units.Creatures;
 using Services;
+using Services.Factories;
 using Services.SaveLoad;
 using States;
 using UnityEngine;
 
-namespace Gameplay.BeforeTheBattle
+namespace Gameplay.Cells
 {
     public class CreatureMaster : MonoBehaviour
     {
@@ -23,17 +23,14 @@ namespace Gameplay.BeforeTheBattle
         private int _cellLayerMask;
 
         private CellGrid _cellGrid;
-        private CreaturesPool _creaturesPool;
         private List<Unit> _currentCreatures = new List<Unit>();
 
         public List<Unit> CurrentCreatures => _currentCreatures;
 
         private void Awake()
         {
-            _creaturesPool = new CreaturesPool();
             _islandLayerMask = 1 << LayerMask.NameToLayer("Island");
             _cellLayerMask = 1 << LayerMask.NameToLayer("Cell");
-            AllServices.Container.Get<EventBus>().OnDeathCreature += _creaturesPool.AddToPool;
         }
 
         private void Start()
@@ -80,9 +77,9 @@ namespace Gameplay.BeforeTheBattle
         {
             _cellGrid = cellGrid;
             DataProgress dataProgress = AllServices.Container.Get<ISaveLoadService>().DataProgress;
-            foreach (var cellDTO in dataProgress._cellsDTO)
+            foreach (var cellDTO in dataProgress.cellsDTO)
             {
-                Creature creature = _creaturesPool.GetAndSet(cellDTO.levelOfCreature,
+                Creature creature = AllServices.Container.Get<IGameFactory>().CreateCreature(cellDTO.levelOfCreature,
                     _cellGrid.GetCellByIndex(cellDTO.indexOfCell));
                 CurrentCreatures.Add(creature);
             }
@@ -94,17 +91,17 @@ namespace Gameplay.BeforeTheBattle
 
             CurrentCreatures.Remove(creature1);
             CurrentCreatures.Remove(creature2);
-            _creaturesPool.AddToPool(creature1);
-            _creaturesPool.AddToPool(creature2);
+            Destroy(creature1.gameObject);
+            Destroy(creature2.gameObject);
 
-            Creature newCreature = _creaturesPool.GetAndSet(newLevel, cell);
+            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(newLevel, cell);
             CurrentCreatures.Add(newCreature);
         }
 
         public void CreateFirstLevelCreature(Cell cell)
         {
             int level = 0;
-            Creature newCreature = _creaturesPool.GetAndSet(level, cell);
+            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(level, cell);
             CurrentCreatures.Add(newCreature);
         }
 

@@ -16,5 +16,5 @@ MonoBehaviour:
     type: 3}
   _level: 0
   _damage: 1
-  _maxHealth: 4
+  _maxHealth: 3
   _moveSpeed: 0

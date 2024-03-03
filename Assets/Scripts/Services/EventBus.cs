@@ -1,32 +1,39 @@
 using System;
-using Gameplay.Units.Creatures;
-using Services.SaveLoad;
 
 namespace Services
 {
     public class EventBus : IService
     {
-        public event Action OnCompleteLevel;
-        public event Action<int> OnChangeMoney;
+        public event Action onCreatedEnemyCrowd;
+        public event Action onKilledEnemyCrowd;
+        public event Action onDeathCreatureCrowd;
+        public event Action onAllDeadEnemies;
+        public event Action onChangeMoney;
 
 
-        public event Action<Creature> OnDeathCreature;
-
-
-        public void ChangeMoney(int money)
+        public void OnChangeMoney()
         {
-            OnChangeMoney?.Invoke(money);
+            onChangeMoney?.Invoke();
         }
 
-        public void AfterDeathCreature(Creature creature)
+        public void OnAllDeadEnemies()
         {
-            OnDeathCreature?.Invoke(creature);
+            onAllDeadEnemies?.Invoke();
         }
 
-        public void CompleteLevel()
+        public void OnDeathCreatureCrowd()
         {
-            AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame++;
-            OnCompleteLevel.Invoke();
+            onDeathCreatureCrowd?.Invoke();
+        }
+
+        public void OnKilledEnemyCrowd()
+        {
+            onKilledEnemyCrowd?.Invoke();
+        }
+
+        public void OnCreatedEnemyCrowd()
+        {
+            onCreatedEnemyCrowd?.Invoke();
         }
     }
 }

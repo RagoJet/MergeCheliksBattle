@@ -1,4 +1,3 @@
-using System;
 using States;
 using UnityEngine;
 
@@ -23,7 +22,11 @@ namespace Gameplay.Units.UnitStates
             switch (_isAttacking)
             {
                 case false:
-                    if ((_unit.transform.position - _targetHealth.transform.position).magnitude <= _rangeAttack)
+                    if (_targetHealth.IsAlive == false)
+                    {
+                        SetNewTarget();
+                    }
+                    else if ((_unit.transform.position - _targetHealth.transform.position).magnitude <= _rangeAttack)
                     {
                         _isAttacking = true;
                         _unit.GetComponent<UnitAnimator>().SetAttackTrigger();
@@ -43,7 +46,9 @@ namespace Gameplay.Units.UnitStates
                     }
                     else
                     {
-                        _unit.transform.LookAt(_targetHealth.transform, Vector3.up);
+                        Vector3 direction = Vector3.Lerp(_unit.transform.forward,
+                            _targetHealth.transform.position - _unit.transform.position, Time.deltaTime * 5);
+                        _unit.transform.forward = direction;
                     }
 
                     break;
@@ -71,6 +76,8 @@ namespace Gameplay.Units.UnitStates
             }
             else
             {
+                _targetHealth = null;
+                _isAttacking = false;
                 _unit.StopFight();
                 _unit.SetTarget(null);
             }

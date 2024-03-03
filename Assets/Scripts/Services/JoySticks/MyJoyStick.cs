@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Services.JoySticks
@@ -8,10 +9,18 @@ namespace Services.JoySticks
 
         private Camera _mainCamera;
 
-        private void Awake()
+        private void OnEnable()
         {
-            _mainCamera = Camera.main;
+            AllServices.Container.Get<EventBus>().onAllDeadEnemies += SwitchOff;
+            AllServices.Container.Get<EventBus>().onDeathCreatureCrowd += SwitchOff;
         }
+
+        private void OnDisable()
+        {
+            AllServices.Container.Get<EventBus>().onAllDeadEnemies -= SwitchOff;
+            AllServices.Container.Get<EventBus>().onDeathCreatureCrowd -= SwitchOff;
+        }
+
 
         public Vector3 GetDirection()
         {
@@ -30,6 +39,7 @@ namespace Services.JoySticks
         public void SwitchOn()
         {
             gameObject.SetActive(true);
+            _mainCamera = Camera.main;
         }
     }
 }

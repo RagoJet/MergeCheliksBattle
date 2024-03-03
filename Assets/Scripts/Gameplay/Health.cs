@@ -8,7 +8,6 @@ namespace Gameplay
         private int _value;
         private int _maxValue;
         public event Action OnDie;
-        public event Action<int> OnHealthChanged;
         private bool _isAlive = true;
 
         public bool IsAlive => _isAlive;
@@ -31,8 +30,6 @@ namespace Gameplay
                     _value = 0;
                     OnDie.Invoke();
                 }
-
-                OnHealthChanged?.Invoke(_value);
             }
         }
 
@@ -45,8 +42,6 @@ namespace Gameplay
                 {
                     _value = _maxValue;
                 }
-
-                OnHealthChanged?.Invoke(_value);
             }
         }
     }

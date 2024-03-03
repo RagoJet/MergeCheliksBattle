@@ -5,14 +5,14 @@ using Services.JoySticks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.BeforeTheBattle
+namespace Gameplay.MenuUI
 {
     public class PrepareForBattleMenu : MonoBehaviour
     {
         private CellGrid _grid;
         private CreatureMaster _creatureMaster;
         private SpawnerCrowds _spawnerCrowds;
-        private Storage _storage;
+        private Wallet _wallet;
 
         [SerializeField] private int _priceCreature = 200;
 
@@ -25,12 +25,12 @@ namespace Gameplay.BeforeTheBattle
             _buyCreatureButton.onClick.AddListener(TryBuyCreature);
         }
 
-        public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds)
+        public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds, Wallet wallet)
         {
             _grid = grid;
             _creatureMaster = creatureMaster;
             _spawnerCrowds = spawnerCrowds;
-            _storage = AllServices.Container.Get<Storage>();
+            _wallet = wallet;
         }
 
         private void StartBattle()
@@ -48,7 +48,7 @@ namespace Gameplay.BeforeTheBattle
         {
             if (_grid.TryGetAvailableCell(out Cell cell))
             {
-                if (_storage.TryBuy(_priceCreature))
+                if (_wallet.TryBuy(_priceCreature))
                 {
                     _creatureMaster.CreateFirstLevelCreature(cell);
                 }

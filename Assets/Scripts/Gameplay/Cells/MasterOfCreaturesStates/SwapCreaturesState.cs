@@ -1,8 +1,7 @@
-using Gameplay.Cells;
 using Gameplay.Units.Creatures;
 using States;
 
-namespace Gameplay.BeforeTheBattle.MasterOfCreaturesStates
+namespace Gameplay.Cells.MasterOfCreaturesStates
 {
     public class SwapCreaturesState : IState
     {

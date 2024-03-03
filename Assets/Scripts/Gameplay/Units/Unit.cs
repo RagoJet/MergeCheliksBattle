@@ -1,3 +1,4 @@
+using System.Collections;
 using Gameplay.Units.Crowds;
 using Gameplay.Units.UnitStates;
 using States;
@@ -25,6 +26,7 @@ namespace Gameplay.Units
             health = GetComponent<Health>();
             health.OnDie += RemoveFromCrowd;
             health.OnDie += StopFight;
+            health.OnDie += Dying;
 
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
@@ -85,7 +87,6 @@ namespace Gameplay.Units
             _fightMode = false;
         }
 
-
         public void SetTarget(Health target)
         {
             _targetHealth = target;
@@ -114,6 +115,17 @@ namespace Gameplay.Units
         public void NavMeshAgentOn()
         {
             _agent.enabled = true;
+        }
+
+        public void Dying()
+        {
+            StartCoroutine(ProcessOfDying());
+        }
+
+        private IEnumerator ProcessOfDying()
+        {
+            yield return new WaitForSeconds(3f);
+            Destroy(this.gameObject);
         }
     }
 }

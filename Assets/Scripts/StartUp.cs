@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Gameplay;
 using Operations;
 using Operations.SceneLoadingOperations;
 using Services;
 using Services.AssetManagement;
 using Services.Factories;
+using Services.JoySticks;
 using Services.LoadingScreenNS;
 using Services.SaveLoad;
 using UnityEngine;
@@ -26,11 +26,16 @@ public class StartUp : MonoBehaviour
     public void RegisterOperation()
     {
         AllServices containerServices = AllServices.Container;
+
         containerServices.Register<ISaveLoadService>(new SaveLoadService());
         containerServices.Register<EventBus>(new EventBus());
-        containerServices.Register<Storage>(new Storage());
         containerServices.Register<ILoadingScreenProvider>(new LoadingScreenProvider());
         containerServices.Register<IAssetProvider>(new AssetProvider());
+        containerServices.Register<IStaticDataFactory>(new StaticDataFactory());
         containerServices.Register<IGameFactory>(new GameFactory());
+
+        MyJoyStick myJoyStick = containerServices.Get<IGameFactory>().CreateMyJoystick();
+        myJoyStick.SwitchOff();
+        AllServices.Container.Register<IJoyStick>(myJoyStick);
     }
 }
