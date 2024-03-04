@@ -21,12 +21,16 @@ namespace Gameplay.Units
         private CrowdOfUnits _myCrowd;
         private Health _targetHealth;
 
+        public int Damage => _data.Damage;
+        public int MaxHealth => _data.MaxHealth;
+
         private void Awake()
         {
             health = GetComponent<Health>();
-            health.OnDie += RemoveFromCrowd;
-            health.OnDie += StopFight;
-            health.OnDie += Dying;
+            health.onDie += RemoveFromCrowd;
+            health.onDie += StopFight;
+            health.onDie += Dying;
+
 
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
@@ -49,6 +53,7 @@ namespace Gameplay.Units
         public void SetCrowd(CrowdOfUnits crowd)
         {
             _myCrowd = crowd;
+            health.onTakeDamage += _myCrowd.GetComponent<InfoOfCrowd>().RemoveHealth;
         }
 
         private void RemoveFromCrowd()
@@ -119,6 +124,7 @@ namespace Gameplay.Units
 
         public void Dying()
         {
+            _myCrowd.GetComponent<InfoOfCrowd>().RemoveDamage(_data.Damage);
             StartCoroutine(ProcessOfDying());
         }
 

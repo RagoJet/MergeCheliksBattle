@@ -7,9 +7,10 @@ namespace Gameplay
     {
         private int _value;
         private int _maxValue;
-        public event Action OnDie;
+        public event Action onDie;
         private bool _isAlive = true;
 
+        public event Action<int> onTakeDamage;
         public bool IsAlive => _isAlive;
 
         public void Refresh(int value)
@@ -24,11 +25,12 @@ namespace Gameplay
             if (value > 0)
             {
                 _value -= value;
+                onTakeDamage.Invoke(value);
                 if (_value <= 0)
                 {
                     _isAlive = false;
                     _value = 0;
-                    OnDie.Invoke();
+                    onDie.Invoke();
                 }
             }
         }

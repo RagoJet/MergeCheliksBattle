@@ -32,6 +32,7 @@ namespace Gameplay.Units.Crowds
             }
 
             crowdOfCreatures.Construct(creatureList);
+            crowdOfCreatures.GetComponent<InfoOfCrowd>().Init();
             return crowdOfCreatures;
         }
 
@@ -46,15 +47,17 @@ namespace Gameplay.Units.Crowds
             {
                 CrowdOfEnemies crowdOfEnemies = gameFactory.CreateCrowdOfEnemies(spawn.position);
                 EnemyPointerImage pointerImage = enemyPointersCanvas.CreateEnemyPointer();
-                
+
                 List<Unit> listOfEnemies = await CreateListOfEnemies(levelOfGame, crowdOfEnemies);
-                
+
                 crowdOfEnemies.Construct(listOfEnemies);
-                
+
                 crowdOfEnemies.GetComponent<EnemyCrowdPointer>()
                     .Construct(playerCrowdTransform, pointerImage.transform);
-                
+
                 AllServices.Container.Get<EventBus>().OnCreatedEnemyCrowd();
+
+                crowdOfEnemies.GetComponent<InfoOfCrowd>().Init();
                 await UniTask.Delay(70);
             }
         }

@@ -9,8 +9,8 @@ using Image = UnityEngine.UI.Image;
 
 namespace Gameplay.Units.Crowds
 {
-    [RequireComponent(typeof(BoxCollider))]
-    public class CrowdOfUnits : MonoBehaviour
+    [RequireComponent(typeof(BoxCollider), typeof(InfoOfCrowd))]
+    public abstract class CrowdOfUnits : MonoBehaviour
     {
         protected List<Unit> units = new List<Unit>();
         protected bool fightMode;
@@ -188,6 +188,28 @@ namespace Gameplay.Units.Crowds
             pos.y = transform.position.y;
 
             transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
+        }
+
+        public int GetAllDamageOfUnits()
+        {
+            int damage = 0;
+            foreach (var unit in units)
+            {
+                damage += unit.Damage;
+            }
+
+            return damage;
+        }
+
+        public int GetAllHealthOfUnits()
+        {
+            int health = 0;
+            foreach (var unit in units)
+            {
+                health += unit.MaxHealth;
+            }
+
+            return health;
         }
 
         private void OnDisable()

@@ -22,7 +22,7 @@ namespace Gameplay.UI
 
         private void UpdateGoldText()
         {
-            _moneyText.text = $"Gold: {_wallet.Money}";
+            _moneyText.text = $"Money: {_wallet.Money}";
         }
 
         private void UpdateLevelText()

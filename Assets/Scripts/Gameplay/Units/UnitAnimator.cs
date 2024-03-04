@@ -15,7 +15,7 @@ namespace Gameplay.Units
         {
             _animator = GetComponent<Animator>();
             Health health = GetComponent<Health>();
-            health.OnDie += SetDeathTrigger;
+            health.onDie += SetDeathTrigger;
         }
 
         public void SetDataOfVelocity(float value)
