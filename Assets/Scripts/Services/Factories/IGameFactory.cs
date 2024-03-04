@@ -1,6 +1,6 @@
 using Gameplay;
 using Gameplay.Cells;
-using Gameplay.MenuUI;
+using Gameplay.UI;
 using Gameplay.Units.Creatures;
 using Gameplay.Units.Crowds;
 using Gameplay.Units.Enemies;
@@ -12,6 +12,8 @@ namespace Services.Factories
 {
     public interface IGameFactory : IService
     {
+        public EnemyPointerImage CreateEnemyPointerImage(Transform parent);
+        public EnemyPointersCanvas CreateEnemyPointersCanvas();
         public LoseMenu CreateLoseMenu();
         public WinMenu CreateWinMenu();
         public PrepareForBattleMenu CreatePrepareForBattleMenu();

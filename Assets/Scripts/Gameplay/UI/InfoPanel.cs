@@ -3,7 +3,7 @@ using Services.SaveLoad;
 using TMPro;
 using UnityEngine;
 
-namespace Gameplay.MenuUI
+namespace Gameplay.UI
 {
     public class InfoPanel : MonoBehaviour
     {

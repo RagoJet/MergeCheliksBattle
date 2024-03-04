@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Gameplay.Units.Crowds
 {
-    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent), typeof(EnemyCrowdPointer))]
     public class CrowdOfEnemies : CrowdOfUnits
     {
         private NavMeshAgent _agent;

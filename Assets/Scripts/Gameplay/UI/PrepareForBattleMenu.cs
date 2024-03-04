@@ -5,7 +5,7 @@ using Services.JoySticks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.MenuUI
+namespace Gameplay.UI
 {
     public class PrepareForBattleMenu : MonoBehaviour
     {
@@ -37,8 +37,9 @@ namespace Gameplay.MenuUI
         {
             _grid.gameObject.SetActive(false);
             _creatureMaster.gameObject.SetActive(false);
-            _spawnerCrowds.SpawnCreaturesCrowd(_grid.transform.position, _creatureMaster.CurrentCreatures);
-            _spawnerCrowds.SpawnEnemyCrowds();
+
+            _spawnerCrowds.SpawnAllCrowds(_grid.transform.position, _creatureMaster.CurrentCreatures);
+
             AllServices.Container.Get<IJoyStick>().SwitchOn();
 
             gameObject.SetActive(false);

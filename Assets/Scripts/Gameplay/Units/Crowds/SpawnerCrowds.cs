@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Gameplay.UI;
 using Gameplay.Units.Enemies;
 using Services;
 using Services.Factories;
@@ -14,45 +15,48 @@ namespace Gameplay.Units.Crowds
     {
         [SerializeField] private Transform[] _enemyCrowdsSpawns;
 
-        public void SpawnEnemyCrowds()
+
+        public void SpawnAllCrowds(Vector3 pos, List<Unit> creatureList)
         {
-            SpawningEnemyCrowds();
+            CrowdOfCreatures crowdOfCreatures = SpawnCreaturesCrowd(pos, creatureList);
+            SpawningEnemyCrowds(crowdOfCreatures.transform);
         }
 
-        public void SpawnCreaturesCrowd(Vector3 pos, List<Unit> list)
+        private CrowdOfCreatures SpawnCreaturesCrowd(Vector3 pos, List<Unit> creatureList)
         {
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
             CrowdOfCreatures crowdOfCreatures = gameFactory.CreateCrowdOfCreatures(pos);
-            foreach (var unit in list)
+            foreach (var unit in creatureList)
             {
                 unit.SetCrowd(crowdOfCreatures);
             }
 
-            crowdOfCreatures.Construct(list);
+            crowdOfCreatures.Construct(creatureList);
+            return crowdOfCreatures;
         }
 
-        private async UniTask SpawningEnemyCrowds()
+        private async UniTask SpawningEnemyCrowds(Transform playerCrowdTransform)
         {
             int levelOfGame = AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame;
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
 
-            for (int i = 0; i < 1; i++)
+            EnemyPointersCanvas enemyPointersCanvas = gameFactory.CreateEnemyPointersCanvas();
+
+            foreach (var spawn in _enemyCrowdsSpawns)
             {
-                CrowdOfEnemies crowdOfEnemies = gameFactory.CreateCrowdOfEnemies(_enemyCrowdsSpawns[i].position);
+                CrowdOfEnemies crowdOfEnemies = gameFactory.CreateCrowdOfEnemies(spawn.position);
+                EnemyPointerImage pointerImage = enemyPointersCanvas.CreateEnemyPointer();
+                
                 List<Unit> listOfEnemies = await CreateListOfEnemies(levelOfGame, crowdOfEnemies);
+                
                 crowdOfEnemies.Construct(listOfEnemies);
+                
+                crowdOfEnemies.GetComponent<EnemyCrowdPointer>()
+                    .Construct(playerCrowdTransform, pointerImage.transform);
+                
                 AllServices.Container.Get<EventBus>().OnCreatedEnemyCrowd();
                 await UniTask.Delay(70);
             }
-
-            // foreach (var spawn in _enemyCrowdsSpawns)
-            // {
-            //     CrowdOfEnemies crowdOfEnemies = gameFactory.CreateCrowdOfEnemies(spawn.position);
-            //     List<Unit> listOfEnemies = await CreateListOfEnemies(levelOfGame, crowdOfEnemies);
-            //     crowdOfEnemies.Construct(listOfEnemies);
-            //     AllServices.Container.Get<EventBus>().OnCreatedEnemyCrowd();
-            //     await UniTask.Delay(70);
-            // }
         }
 
         private async UniTask<List<Unit>> CreateListOfEnemies(int levelOfGame, CrowdOfEnemies crowdOfEnemies)

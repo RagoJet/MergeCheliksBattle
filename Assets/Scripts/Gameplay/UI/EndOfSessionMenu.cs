@@ -4,7 +4,7 @@ using Services.LoadingScreenNS;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Gameplay.MenuUI
+namespace Gameplay.UI
 {
     public abstract class EndOfSessionMenu : MonoBehaviour
     {

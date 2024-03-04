@@ -1,6 +1,6 @@
 using Gameplay;
 using Gameplay.Cells;
-using Gameplay.MenuUI;
+using Gameplay.UI;
 using Gameplay.Units;
 using Gameplay.Units.Creatures;
 using Gameplay.Units.Crowds;
@@ -124,6 +124,18 @@ namespace Services.Factories
         public LoadingScreen CreateLoadingScreen()
         {
             return Object.Instantiate(_assetProvider.GetAsset<LoadingScreen>(Constants.AssetPaths.LOADING_SCREEN));
+        }
+
+        public EnemyPointerImage CreateEnemyPointerImage(Transform parent)
+        {
+            return Object.Instantiate(
+                _assetProvider.GetAsset<EnemyPointerImage>(Constants.AssetPaths.ENEMY_POINTER_IMAGE), parent);
+        }
+
+        public EnemyPointersCanvas CreateEnemyPointersCanvas()
+        {
+            return Object.Instantiate(
+                _assetProvider.GetAsset<EnemyPointersCanvas>(Constants.AssetPaths.ENEMY_POINTERS_CANVAS));
         }
 
         public LoseMenu CreateLoseMenu()

@@ -17,6 +17,8 @@ public static class Constants
         public const string LOADING_SCREEN = "UI/LoadingScreen";
         public const string LOSE_MENU = "UI/LoseMenu";
         public const string WIN_MENU = "UI/WinMenu";
+        public const string ENEMY_POINTER_IMAGE = "UI/EnemyPointerImage";
+        public const string ENEMY_POINTERS_CANVAS = "UI/EnemyPointersCanvas";
     }
 
     public sealed class StaticData

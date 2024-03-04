@@ -1,5 +1,5 @@
 
-namespace Gameplay.MenuUI
+namespace Gameplay.UI
 {
     public class LoseMenu : EndOfSessionMenu
     {
