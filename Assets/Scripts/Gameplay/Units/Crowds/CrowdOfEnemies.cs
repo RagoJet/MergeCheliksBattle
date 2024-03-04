@@ -48,7 +48,7 @@ namespace Gameplay.Units.Crowds
 
         protected override void Die()
         {
-            AllServices.Container.Get<EventBus>().OnKilledEnemyCrowd();
+            AllServices.Container.Get<EventBus>().OnDeathEnemyCrowd();
             base.Die();
         }
     }

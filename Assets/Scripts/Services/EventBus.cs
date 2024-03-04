@@ -5,15 +5,21 @@ namespace Services
     public class EventBus : IService
     {
         public event Action onCreatedEnemyCrowd;
-        public event Action onKilledEnemyCrowd;
         public event Action onDeathCreatureCrowd;
+        public event Action onDeathEnemyCrowd;
         public event Action onAllDeadEnemies;
         public event Action onChangeMoney;
+        public event Action<int> onDeathEnemyUnit;
 
 
         public void OnChangeMoney()
         {
             onChangeMoney?.Invoke();
+        }
+
+        public void OnDeathEnemyUnit(int value)
+        {
+            onDeathEnemyUnit?.Invoke(value);
         }
 
         public void OnAllDeadEnemies()
@@ -26,9 +32,9 @@ namespace Services
             onDeathCreatureCrowd?.Invoke();
         }
 
-        public void OnKilledEnemyCrowd()
+        public void OnDeathEnemyCrowd()
         {
-            onKilledEnemyCrowd?.Invoke();
+            onDeathEnemyCrowd?.Invoke();
         }
 
         public void OnCreatedEnemyCrowd()

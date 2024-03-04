@@ -1,6 +1,7 @@
 using System.Collections;
 using Gameplay.Units.Crowds;
 using Gameplay.Units.UnitStates;
+using Services;
 using States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,7 +32,6 @@ namespace Gameplay.Units
             health.onDie += StopFight;
             health.onDie += Dying;
 
-
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
             _agent.enabled = false;
@@ -44,6 +44,7 @@ namespace Gameplay.Units
 
             _stateMachine.SetState(vagrancyUnitState);
         }
+
 
         public void SetData(UnitData data)
         {
@@ -122,9 +123,10 @@ namespace Gameplay.Units
             _agent.enabled = true;
         }
 
-        public void Dying()
+        private void Dying()
         {
             _myCrowd.GetComponent<InfoOfCrowd>().RemoveDamage(_data.Damage);
+            AllServices.Container.Get<EventBus>().OnDeathEnemyUnit(_data.MoneyFromDeath);
             StartCoroutine(ProcessOfDying());
         }
 

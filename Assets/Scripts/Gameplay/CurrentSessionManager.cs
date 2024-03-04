@@ -13,7 +13,7 @@ namespace Gameplay
         private void OnEnable()
         {
             AllServices.Container.Get<EventBus>().onCreatedEnemyCrowd += AddCountEnemySpawns;
-            AllServices.Container.Get<EventBus>().onKilledEnemyCrowd += RemoveCountEnemySpawns;
+            AllServices.Container.Get<EventBus>().onDeathEnemyCrowd += RemoveCountEnemySpawns;
 
             AllServices.Container.Get<EventBus>().onAllDeadEnemies += OpenWinMenu;
             AllServices.Container.Get<EventBus>().onDeathCreatureCrowd += OpenLoseMenu;
@@ -48,7 +48,7 @@ namespace Gameplay
         private void OnDisable()
         {
             AllServices.Container.Get<EventBus>().onCreatedEnemyCrowd -= AddCountEnemySpawns;
-            AllServices.Container.Get<EventBus>().onKilledEnemyCrowd -= RemoveCountEnemySpawns;
+            AllServices.Container.Get<EventBus>().onDeathEnemyCrowd -= RemoveCountEnemySpawns;
 
             AllServices.Container.Get<EventBus>().onAllDeadEnemies -= OpenWinMenu;
             AllServices.Container.Get<EventBus>().onDeathCreatureCrowd -= OpenLoseMenu;

@@ -1,4 +1,3 @@
-using System;
 using Services;
 using Services.SaveLoad;
 using UnityEngine;
@@ -14,6 +13,18 @@ namespace Gameplay
         private void Awake()
         {
             _money = AllServices.Container.Get<ISaveLoadService>().DataProgress.money;
+            AllServices.Container.Get<EventBus>().onDeathEnemyUnit += AddMoney;
+        }
+
+
+        private void AddMoney(int value)
+        {
+            if (value > 0)
+            {
+                _money += value;
+                AllServices.Container.Get<ISaveLoadService>().DataProgress.money += value;
+                AllServices.Container.Get<EventBus>().OnChangeMoney();
+            }
         }
 
         public bool TryBuy(int price)
@@ -27,6 +38,11 @@ namespace Gameplay
             }
 
             return false;
+        }
+
+        private void OnDestroy()
+        {
+            AllServices.Container.Get<EventBus>().onDeathEnemyUnit -= AddMoney;
         }
     }
 }
