@@ -49,6 +49,8 @@ namespace Gameplay.Units
         public void SetData(UnitData data)
         {
             _data = data;
+            _agent.speed = _data.MoveSpeed;
+            _agent.stoppingDistance = _data.RangeAttack;
         }
 
         public void SetCrowd(CrowdOfUnits crowd)

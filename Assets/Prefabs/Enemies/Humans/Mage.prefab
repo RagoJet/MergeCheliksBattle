@@ -756,8 +756,8 @@ GameObject:
   - component: {fileID: 6465288928788754402}
   - component: {fileID: 4456239435779420119}
   - component: {fileID: 613166592854236681}
-  - component: {fileID: 8903697522792073099}
   - component: {fileID: 4920354642222276152}
+  - component: {fileID: 6257042929777912748}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -836,19 +836,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &8903697522792073099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8657607114837783775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &4920354642222276152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,5 +847,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf27ff9a95064111b2471986078d5e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6257042929777912748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657607114837783775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

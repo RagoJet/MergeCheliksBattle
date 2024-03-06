@@ -16,5 +16,7 @@ MonoBehaviour:
     type: 3}
   _level: 0
   _damage: 1
-  _maxHealth: 3
-  _moveSpeed: 0
+  _maxHealth: 200
+  _moveSpeed: 3.7
+  _rangeAttack: 1.55
+  _moneyFromDeath: 0

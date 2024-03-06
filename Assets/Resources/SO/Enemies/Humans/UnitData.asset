@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6df990ab084c90ba729cda03f5513b, type: 3}
   m_Name: UnitData
   m_EditorClassIdentifier: 
-  _unitPrefab: {fileID: 1064913387953656035, guid: 71ec5fa557b631d4eaabd2b3a283eaf1,
+  _unitPrefab: {fileID: 6691026563410667023, guid: 71ec5fa557b631d4eaabd2b3a283eaf1,
     type: 3}
   _level: 0
   _damage: 1
-  _maxHealth: 2
+  _maxHealth: 1
+  _moveSpeed: 3.5
+  _rangeAttack: 1.6
   _moneyFromDeath: 50

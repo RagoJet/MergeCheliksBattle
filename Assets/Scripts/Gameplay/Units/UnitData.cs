@@ -9,6 +9,8 @@ namespace Gameplay.Units
         [SerializeField] int _level;
         [SerializeField] int _damage;
         [SerializeField] int _maxHealth;
+        [SerializeField] float _moveSpeed;
+        [SerializeField] float _rangeAttack;
         [SerializeField] int _moneyFromDeath;
 
         public Unit UnitPrefab => _unitPrefab;
@@ -16,5 +18,9 @@ namespace Gameplay.Units
         public int Damage => _damage;
         public int MaxHealth => _maxHealth;
         public int MoneyFromDeath => _moneyFromDeath;
+
+        public float MoveSpeed => _moveSpeed;
+
+        public float RangeAttack => _rangeAttack;
     }
 }

@@ -172,8 +172,8 @@ GameObject:
   - component: {fileID: 749704578395107429}
   - component: {fileID: 717005342332829064}
   - component: {fileID: 7672576178640787472}
-  - component: {fileID: 4280181849901111854}
   - component: {fileID: 4140481720699566979}
+  - component: {fileID: 8132442427962259866}
   m_Layer: 0
   m_Name: Horseman
   m_TagString: Untagged
@@ -252,19 +252,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &4280181849901111854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619910547277094958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &4140481720699566979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +263,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf27ff9a95064111b2471986078d5e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8132442427962259866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619910547277094958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1731685284079716089

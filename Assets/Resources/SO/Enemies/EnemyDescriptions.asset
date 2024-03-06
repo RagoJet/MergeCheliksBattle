@@ -21,6 +21,30 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57f78feaac079de49a55873e3c4a2551, type: 2}
   - {fileID: 11400000, guid: 91cb10bc66d1f0145962d180eb430e99, type: 2}
   - {fileID: 11400000, guid: 3a59b3a241c9a6c4fac37d36028dc7bc, type: 2}
-  _elvesList: []
-  _undeadList: []
-  _orcsList: []
+  _elvesList:
+  - {fileID: 11400000, guid: 04f10d2875a2dbc47b8ccb49dd9cf4dc, type: 2}
+  - {fileID: 11400000, guid: 81cf028426afed74da98cb0b64f0b259, type: 2}
+  - {fileID: 11400000, guid: 055fbfb51db897545b0a55fe0e5165c2, type: 2}
+  - {fileID: 11400000, guid: 1f669ea8f0b5b58498437a013be11f92, type: 2}
+  - {fileID: 11400000, guid: 9ae3703884244494a97a2351eb8d9b53, type: 2}
+  - {fileID: 11400000, guid: 0ba2131258aa782429fa5f6561281fdc, type: 2}
+  - {fileID: 11400000, guid: cc7ab232b59f8954faa921d127670b57, type: 2}
+  - {fileID: 11400000, guid: e96e6d2fc8912024ba7f1230b2ad0896, type: 2}
+  _undeadList:
+  - {fileID: 11400000, guid: 245f8002c912d9a4dba875cb4b3b51e4, type: 2}
+  - {fileID: 11400000, guid: 1dd91f7a82c85d64eac43eb721b2d214, type: 2}
+  - {fileID: 11400000, guid: 5ce57413fafc7764f818cb40674c4c47, type: 2}
+  - {fileID: 11400000, guid: 0db7080e2afbeba46a921533ba08a817, type: 2}
+  - {fileID: 11400000, guid: 087be2e6a35b22444b54cfef0dc7741b, type: 2}
+  - {fileID: 11400000, guid: 77ec75fc560a87447b1214910344d6c8, type: 2}
+  - {fileID: 11400000, guid: 849397d90480065419720e15292f9cf8, type: 2}
+  - {fileID: 11400000, guid: babba2282664ef84db11969b09c15c58, type: 2}
+  _orcsList:
+  - {fileID: 11400000, guid: 804b87e9322cab4429d6e4d03bb5dc36, type: 2}
+  - {fileID: 11400000, guid: 803981ebef6c49647a364b26b06e713d, type: 2}
+  - {fileID: 11400000, guid: 85e02238fb8e4054aa5941cd4bf20879, type: 2}
+  - {fileID: 11400000, guid: 6eff96c248ec0a64190fbb81af0eca50, type: 2}
+  - {fileID: 11400000, guid: 494eba97b4294074a804c13cf0408fa2, type: 2}
+  - {fileID: 11400000, guid: e67090ec562309e41b793c1a5a70b4f2, type: 2}
+  - {fileID: 11400000, guid: 989543bde3a475d41bd85f7ebe9a80a5, type: 2}
+  - {fileID: 11400000, guid: d47fc6a3ef5eab94ba2b5c49633e1e7b, type: 2}

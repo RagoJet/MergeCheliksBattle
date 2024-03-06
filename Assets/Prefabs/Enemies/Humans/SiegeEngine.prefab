@@ -143,8 +143,8 @@ GameObject:
   - component: {fileID: 677821141048919931}
   - component: {fileID: 3259946971053333074}
   - component: {fileID: 4993028068831451166}
-  - component: {fileID: 5512115368776833134}
   - component: {fileID: 1132805675476861364}
+  - component: {fileID: 472206426697766615}
   m_Layer: 0
   m_Name: SiegeEngine
   m_TagString: Untagged
@@ -223,19 +223,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &5512115368776833134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3278269212150663282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &1132805675476861364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +234,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf27ff9a95064111b2471986078d5e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &472206426697766615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278269212150663282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4104146714135424590

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Treeant OverrideAnimator
+  m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ee3de457134346f40ba61b0dd3dc1392, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f8f3cff48a4902d45bd3887fb93e78a7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b46f102e6090e20418c04ddaf46d57b2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: aa0a6ee7fc2228848b94b14a7391c66a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1ae4899494efd604bb28a2977e6084a3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5824ddebf36637e41844e052ac441d6c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7d16dbd3f1fde8040bd87e922d56c0f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cc45698d52e2b434bbac9eb417b66323, type: 2}

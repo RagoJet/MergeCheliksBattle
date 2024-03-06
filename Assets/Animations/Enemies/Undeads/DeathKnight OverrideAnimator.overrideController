@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DeathKnight OverrideAnimator
+  m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ee3de457134346f40ba61b0dd3dc1392, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 87a936847854c724b8133a546a8a38a3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b46f102e6090e20418c04ddaf46d57b2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f68de7fe68026234cb63a02266a5b683, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1ae4899494efd604bb28a2977e6084a3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b14b00ea4309d5e49bf462b7e28b177e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7d16dbd3f1fde8040bd87e922d56c0f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7f73ab6d529c0bf418b0bfd139a57833, type: 2}

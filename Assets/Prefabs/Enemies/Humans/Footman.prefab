@@ -107,8 +107,8 @@ GameObject:
   - component: {fileID: 6169446164587114579}
   - component: {fileID: 4369785163812999984}
   - component: {fileID: 8562958196230444413}
-  - component: {fileID: 8082421101734316813}
   - component: {fileID: 3655666616962742339}
+  - component: {fileID: 8648126882306326741}
   m_Layer: 0
   m_Name: Footman
   m_TagString: Untagged
@@ -187,19 +187,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &8082421101734316813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891118374818279151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &3655666616962742339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +198,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf27ff9a95064111b2471986078d5e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8648126882306326741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891118374818279151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1181877307397120503

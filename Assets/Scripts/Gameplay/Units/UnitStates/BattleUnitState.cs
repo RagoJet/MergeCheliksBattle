@@ -7,14 +7,14 @@ namespace Gameplay.Units.UnitStates
     {
         private Unit _unit;
         private Health _targetHealth;
-        private float _rangeAttack;
+        private float _sqrRange;
 
         private bool _isAttacking = false;
 
         public BattleUnitState(Unit unit, float rangeAttack)
         {
             _unit = unit;
-            _rangeAttack = rangeAttack;
+            _sqrRange = rangeAttack * rangeAttack;
         }
 
         public void Tick()
@@ -25,8 +25,10 @@ namespace Gameplay.Units.UnitStates
                     if (_targetHealth.IsAlive == false)
                     {
                         SetNewTarget();
+                        return;
                     }
-                    else if ((_unit.transform.position - _targetHealth.transform.position).magnitude <= _rangeAttack)
+
+                    if ((_unit.transform.position - _targetHealth.transform.position).sqrMagnitude <= _sqrRange)
                     {
                         _isAttacking = true;
                         _unit.GetComponent<UnitAnimator>().SetAttackTrigger();
@@ -43,6 +45,13 @@ namespace Gameplay.Units.UnitStates
                         _isAttacking = false;
                         _unit.GetComponent<UnitAnimator>().SetFreeTrigger();
                         SetNewTarget();
+                        return;
+                    }
+
+                    if ((_unit.transform.position - _targetHealth.transform.position).sqrMagnitude > _sqrRange)
+                    {
+                        _isAttacking = false;
+                        _unit.GetComponent<UnitAnimator>().SetFreeTrigger();
                     }
                     else
                     {

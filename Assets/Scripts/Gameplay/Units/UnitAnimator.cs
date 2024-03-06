@@ -30,6 +30,7 @@ namespace Gameplay.Units
 
         public void SetAttackTrigger()
         {
+            _animator.ResetTrigger(Freedom);
             _animator.SetTrigger(Attack);
         }
 
