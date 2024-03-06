@@ -1,5 +1,6 @@
 using States;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Gameplay.Units.UnitStates
 {
@@ -8,6 +9,7 @@ namespace Gameplay.Units.UnitStates
         private Unit _unit;
         private Health _targetHealth;
         private float _sqrRange;
+        private NavMeshAgent agent;
 
         private bool _isAttacking = false;
 
@@ -52,6 +54,7 @@ namespace Gameplay.Units.UnitStates
                     {
                         _isAttacking = false;
                         _unit.GetComponent<UnitAnimator>().SetFreeTrigger();
+                        _unit.GoTo(_targetHealth.transform.position);
                     }
                     else
                     {
