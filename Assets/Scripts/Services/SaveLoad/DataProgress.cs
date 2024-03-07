@@ -7,13 +7,13 @@ namespace Services.SaveLoad
     public class DataProgress
     {
         public int money = 6000;
-        public int levelOfGame = 29;
+        public int levelOfGame = 9;
         public List<CellDTO> cellsDTO = new List<CellDTO>();
 
         public DataProgress()
         {
-            cellsDTO.Add(new CellDTO(6, 0));
-            cellsDTO.Add(new CellDTO(9, 0));
+            cellsDTO.Add(new CellDTO(false, 6, 0));
+            cellsDTO.Add(new CellDTO(true, 9, 0));
         }
     }
 
@@ -22,9 +22,11 @@ namespace Services.SaveLoad
     {
         public int indexOfCell;
         public int levelOfCreature;
+        public bool isRange;
 
-        public CellDTO(int index, int level)
+        public CellDTO(bool range, int index, int level)
         {
+            isRange = range;
             indexOfCell = index;
             levelOfCreature = level;
         }

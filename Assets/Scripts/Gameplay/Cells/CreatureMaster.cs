@@ -79,7 +79,8 @@ namespace Gameplay.Cells
             DataProgress dataProgress = AllServices.Container.Get<ISaveLoadService>().DataProgress;
             foreach (var cellDTO in dataProgress.cellsDTO)
             {
-                Creature creature = AllServices.Container.Get<IGameFactory>().CreateCreature(cellDTO.levelOfCreature,
+                Creature creature = AllServices.Container.Get<IGameFactory>().CreateCreature(cellDTO.isRange,
+                    cellDTO.levelOfCreature,
                     _cellGrid.GetCellByIndex(cellDTO.indexOfCell));
                 CurrentCreatures.Add(creature);
             }
@@ -88,20 +89,28 @@ namespace Gameplay.Cells
         public void MergeCreatures(Creature creature1, Creature creature2, Cell cell)
         {
             int newLevel = creature1.Level + 1;
+            bool isRange = creature1.IsRange;
 
             CurrentCreatures.Remove(creature1);
             CurrentCreatures.Remove(creature2);
             Destroy(creature1.gameObject);
             Destroy(creature2.gameObject);
 
-            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(newLevel, cell);
+            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(isRange, newLevel, cell);
             CurrentCreatures.Add(newCreature);
         }
 
-        public void CreateFirstLevelCreature(Cell cell)
+        public void CreateMeleeFirstLevel(Cell cell)
         {
             int level = 0;
-            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(level, cell);
+            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(false, level, cell);
+            CurrentCreatures.Add(newCreature);
+        }
+
+        public void CreateRangeFirstLevel(Cell cell)
+        {
+            int level = 0;
+            Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(true, level, cell);
             CurrentCreatures.Add(newCreature);
         }
 
@@ -112,7 +121,10 @@ namespace Gameplay.Cells
                 return false;
             }
 
-            return cellTarget.currentCreature.Level == creatureTarget.Level;
+            if (cellTarget.currentCreature.Level == 3) return false;
+
+            return cellTarget.currentCreature.Level == creatureTarget.Level &&
+                   cellTarget.currentCreature.IsRange == creatureTarget.IsRange;
         }
 
         private bool CheckAnotherLevelHit()
@@ -122,7 +134,10 @@ namespace Gameplay.Cells
                 return false;
             }
 
-            return cellTarget.currentCreature.Level != creatureTarget.Level;
+            if (cellTarget.currentCreature.Level == 3) return true;
+
+            return cellTarget.currentCreature.Level != creatureTarget.Level ||
+                   cellTarget.currentCreature.IsRange != creatureTarget.IsRange;
         }
 
         private bool CheckCellIsEmpty()

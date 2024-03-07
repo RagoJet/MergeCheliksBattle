@@ -9,11 +9,11 @@ AnimatorOverrideController:
   m_Name: Dryad OverrideAnimator
   m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: ee3de457134346f40ba61b0dd3dc1392, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 6db39641246db2443b79cc46fb30d453, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: b46f102e6090e20418c04ddaf46d57b2, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: e59581dbbfa235e44ad9b29890d29266, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 1ae4899494efd604bb28a2977e6084a3, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: fc92a9aa21000a34dbc99c95dad9a683, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 7d16dbd3f1fde8040bd87e922d56c0f3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3c57a680fea9f944f924903316aecb72, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 4ba429c192e253f44b232766c5dd6851, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f357ff282c55eb34db6e036366827260, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e59581dbbfa235e44ad9b29890d29266, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6fb5e0f21dacfdc4699a3e329b6c0510, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6db39641246db2443b79cc46fb30d453, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 60e5500249917384ea390a72a16caea8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fc92a9aa21000a34dbc99c95dad9a683, type: 2}

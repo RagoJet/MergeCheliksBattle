@@ -1,4 +1,6 @@
 using System;
+using Gameplay.Units;
+using Gameplay.Units.Crowds;
 using UnityEngine;
 
 namespace Gameplay
@@ -10,9 +12,10 @@ namespace Gameplay
         public event Action onDie;
         private bool _isAlive = true;
 
+
         public event Action<int> onTakeDamage;
         public bool IsAlive => _isAlive;
-
+        
         public void Refresh(int value)
         {
             _maxValue = value;
@@ -24,6 +27,11 @@ namespace Gameplay
         {
             if (value > 0)
             {
+                if (value > _value)
+                {
+                    value = _value;
+                }
+
                 _value -= value;
                 onTakeDamage.Invoke(value);
                 if (_value <= 0)

@@ -27,12 +27,6 @@ namespace Services.Factories
                 _assetProvider.GetAsset<EnemyDescriptions>(Constants.StaticData.ENEMY_DESCRIPTIONS);
         }
 
-        public Enemy CreateHuman(int level, Vector3 pos)
-        {
-            UnitData data = _enemyDescriptions.GetHumanData(level);
-            return CreateUnit(data, pos) as Enemy;
-        }
-
         public Enemy CreateElf(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetElvesData(level);
@@ -59,9 +53,18 @@ namespace Services.Factories
             return unit;
         }
 
-        public Creature CreateCreature(int level, Cell cell, Transform parent = null)
+        public Creature CreateCreature(bool isRange, int level, Cell cell, Transform parent = null)
         {
-            UnitData data = _creatureDescriptions.GetCreatureData(level);
+            UnitData data;
+            if (isRange)
+            {
+                data = _creatureDescriptions.GetRangeUnitData(level);
+            }
+            else
+            {
+                data = _creatureDescriptions.GetMeleeUnitData(level);
+            }
+
             Creature creature = CreateUnit(data, cell.GetPosition) as Creature;
             creature.SetNewCell(cell);
 

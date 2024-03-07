@@ -20,6 +20,7 @@ namespace Gameplay.Units
         private bool _fightMode;
         private StateMachine _stateMachine = new StateMachine();
         private CrowdOfUnits _myCrowd;
+
         private Health _targetHealth;
 
         public int Damage => _data.Damage;

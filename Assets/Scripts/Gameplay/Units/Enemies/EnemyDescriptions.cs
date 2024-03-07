@@ -7,22 +7,15 @@ namespace Gameplay.Units.Enemies
     [CreateAssetMenu(fileName = "EnemyDescriptions", menuName = "EnemyDescriptions")]
     public class EnemyDescriptions : ScriptableObject
     {
-        [SerializeField] private List<UnitData> _humansList;
         [SerializeField] private List<UnitData> _elvesList;
         [SerializeField] private List<UnitData> _undeadList;
         [SerializeField] private List<UnitData> _orcsList;
 
         private void OnValidate()
         {
-            _humansList = _humansList.OrderBy(x => x.Level).ToList();
             _elvesList = _elvesList.OrderBy(x => x.Level).ToList();
             _undeadList = _undeadList.OrderBy(x => x.Level).ToList();
             _orcsList = _orcsList.OrderBy(x => x.Level).ToList();
-        }
-
-        public UnitData GetHumanData(int level)
-        {
-            return _humansList[level];
         }
 
         public UnitData GetElvesData(int level)

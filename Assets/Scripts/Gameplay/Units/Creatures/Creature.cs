@@ -10,6 +10,8 @@ namespace Gameplay.Units.Creatures
         private Cell _currentCell;
         public Cell CurrentCell => _currentCell;
         private Tween _tween;
+
+        public bool IsRange => _data.RangeAttack > 2.5f;
         public int Level => _data.Level;
 
         public void BackToCell()

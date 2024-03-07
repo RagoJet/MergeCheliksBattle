@@ -9,11 +9,11 @@ AnimatorOverrideController:
   m_Name: DeathRider OverrideAnimator
   m_Controller: {fileID: 9100000, guid: 428984a1aaa06ea4f93d26b854969d55, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: ee3de457134346f40ba61b0dd3dc1392, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: ad49a9ae71151274581e4b2678f290ea, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: b46f102e6090e20418c04ddaf46d57b2, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 6bc4926aef995ab46ae8ce1d018729d3, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 1ae4899494efd604bb28a2977e6084a3, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 78cf74b7fa1a00a45812668579e48185, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 7d16dbd3f1fde8040bd87e922d56c0f3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3c57a680fea9f944f924903316aecb72, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 1cbd61bbfee4b2044983c7f9697cdbec, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f357ff282c55eb34db6e036366827260, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6bc4926aef995ab46ae8ce1d018729d3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6fb5e0f21dacfdc4699a3e329b6c0510, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ad49a9ae71151274581e4b2678f290ea, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 60e5500249917384ea390a72a16caea8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 78cf74b7fa1a00a45812668579e48185, type: 2}

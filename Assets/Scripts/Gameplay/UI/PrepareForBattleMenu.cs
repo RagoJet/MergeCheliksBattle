@@ -17,12 +17,14 @@ namespace Gameplay.UI
         [SerializeField] private int _priceCreature = 200;
 
         [SerializeField] private Button _startBattleButton;
-        [SerializeField] private Button _buyCreatureButton;
+        [SerializeField] private Button _buyMeleeButton;
+        [SerializeField] private Button _buyRangeButton;
 
         private void Awake()
         {
             _startBattleButton.onClick.AddListener(StartBattle);
-            _buyCreatureButton.onClick.AddListener(TryBuyCreature);
+            _buyMeleeButton.onClick.AddListener(TryBuyMeleeCreature);
+            _buyRangeButton.onClick.AddListener(TryBuyRangeCreature);
         }
 
         public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds, Wallet wallet)
@@ -45,13 +47,24 @@ namespace Gameplay.UI
             gameObject.SetActive(false);
         }
 
-        private void TryBuyCreature()
+        private void TryBuyMeleeCreature()
         {
             if (_grid.TryGetAvailableCell(out Cell cell))
             {
                 if (_wallet.TryBuy(_priceCreature))
                 {
-                    _creatureMaster.CreateFirstLevelCreature(cell);
+                    _creatureMaster.CreateMeleeFirstLevel(cell);
+                }
+            }
+        }
+
+        private void TryBuyRangeCreature()
+        {
+            if (_grid.TryGetAvailableCell(out Cell cell))
+            {
+                if (_wallet.TryBuy(_priceCreature))
+                {
+                    _creatureMaster.CreateRangeFirstLevel(cell);
                 }
             }
         }

@@ -8,16 +8,23 @@ namespace Gameplay.Units.Creatures
     public class CreatureDescriptions : ScriptableObject
 
     {
-        [SerializeField] private List<UnitData> _listOfDescriptions;
+        [SerializeField] private List<UnitData> _listOfMelee;
+        [SerializeField] private List<UnitData> _listOfRange;
 
         private void OnValidate()
         {
-            _listOfDescriptions = _listOfDescriptions.OrderBy(x => x.Level).ToList();
+            _listOfMelee = _listOfMelee.OrderBy(x => x.Level).ToList();
+            _listOfRange = _listOfRange.OrderBy(x => x.Level).ToList();
         }
 
-        public UnitData GetCreatureData(int level)
+        public UnitData GetMeleeUnitData(int level)
         {
-            return _listOfDescriptions[level];
+            return _listOfMelee[level];
+        }
+
+        public UnitData GetRangeUnitData(int level)
+        {
+            return _listOfRange[level];
         }
     }
 }

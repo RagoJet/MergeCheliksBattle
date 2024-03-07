@@ -68,10 +68,9 @@ namespace Gameplay.Units.Crowds
             List<Unit> enemies = new List<Unit>();
             Func<int, Vector3, Enemy> CreateEnemy = levelOfGame switch
             {
-                < 10 => gameFactory.CreateHuman,
-                < 20 => gameFactory.CreateElf,
-                < 30 => gameFactory.CreateUndead,
-                < 40 => gameFactory.CreateOrc,
+                < 10 => gameFactory.CreateElf,
+                < 20 => gameFactory.CreateUndead,
+                < 30 => gameFactory.CreateOrc,
                 _ => throw new ArgumentOutOfRangeException(nameof(levelOfGame), levelOfGame, null)
             };
 

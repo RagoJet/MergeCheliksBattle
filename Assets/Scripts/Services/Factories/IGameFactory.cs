@@ -27,9 +27,8 @@ namespace Services.Factories
         public SpawnerCrowds CreateSpawnerCrowds(Vector3 pos);
         public CellGrid CreateCellGrid();
         public CreatureMaster CreateCreatureMaster();
-        public Creature CreateCreature(int level, Cell cell, Transform parent = null);
+        public Creature CreateCreature(bool isRange, int level, Cell cell, Transform parent = null);
         public Cell CreateCell(Vector3 pos, Transform parent);
-        public Enemy CreateHuman(int level, Vector3 pos);
         public Enemy CreateElf(int level, Vector3 pos);
         public Enemy CreateUndead(int level, Vector3 pos);
         public Enemy CreateOrc(int level, Vector3 pos);
