@@ -35,9 +35,12 @@ namespace Gameplay.Units
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
             _agent.enabled = false;
+        }
 
+        private void InitStateMachine()
+        {
             VagrancyUnitState vagrancyUnitState = new VagrancyUnitState();
-            BattleUnitState battleUnitState = new BattleUnitState(this, _agent.stoppingDistance);
+            BattleUnitState battleUnitState = new BattleUnitState(this);
 
             _stateMachine.AddTransition(vagrancyUnitState, battleUnitState, () => _fightMode);
             _stateMachine.AddTransition(battleUnitState, vagrancyUnitState, () => _fightMode == false);
@@ -51,6 +54,7 @@ namespace Gameplay.Units
             _data = data;
             _agent.speed = _data.MoveSpeed;
             _agent.stoppingDistance = _data.RangeAttack;
+            InitStateMachine();
         }
 
         public void SetCrowd(CrowdOfUnits crowd)
@@ -72,6 +76,7 @@ namespace Gameplay.Units
         private void Update()
         {
             _stateMachine.Tick();
+            _unitAnimator.SetDataOfVelocity(_agent.velocity.sqrMagnitude);
         }
 
         public Unit GetClosestOpponent()
@@ -113,11 +118,7 @@ namespace Gameplay.Units
 
         public void GoTo(Vector3 pos)
         {
-            _unitAnimator.SetDataOfVelocity(_agent.velocity.sqrMagnitude);
-            if ((transform.position - pos).sqrMagnitude > 0.3f)
-            {
-                _agent.SetDestination(pos);
-            }
+            _agent.SetDestination(pos);
         }
 
         public void NavMeshAgentOn()
