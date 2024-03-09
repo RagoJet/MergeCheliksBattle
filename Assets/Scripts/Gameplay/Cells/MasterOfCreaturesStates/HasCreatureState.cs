@@ -1,3 +1,5 @@
+using Services;
+using Services.Audio;
 using States;
 using UnityEngine;
 
@@ -52,6 +54,7 @@ namespace Gameplay.Cells.MasterOfCreaturesStates
         public void OnEnter()
         {
             _creatureMaster.creatureTarget.GetUp();
+            AllServices.Container.Get<IAudioService>().PlayPickCreatureSound();
         }
 
         public void OnExit()

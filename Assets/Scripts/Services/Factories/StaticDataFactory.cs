@@ -16,5 +16,10 @@ namespace Services.Factories
         {
             return _assetProvider.GetAsset<GridStaticData>(Constants.StaticData.GRID_CELL_DATA);
         }
+
+        public SoundsData GetSoundsData()
+        {
+            return _assetProvider.GetAsset<SoundsData>(Constants.StaticData.SOUNDS_DATA);
+        }
     }
 }

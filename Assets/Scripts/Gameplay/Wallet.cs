@@ -1,4 +1,5 @@
 using Services;
+using Services.Audio;
 using Services.SaveLoad;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace Gameplay
         {
             if (value > 0)
             {
+                AllServices.Container.Get<IAudioService>().PlayGetGoldFromKillSound();
                 _money += value;
                 AllServices.Container.Get<ISaveLoadService>().DataProgress.money += value;
                 AllServices.Container.Get<EventBus>().OnChangeMoney();

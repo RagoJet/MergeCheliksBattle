@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3646d68cd6e4843b1934d013096818, type: 3}
+  m_Name: SoundsData
+  m_EditorClassIdentifier: 
+  gameplayMusics:
+  - {fileID: 8300000, guid: 0da460f7d58cc5a4e83215e8cae2a780, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 0990ceb090847034d93ec3201b7131ae, type: 3}
+  winClip: {fileID: 0}
+  loseClip: {fileID: 0}
+  startFightClip: {fileID: 0}
+  enemyKilledClip: {fileID: 0}
+  mergeClip: {fileID: 0}
+  pickUpCreatureClip: {fileID: 0}

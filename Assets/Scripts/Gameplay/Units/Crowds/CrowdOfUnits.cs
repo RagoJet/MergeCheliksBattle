@@ -37,7 +37,7 @@ namespace Gameplay.Units.Crowds
             GridStaticData staticData = dataFactory.GetGridStaticData();
             int _collumns = staticData.Collumns;
             int _rows = staticData.Rows;
-            float _offset = staticData.Offset;
+            float _offset = staticData.Offset * 0.8f;
             List<Vector3> positions = new List<Vector3>();
 
             Vector3 startPosition = new Vector3((1 - _collumns) * _offset / 2f, 0, (1 - _rows) * _offset / 2f);
@@ -156,7 +156,7 @@ namespace Gameplay.Units.Crowds
 
         protected void FormatUnits()
         {
-            if (Time.time - _timeFromLastFormat >= 0.3f)
+            if (Time.time - _timeFromLastFormat >= 0.1f)
             {
                 for (int i = 0; i < units.Count; i++)
                 {

@@ -1,4 +1,5 @@
 using Services;
+using Services.Audio;
 using Services.Factories;
 using Services.SaveLoad;
 using UnityEngine;
@@ -31,6 +32,7 @@ namespace Gameplay
             {
                 AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame++;
                 AllServices.Container.Get<EventBus>().OnAllDeadEnemies();
+                AllServices.Container.Get<IAudioService>().PlayWinSound();
                 Destroy(gameObject);
             }
         }

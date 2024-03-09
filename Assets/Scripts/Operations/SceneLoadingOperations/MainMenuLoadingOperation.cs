@@ -1,5 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
+using Services;
+using Services.Audio;
 using UnityEngine.SceneManagement;
 
 namespace Operations.SceneLoadingOperations
@@ -16,6 +18,8 @@ namespace Operations.SceneLoadingOperations
             {
                 await SceneManager.UnloadSceneAsync(gameScene);
             }
+
+            AllServices.Container.Get<IAudioService>().PlayMainMenuMusic();
 
             onProgress.Invoke(0.8f);
             await SceneManager.LoadSceneAsync(Constants.Scenes.MAIN_MENU, LoadSceneMode.Additive);

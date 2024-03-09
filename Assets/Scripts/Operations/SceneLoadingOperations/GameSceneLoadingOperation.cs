@@ -5,6 +5,7 @@ using Gameplay;
 using Gameplay.Cells;
 using Gameplay.Units.Crowds;
 using Services;
+using Services.Audio;
 using Services.Factories;
 using Services.JoySticks;
 using Services.SaveLoad;
@@ -37,6 +38,7 @@ namespace Operations.SceneLoadingOperations
             onProgress.Invoke(0.9f);
             await SceneManager.LoadSceneAsync(Constants.Scenes.GAME, LoadSceneMode.Additive);
             CreatingObjectsForGame();
+            AllServices.Container.Get<IAudioService>().PlayGameplayMusic();
         }
 
         private void CreatingObjectsForGame()

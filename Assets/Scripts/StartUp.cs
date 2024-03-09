@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using Configs;
 using Operations;
 using Operations.SceneLoadingOperations;
 using Services;
 using Services.AssetManagement;
+using Services.Audio;
 using Services.Factories;
 using Services.JoySticks;
 using Services.LoadingScreenNS;
@@ -33,6 +35,7 @@ public class StartUp : MonoBehaviour
         containerServices.Register<IAssetProvider>(new AssetProvider());
         containerServices.Register<IStaticDataFactory>(new StaticDataFactory());
         containerServices.Register<IGameFactory>(new GameFactory());
+        containerServices.Register<IAudioService>(new AudioService());
 
         MyJoyStick myJoyStick = containerServices.Get<IGameFactory>().CreateMyJoystick();
         myJoyStick.SwitchOff();

@@ -416,8 +416,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.41990176, y: 0.568931, z: -0.4199018, w: 0.56893104}
   m_LocalPosition: {x: 0.000051522395, y: 0.40293288, z: 0.020322256}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.014000001, y: 0.014000001, z: 0.014000001}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1941417428877563252}
   - {fileID: 78136256674900385}
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 1747728574770725351}
   - component: {fileID: 7846204176900574969}
   m_Layer: 0
-  m_Name: Worker
+  m_Name: Worker Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,7 +830,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 250
   m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1

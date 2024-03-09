@@ -18,5 +18,5 @@ MonoBehaviour:
   _damage: 14
   _maxHealth: 9
   _moveSpeed: 3.8
-  _rangeAttack: 7
+  _rangeAttack: 8
   _moneyFromDeath: 250

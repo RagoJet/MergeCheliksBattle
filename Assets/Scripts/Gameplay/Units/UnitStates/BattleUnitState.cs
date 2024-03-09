@@ -18,7 +18,6 @@ namespace Gameplay.Units.UnitStates
         {
             _unit = unit;
             _agent = unit.GetComponent<NavMeshAgent>();
-            _sqrRange = _agent.stoppingDistance * _agent.stoppingDistance;
             _unitAnimator = unit.GetComponent<UnitAnimator>();
         }
 
@@ -70,6 +69,7 @@ namespace Gameplay.Units.UnitStates
 
         public void OnEnter()
         {
+            _sqrRange = _agent.stoppingDistance * _agent.stoppingDistance;
             SetNewTarget();
         }
 

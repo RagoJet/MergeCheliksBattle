@@ -36,6 +36,8 @@ namespace Gameplay.Units
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
             _agent.enabled = false;
+            InitStateMachine();
+            StopFight();
         }
 
         private void InitStateMachine()
@@ -53,9 +55,6 @@ namespace Gameplay.Units
         public void SetData(UnitData data)
         {
             _data = data;
-            _agent.speed = _data.MoveSpeed;
-            _agent.stoppingDistance = _data.RangeAttack;
-            InitStateMachine();
         }
 
         public void SetCrowd(CrowdOfUnits crowd)
@@ -93,11 +92,15 @@ namespace Gameplay.Units
 
         public void StartFight()
         {
+            _agent.speed = _data.MoveSpeed;
+            _agent.stoppingDistance = _data.RangeAttack;
             _fightMode = true;
         }
 
         public void StopFight()
         {
+            _agent.speed = 5;
+            _agent.stoppingDistance = 0.1f;
             _fightMode = false;
         }
 
@@ -129,6 +132,7 @@ namespace Gameplay.Units
 
         private void Dying()
         {
+            _agent.isStopped = true;
             _myCrowd.GetComponent<InfoOfCrowd>().RemoveDamage(_data.Damage);
             AllServices.Container.Get<EventBus>().OnDeathEnemyUnit(_data.MoneyFromDeath);
             StartCoroutine(ProcessOfDying());

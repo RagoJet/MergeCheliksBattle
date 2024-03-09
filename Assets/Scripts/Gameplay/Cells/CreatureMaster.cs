@@ -3,6 +3,7 @@ using Gameplay.Cells.MasterOfCreaturesStates;
 using Gameplay.Units;
 using Gameplay.Units.Creatures;
 using Services;
+using Services.Audio;
 using Services.Factories;
 using Services.SaveLoad;
 using States;
@@ -12,6 +13,7 @@ namespace Gameplay.Cells
 {
     public class CreatureMaster : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem _mergeEffect;
         private StateMachine _stateMachine = new StateMachine();
 
         public Creature creatureTarget;
@@ -98,6 +100,9 @@ namespace Gameplay.Cells
 
             Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(isRange, newLevel, cell);
             CurrentCreatures.Add(newCreature);
+            AllServices.Container.Get<IAudioService>().PlayMergeSound();
+            _mergeEffect.transform.position = newCreature.transform.position;
+            _mergeEffect.Play();
         }
 
         public void CreateMeleeFirstLevel(Cell cell)
@@ -121,7 +126,7 @@ namespace Gameplay.Cells
                 return false;
             }
 
-            if (cellTarget.currentCreature.Level == 3) return false;
+            if (cellTarget.currentCreature.Level == 11) return false;
 
             return cellTarget.currentCreature.Level == creatureTarget.Level &&
                    cellTarget.currentCreature.IsRange == creatureTarget.IsRange;
@@ -134,7 +139,7 @@ namespace Gameplay.Cells
                 return false;
             }
 
-            if (cellTarget.currentCreature.Level == 3) return true;
+            if (cellTarget.currentCreature.Level == 11) return true;
 
             return cellTarget.currentCreature.Level != creatureTarget.Level ||
                    cellTarget.currentCreature.IsRange != creatureTarget.IsRange;

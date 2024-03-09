@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rows: 4
   _collumns: 4
-  _offset: 5
+  _offset: 4.25
