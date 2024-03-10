@@ -25,13 +25,6 @@ namespace Services.Audio
             set => _audioSource.mute = value;
         }
 
-        public void PlayMainMenuMusic()
-        {
-            _audioSource.Stop();
-            _audioSource.clip = _soundsData.mainMenuMusic;
-            _audioSource.Play();
-        }
-
         public void PlayGameplayMusic()
         {
             _audioSource.Stop();

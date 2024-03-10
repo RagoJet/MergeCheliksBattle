@@ -4,7 +4,6 @@ namespace Services.Audio
     {
         public bool Muted { get; set; }
 
-        public void PlayMainMenuMusic();
         public void PlayGameplayMusic();
         public void PlayFightSound();
         public void PlayGetGoldFromKillSound();

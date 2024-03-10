@@ -37,13 +37,13 @@ namespace Gameplay.UI
 
         private void StartBattle()
         {
-            _grid.gameObject.SetActive(false);
-            _creatureMaster.gameObject.SetActive(false);
-
             _spawnerCrowds.SpawnAllCrowds(_grid.transform.position, _creatureMaster.CurrentCreatures);
 
+            _grid.SetCellsInfo();
+            Destroy(_grid.gameObject);
+            Destroy(_creatureMaster.gameObject);
+            
             AllServices.Container.Get<IJoyStick>().SwitchOn();
-
             gameObject.SetActive(false);
         }
 

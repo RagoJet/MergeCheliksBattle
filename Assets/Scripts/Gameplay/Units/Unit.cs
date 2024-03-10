@@ -99,8 +99,8 @@ namespace Gameplay.Units
 
         public void StopFight()
         {
-            _agent.speed = 5;
-            _agent.stoppingDistance = 0.1f;
+            _agent.speed = 10;
+            _agent.stoppingDistance = 0.05f;
             _fightMode = false;
         }
 

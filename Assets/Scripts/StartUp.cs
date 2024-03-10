@@ -19,7 +19,7 @@ public class StartUp : MonoBehaviour
         RegisterOperation();
         Queue<ILoadingOperation> operationQueue = new Queue<ILoadingOperation>();
         operationQueue.Enqueue(new LoadingDataProgressOperation());
-        operationQueue.Enqueue(new MainMenuLoadingOperation());
+        operationQueue.Enqueue(new GameSceneLoadingOperation());
 
         ILoadingScreenProvider loadingScreenProvider = AllServices.Container.Get<ILoadingScreenProvider>();
         loadingScreenProvider.LoadAndDestroy(operationQueue);

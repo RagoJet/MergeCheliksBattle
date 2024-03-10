@@ -25,7 +25,7 @@ namespace Gameplay.Units.Crowds
             _joyStick = AllServices.Container.Get<IJoyStick>();
             _mainCamera = Camera.main;
 
-            _YHeightOfCamera = _mainCamera.transform.position.y + 5;
+            _YHeightOfCamera = _mainCamera.transform.position.y + 3;
 
             VagrancyCrowdState vagrancyCrowdState = new VagrancyCrowdState(HandleCrowd);
             BattleCrowdState
@@ -59,7 +59,7 @@ namespace Gameplay.Units.Crowds
         private void HandleCrowd()
         {
             base.FormatUnits();
-            transform.Translate(_joyStick.GetDirection() * Time.deltaTime * 5f);
+            transform.Translate(_joyStick.GetDirection() * Time.deltaTime * 8f);
         }
 
         private void LateUpdate()

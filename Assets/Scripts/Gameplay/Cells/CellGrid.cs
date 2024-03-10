@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Configs;
+using Gameplay.Units.Creatures;
 using Services;
 using Services.Factories;
+using Services.SaveLoad;
 using UnityEngine;
 
 namespace Gameplay.Cells
@@ -49,6 +51,25 @@ namespace Gameplay.Cells
 
             theCell = null;
             return false;
+        }
+
+        public void SetCellsInfo()
+        {
+            List<CellDTO> newCellsDTO = new List<CellDTO>();
+
+            for (int i = 0; i < _cells.Count; i++)
+            {
+                if (_cells[i].currentCreature != null)
+                {
+                    Creature creature = _cells[i].currentCreature;
+                    CellDTO cellDto = new CellDTO(creature.IsRange, i, creature.Level);
+                    newCellsDTO.Add(cellDto);
+                }
+            }
+
+
+            DataProgress dataProgress = AllServices.Container.Get<ISaveLoadService>().DataProgress;
+            dataProgress.cellsDTO = newCellsDTO;
         }
     }
 }
