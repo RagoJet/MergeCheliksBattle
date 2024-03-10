@@ -12,8 +12,11 @@ namespace Gameplay.Units.Crowds
         private NavMeshAgent _agent;
         private float _timeFromLastMove;
 
+        private Vector3 _startPos;
+
         private void Start()
         {
+            _startPos = transform.position;
             _agent = GetComponent<NavMeshAgent>();
 
             VagrancyCrowdState vagrancyCrowdState = new VagrancyCrowdState(Patrol);
@@ -39,9 +42,10 @@ namespace Gameplay.Units.Crowds
             base.FormatUnits();
             if (Time.time - _timeFromLastMove >= 7f)
             {
-                float x = Random.Range(-70, 70);
-                float z = Random.Range(-70, 70);
-                _agent.SetDestination(new Vector3(x, transform.position.y, z));
+                float x = Random.Range(-10, 10);
+                float z = Random.Range(-10, 10);
+                Vector3 pos = _startPos + new Vector3(x, 0, z);
+                _agent.SetDestination(pos);
                 _timeFromLastMove = Time.time;
             }
         }
