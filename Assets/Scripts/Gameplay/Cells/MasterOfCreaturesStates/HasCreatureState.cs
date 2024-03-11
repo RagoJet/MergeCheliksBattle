@@ -54,12 +54,12 @@ namespace Gameplay.Cells.MasterOfCreaturesStates
         public void OnEnter()
         {
             _creatureMaster.creatureTarget.GetUp();
-            AllServices.Container.Get<IAudioService>().PlayPickCreatureSound();
+            AllServices.Container.Get<IAudioService>().PlayPickUpCreatureSound();
         }
 
         public void OnExit()
         {
-          
+            AllServices.Container.Get<IAudioService>().DownCreatureSound();
         }
     }
 }

@@ -2,10 +2,12 @@ namespace Services.Audio
 {
     public interface IAudioService : IService
     {
-        public bool Muted { get; set; }
+        public bool MutedMusic { get; set; }
+        public bool MutedClips { get; set; }
 
         public void PlayGameplayMusic();
-        public void PlayFightSound();
+        public void PlayAttackSound();
+        public void PlayStartBattleSound();
         public void PlayGetGoldFromKillSound();
 
         public void PlayLoseSound();
@@ -14,6 +16,8 @@ namespace Services.Audio
 
         public void PlayMergeSound();
 
-        public void PlayPickCreatureSound();
+        public void PlayPickUpCreatureSound();
+        public void DownCreatureSound();
+        public void PlayBuyCreatureSound();
     }
 }

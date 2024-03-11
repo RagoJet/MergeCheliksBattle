@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Configs
 {
@@ -9,9 +8,12 @@ namespace Configs
         public AudioClip[] gameplayMusics;
         public AudioClip winClip;
         public AudioClip loseClip;
-        public AudioClip startFightClip;
+        public AudioClip startBattleClip;
         public AudioClip enemyKilledClip;
         public AudioClip mergeClip;
         public AudioClip pickUpCreatureClip;
+        public AudioClip downCreatureClip;
+        public AudioClip attackClip;
+        public AudioClip buyCreatureClip;
     }
 }

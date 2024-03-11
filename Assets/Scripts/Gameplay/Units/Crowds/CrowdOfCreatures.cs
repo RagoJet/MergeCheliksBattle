@@ -46,7 +46,6 @@ namespace Gameplay.Units.Crowds
                 {
                     StartFight(crowdOfEnemies);
                     crowdOfEnemies.StartFight(this);
-                    AllServices.Container.Get<IAudioService>().PlayFightSound();
                 }
             }
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using Gameplay.Units.Crowds;
 using Gameplay.Units.UnitStates;
 using Services;
+using Services.Audio;
 using States;
 using UnityEngine;
 using UnityEngine.AI;
@@ -115,6 +116,7 @@ namespace Gameplay.Units
             {
                 if (_targetHealth.IsAlive)
                 {
+                    AllServices.Container.Get<IAudioService>().PlayAttackSound();
                     _targetHealth.TakeDamage(_data.Damage);
                 }
             }

@@ -18,12 +18,14 @@ namespace Gameplay.Units.Creatures
         {
             _tween.Kill();
             _tween = transform.DOMove(_currentCell.GetPosition, 0.3f);
+           
         }
 
         public void GetUp()
         {
             _tween.Kill();
             _tween = transform.DOMoveY(_currentCell.GetPosition.y + 5, 0.5f);
+           
         }
 
         public void SetTo(Vector3 pos, Action onSetTo = null)

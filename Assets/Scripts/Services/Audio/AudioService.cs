@@ -8,60 +8,82 @@ namespace Services.Audio
     public class AudioService : IAudioService
     {
         private SoundsData _soundsData;
-        private AudioSource _audioSource;
+        private AudioSource _musicAudioSource;
+        private AudioSource _clipsAudioSource;
 
         public AudioService()
         {
             _soundsData = AllServices.Container.Get<IStaticDataFactory>().GetSoundsData();
-            _audioSource = new GameObject("AudioSource").AddComponent<AudioSource>();
-            _audioSource.AddComponent<AudioListener>();
-            _audioSource.loop = true;
-            Object.DontDestroyOnLoad(_audioSource);
+            _musicAudioSource = new GameObject("MusicAudioSource").AddComponent<AudioSource>();
+            _clipsAudioSource = new GameObject("ClipAudioSource").AddComponent<AudioSource>();
+            _musicAudioSource.AddComponent<AudioListener>();
+            _musicAudioSource.loop = true;
+            Object.DontDestroyOnLoad(_musicAudioSource);
+            Object.DontDestroyOnLoad(_clipsAudioSource);
         }
 
-        public bool Muted
+        public bool MutedMusic
         {
-            get => _audioSource.mute;
-            set => _audioSource.mute = value;
+            get => _musicAudioSource.mute;
+            set => _musicAudioSource.mute = value;
+        }
+        
+        public bool MutedClips
+        {
+            get => _clipsAudioSource.mute;
+            set => _clipsAudioSource.mute = value;
         }
 
         public void PlayGameplayMusic()
         {
-            _audioSource.Stop();
-            _audioSource.clip = _soundsData.gameplayMusics[Random.Range(0, _soundsData.gameplayMusics.Length)];
-            _audioSource.Play();
+            _musicAudioSource.Stop();
+            _musicAudioSource.clip = _soundsData.gameplayMusics[Random.Range(0, _soundsData.gameplayMusics.Length)];
+            _musicAudioSource.Play();
         }
 
-        public void PlayFightSound()
+        public void PlayAttackSound()
         {
-            _audioSource.PlayOneShot(_soundsData.startFightClip);
+            _clipsAudioSource.PlayOneShot(_soundsData.attackClip);
+        }
+
+        public void PlayStartBattleSound()
+        {
+            _clipsAudioSource.PlayOneShot(_soundsData.startBattleClip);
+        }
+
+        public void PlayBuyCreatureSound()
+        {
+            _clipsAudioSource.PlayOneShot(_soundsData.buyCreatureClip);
         }
 
         public void PlayLoseSound()
         {
-            _audioSource.Stop();
-            _audioSource.PlayOneShot(_soundsData.loseClip);
+            _musicAudioSource.PlayOneShot(_soundsData.loseClip);
         }
 
         public void PlayWinSound()
         {
-            _audioSource.Stop();
-            _audioSource.PlayOneShot(_soundsData.winClip);
+            _musicAudioSource.PlayOneShot(_soundsData.winClip);
         }
 
         public void PlayMergeSound()
         {
-            _audioSource.PlayOneShot(_soundsData.mergeClip);
+            _clipsAudioSource.PlayOneShot(_soundsData.mergeClip);
         }
 
-        public void PlayPickCreatureSound()
+        public void PlayPickUpCreatureSound()
         {
-            _audioSource.PlayOneShot(_soundsData.pickUpCreatureClip);
+            _clipsAudioSource.PlayOneShot(_soundsData.pickUpCreatureClip);
+        }
+
+        public void DownCreatureSound()
+        {
+            _clipsAudioSource.PlayOneShot(_soundsData.downCreatureClip);
         }
 
         public void PlayGetGoldFromKillSound()
         {
-            _audioSource.PlayOneShot(_soundsData.enemyKilledClip);
+            _clipsAudioSource.PlayOneShot(_soundsData.enemyKilledClip);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Gameplay.Cells;
 using Gameplay.Units.Crowds;
 using Services;
+using Services.Audio;
 using Services.JoySticks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,13 +43,16 @@ namespace Gameplay.UI
             _grid.SetCellsInfo();
             Destroy(_grid.gameObject);
             Destroy(_creatureMaster.gameObject);
-            
+
             AllServices.Container.Get<IJoyStick>().SwitchOn();
             gameObject.SetActive(false);
+
+            AllServices.Container.Get<IAudioService>().PlayStartBattleSound();
         }
 
         private void TryBuyMeleeCreature()
         {
+            AllServices.Container.Get<IAudioService>().PlayBuyCreatureSound();
             if (_grid.TryGetAvailableCell(out Cell cell))
             {
                 if (_wallet.TryBuy(_priceCreature))
@@ -60,6 +64,7 @@ namespace Gameplay.UI
 
         private void TryBuyRangeCreature()
         {
+            AllServices.Container.Get<IAudioService>().PlayBuyCreatureSound();
             if (_grid.TryGetAvailableCell(out Cell cell))
             {
                 if (_wallet.TryBuy(_priceCreature))
