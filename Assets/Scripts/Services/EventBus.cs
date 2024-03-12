@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Services
 {
@@ -8,18 +9,21 @@ namespace Services
         public event Action onDeathCreatureCrowd;
         public event Action onDeathEnemyCrowd;
         public event Action onAllDeadEnemies;
-        public event Action onChangeMoney;
-        public event Action<int> onDeathEnemyUnit;
+        public event Action onBuy;
+        public event Action<int> onEnemyUnitDeath;
+
+        public event Action<Transform, int> onGetGoldFrom;
 
 
-        public void OnChangeMoney()
+        public void OnBuy()
         {
-            onChangeMoney?.Invoke();
+            onBuy?.Invoke();
         }
 
-        public void OnDeathEnemyUnit(int value)
+        public void OnDeathEnemy(Transform transform, int value)
         {
-            onDeathEnemyUnit?.Invoke(value);
+            onEnemyUnitDeath?.Invoke(value);
+            onGetGoldFrom?.Invoke(transform, value);
         }
 
         public void OnAllDeadEnemies()

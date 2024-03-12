@@ -25,7 +25,7 @@ namespace Operations.SceneLoadingOperations
             }
 
             AllServices.Container.Get<IAudioService>().PlayGameplayMusic();
-            onProgress.Invoke(0.9f);
+            onProgress.Invoke(0.97f);
             await SceneManager.LoadSceneAsync(Constants.Scenes.GAME, LoadSceneMode.Additive);
             CreatingObjectsForGame();
         }

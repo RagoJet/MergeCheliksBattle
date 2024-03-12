@@ -14,19 +14,15 @@ namespace Gameplay
         private void Awake()
         {
             _money = AllServices.Container.Get<ISaveLoadService>().DataProgress.money;
-            AllServices.Container.Get<EventBus>().onDeathEnemyUnit += AddMoney;
+            AllServices.Container.Get<EventBus>().onEnemyUnitDeath += AddMoney;
         }
 
 
         private void AddMoney(int value)
         {
-            if (value > 0)
-            {
-                AllServices.Container.Get<IAudioService>().PlayGetGoldFromKillSound();
-                _money += value;
-                AllServices.Container.Get<ISaveLoadService>().DataProgress.money += value;
-                AllServices.Container.Get<EventBus>().OnChangeMoney();
-            }
+            _money += value;
+            AllServices.Container.Get<ISaveLoadService>().DataProgress.money += value;
+            AllServices.Container.Get<IAudioService>().PlayGetGoldFromKillSound();
         }
 
         public bool TryBuy(int price)
@@ -35,7 +31,7 @@ namespace Gameplay
             {
                 _money -= price;
                 AllServices.Container.Get<ISaveLoadService>().DataProgress.money -= price;
-                AllServices.Container.Get<EventBus>().OnChangeMoney();
+                AllServices.Container.Get<EventBus>().OnBuy();
                 return true;
             }
 
@@ -44,7 +40,7 @@ namespace Gameplay
 
         private void OnDestroy()
         {
-            AllServices.Container.Get<EventBus>().onDeathEnemyUnit -= AddMoney;
+            AllServices.Container.Get<EventBus>().onEnemyUnitDeath -= AddMoney;
         }
     }
 }

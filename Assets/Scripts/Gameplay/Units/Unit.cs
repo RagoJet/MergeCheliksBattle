@@ -136,7 +136,12 @@ namespace Gameplay.Units
         {
             _agent.isStopped = true;
             _myCrowd.GetComponent<InfoOfCrowd>().RemoveDamage(_data.Damage);
-            AllServices.Container.Get<EventBus>().OnDeathEnemyUnit(_data.MoneyFromDeath);
+            int money = _data.MoneyFromDeath;
+            if (money > 0)
+            {
+                AllServices.Container.Get<EventBus>().OnDeathEnemy(transform, money);
+            }
+
             StartCoroutine(ProcessOfDying());
         }
 

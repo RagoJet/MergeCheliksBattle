@@ -7,7 +7,7 @@ namespace Services.SaveLoad
     public class DataProgress
     {
         public int money = 60000;
-        public int levelOfGame = 9;
+        public int levelOfGame = 0;
         public List<CellDTO> cellsDTO = new List<CellDTO>();
 
         public DataProgress()
