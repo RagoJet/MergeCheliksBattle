@@ -1,11 +1,15 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Services.JoySticks
 {
     public class MyJoyStick : MonoBehaviour, IJoyStick
     {
         [SerializeField] private Joystick _joystick;
+        [SerializeField] private Image _topLeft;
+        [SerializeField] private Image _topRight;
+        [SerializeField] private Image _botRight;
+        [SerializeField] private Image _botLeft;
 
         private Camera _mainCamera;
 
@@ -24,10 +28,43 @@ namespace Services.JoySticks
 
         public Vector3 GetDirection()
         {
-            Vector3 joyStickeDirection = Vector3.right * _joystick.Horizontal + Vector3.forward * _joystick.Vertical;
+            Vector3 joyStickeDirection = new Vector3(_joystick.Direction.x, 0, _joystick.Direction.y);
             Vector3 direction = _mainCamera.transform.TransformDirection(joyStickeDirection);
             direction.y = 0;
+            LightCorner();
             return direction.normalized;
+        }
+
+        private void LightCorner()
+        {
+            _topLeft.gameObject.SetActive(false);
+            _topRight.gameObject.SetActive(false);
+            _botRight.gameObject.SetActive(false);
+            _botLeft.gameObject.SetActive(false);
+            if (_joystick.Direction.x > 0)
+            {
+                if (_joystick.Direction.y > 0)
+                {
+                    _topRight.gameObject.SetActive(true);
+                }
+
+                else if (_joystick.Direction.y < 0)
+                {
+                    _botRight.gameObject.SetActive(true);
+                }
+            }
+            else if (_joystick.Direction.x < 0)
+            {
+                if (_joystick.Direction.y > 0)
+                {
+                    _topLeft.gameObject.SetActive(true);
+                }
+
+                else if (_joystick.Direction.y < 0)
+                {
+                    _botLeft.gameObject.SetActive(true);
+                }
+            }
         }
 
 

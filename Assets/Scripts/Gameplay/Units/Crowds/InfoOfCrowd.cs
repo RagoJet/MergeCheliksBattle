@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ namespace Gameplay.Units.Crowds
 {
     public class InfoOfCrowd : MonoBehaviour
     {
-        [SerializeField] private Transform canvasInfo;
+        [SerializeField] private Transform _canvasInfo;
         [SerializeField] private TextMeshProUGUI _healthText;
         [SerializeField] private TextMeshProUGUI _damageText;
         private int _health;
@@ -29,7 +28,7 @@ namespace Gameplay.Units.Crowds
 
         private void LateUpdate()
         {
-            canvasInfo.rotation = _rotationForCanvas;
+            _canvasInfo.rotation = _rotationForCanvas;
         }
 
         public void RemoveDamage(int value)

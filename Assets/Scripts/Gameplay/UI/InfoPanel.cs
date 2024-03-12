@@ -5,6 +5,7 @@ using Services;
 using Services.SaveLoad;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
@@ -12,7 +13,9 @@ namespace Gameplay.UI
     {
         [SerializeField] private TextMeshProUGUI _moneyText;
         [SerializeField] private TextMeshProUGUI _levelText;
+        [SerializeField] private RectTransform _goldsIconRectTransform;
 
+        [SerializeField] private Slider _levelSlider;
 
         [SerializeField] private ParticleImage _moneyParticlePrefab;
 
@@ -26,11 +29,16 @@ namespace Gameplay.UI
         public void Construct(Wallet wallet)
         {
             _wallet = wallet;
+            _levelSlider.maxValue = 0;
+            _levelSlider.minValue = 0;
+            _levelSlider.value = 0;
             UpdateLevelText();
             InstantUpdateMoneyText();
 
             AllServices.Container.Get<EventBus>().onBuy += InstantUpdateMoneyText;
             AllServices.Container.Get<EventBus>().onGetGoldFrom += UpdateUIMoney;
+            AllServices.Container.Get<EventBus>().onCreatedEnemyCrowd += AddMaxValueSlider;
+            AllServices.Container.Get<EventBus>().onDeathEnemyCrowd += MoveValueSlider;
 
 
             _moneyParticles.Add(CreateMoneyParticle());
@@ -39,7 +47,7 @@ namespace Gameplay.UI
         private ParticleImage CreateMoneyParticle()
         {
             ParticleImage moneyParticle = Instantiate(_moneyParticlePrefab, transform);
-            moneyParticle.attractorTarget = _moneyText.transform;
+            moneyParticle.attractorTarget = _goldsIconRectTransform.transform;
             moneyParticle.onAnyParticleFinished.AddListener(AddMoneyToText);
 
             return moneyParticle;
@@ -47,13 +55,13 @@ namespace Gameplay.UI
 
         private void UpdateLevelText()
         {
-            _levelText.text = $"Level : {AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame}";
+            _levelText.text = $"{AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame}";
         }
 
         private void InstantUpdateMoneyText()
         {
             _money = _wallet.Money;
-            _moneyText.text = $"Money: {_money}";
+            _moneyText.text = $"{_money}";
         }
 
 
@@ -80,13 +88,25 @@ namespace Gameplay.UI
         private void AddMoneyToText()
         {
             _money += _addValue;
-            _moneyText.text = $"Money: {_money}";
+            _moneyText.text = $"{_money}";
+        }
+
+        private void AddMaxValueSlider()
+        {
+            _levelSlider.maxValue += 1;
+        }
+
+        private void MoveValueSlider()
+        {
+            _levelSlider.DOValue(_levelSlider.value + 1, 0.5f);
         }
 
         private void OnDestroy()
         {
             AllServices.Container.Get<EventBus>().onBuy -= InstantUpdateMoneyText;
             AllServices.Container.Get<EventBus>().onGetGoldFrom -= UpdateUIMoney;
+            AllServices.Container.Get<EventBus>().onCreatedEnemyCrowd -= AddMaxValueSlider;
+            AllServices.Container.Get<EventBus>().onDeathEnemyCrowd -= MoveValueSlider;
         }
     }
 }

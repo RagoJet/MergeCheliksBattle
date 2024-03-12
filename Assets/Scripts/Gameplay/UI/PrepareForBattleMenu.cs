@@ -3,6 +3,7 @@ using Gameplay.Units.Crowds;
 using Services;
 using Services.Audio;
 using Services.JoySticks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,12 +21,16 @@ namespace Gameplay.UI
         [SerializeField] private Button _startBattleButton;
         [SerializeField] private Button _buyMeleeButton;
         [SerializeField] private Button _buyRangeButton;
+        [SerializeField] private TextMeshProUGUI _priceRangeText;
+        [SerializeField] private TextMeshProUGUI _priceMeleeText;
 
         private void Awake()
         {
             _startBattleButton.onClick.AddListener(StartBattle);
             _buyMeleeButton.onClick.AddListener(TryBuyMeleeCreature);
             _buyRangeButton.onClick.AddListener(TryBuyRangeCreature);
+            _priceMeleeText.text = _priceCreature.ToString();
+            _priceRangeText.text = _priceCreature.ToString();
         }
 
         public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds, Wallet wallet)

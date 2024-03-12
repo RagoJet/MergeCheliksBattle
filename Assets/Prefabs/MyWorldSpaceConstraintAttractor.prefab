@@ -1381,5 +1381,5 @@ MonoBehaviour:
   moduleMovementFoldout: 1
   moduleEventsFoldout: 0
   moduleAdvancedFoldout: 0
-  m_Sprite: {fileID: 21300000, guid: 62caf8fa8077346f98e18477f3872a95, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5e09c01c4ab0445ca215d13ab416c83, type: 3}
   m_Texture: {fileID: 0}
