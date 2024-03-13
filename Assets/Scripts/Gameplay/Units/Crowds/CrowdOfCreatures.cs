@@ -18,14 +18,14 @@ namespace Gameplay.Units.Crowds
 
         private IJoyStick _joyStick;
         Camera _mainCamera;
-        private float _YHeightOfCamera;
+        // private float _YHeightOfCamera;
 
         private void Start()
         {
             _joyStick = AllServices.Container.Get<IJoyStick>();
             _mainCamera = Camera.main;
 
-            _YHeightOfCamera = _mainCamera.transform.position.y + 3;
+            // _YHeightOfCamera = _mainCamera.transform.position.y + 3;
 
             VagrancyCrowdState vagrancyCrowdState = new VagrancyCrowdState(HandleCrowd);
             BattleCrowdState
@@ -63,7 +63,8 @@ namespace Gameplay.Units.Crowds
 
         private void LateUpdate()
         {
-            Vector3 destination = new Vector3(transform.position.x, _YHeightOfCamera, transform.position.z - _ZOffset);
+            Vector3 destination = new Vector3(transform.position.x, _mainCamera.transform.position.y,
+                transform.position.z - _ZOffset);
             _mainCamera.transform.position =
                 Vector3.Lerp(_mainCamera.transform.position, destination, Time.deltaTime * _cameraSpeed);
         }

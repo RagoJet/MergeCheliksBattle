@@ -32,5 +32,6 @@ public static class Constants
     public sealed class Scenes
     {
         public const string GAME = "Game";
+        public const string START_SCENE = "StartScene";
     }
 }

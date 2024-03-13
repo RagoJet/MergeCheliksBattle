@@ -41,29 +41,58 @@ namespace Services.JoySticks
             _topRight.gameObject.SetActive(false);
             _botRight.gameObject.SetActive(false);
             _botLeft.gameObject.SetActive(false);
-            if (_joystick.Direction.x > 0)
-            {
-                if (_joystick.Direction.y > 0)
-                {
-                    _topRight.gameObject.SetActive(true);
-                }
 
-                else if (_joystick.Direction.y < 0)
-                {
-                    _botRight.gameObject.SetActive(true);
-                }
+            Vector2 direction = _joystick.Direction;
+            if (direction.x > 0 && direction.y > 0)
+            {
+                _topRight.gameObject.SetActive(true);
+                return;
             }
-            else if (_joystick.Direction.x < 0)
-            {
-                if (_joystick.Direction.y > 0)
-                {
-                    _topLeft.gameObject.SetActive(true);
-                }
 
-                else if (_joystick.Direction.y < 0)
-                {
-                    _botLeft.gameObject.SetActive(true);
-                }
+            if (direction.x > 0 && direction.y < 0)
+            {
+                _botRight.gameObject.SetActive(true);
+                return;
+            }
+
+            if (direction.x < 0 && direction.y > 0)
+            {
+                _topLeft.gameObject.SetActive(true);
+                return;
+            }
+
+            if (direction.x < 0 && direction.y < 0)
+            {
+                _botLeft.gameObject.SetActive(true);
+                return;
+            }
+
+            if (direction.x == 0 && direction.y > 0)
+            {
+                _topLeft.gameObject.SetActive(true);
+                _topRight.gameObject.SetActive(true);
+                return;
+            }
+
+            if (direction.x == 0 && direction.y < 0)
+            {
+                _botRight.gameObject.SetActive(true);
+                _botLeft.gameObject.SetActive(true);
+                return;
+            }
+
+            if (direction.x > 0 && direction.y == 0)
+            {
+                _botRight.gameObject.SetActive(true);
+                _topRight.gameObject.SetActive(true);
+                return;
+            }
+
+            if (direction.x < 0 && direction.y == 0)
+            {
+                _topLeft.gameObject.SetActive(true);
+                _botLeft.gameObject.SetActive(true);
+                return;
             }
         }
 
