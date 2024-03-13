@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using AssetKits.ParticleImage;
 using DG.Tweening;
 using Services;
+using Services.Factories;
 using Services.SaveLoad;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace Gameplay.UI
 {
     public class InfoPanel : MonoBehaviour
     {
+        [SerializeField] private Button _openSettingsButton;
         [SerializeField] private TextMeshProUGUI _moneyText;
         [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private RectTransform _goldsIconRectTransform;
@@ -22,7 +24,8 @@ namespace Gameplay.UI
         private List<ParticleImage> _moneyParticles = new List<ParticleImage>();
 
         private Wallet _wallet;
-        private Tween _tween;
+        private Tween _sliderTween;
+        private Tween _goldsTween;
         private int _money;
         private int _addValue = 10;
 
@@ -35,6 +38,7 @@ namespace Gameplay.UI
             UpdateLevelText();
             InstantUpdateMoneyText();
 
+            _openSettingsButton.onClick.AddListener(OpenSettingsWindow);
             AllServices.Container.Get<EventBus>().onBuy += InstantUpdateMoneyText;
             AllServices.Container.Get<EventBus>().onGetGoldFrom += UpdateUIMoney;
             AllServices.Container.Get<EventBus>().onCreatedEnemyCrowd += AddMaxValueSlider;
@@ -44,11 +48,17 @@ namespace Gameplay.UI
             _moneyParticles.Add(CreateMoneyParticle());
         }
 
+        private void OpenSettingsWindow()
+        {
+            AllServices.Container.Get<IGameFactory>().CreateSettingsWindow();
+        }
+
         private ParticleImage CreateMoneyParticle()
         {
             ParticleImage moneyParticle = Instantiate(_moneyParticlePrefab, transform);
             moneyParticle.attractorTarget = _goldsIconRectTransform.transform;
             moneyParticle.onAnyParticleFinished.AddListener(AddMoneyToText);
+            moneyParticle.onAnyParticleFinished.AddListener(ShakeIconGold);
 
             return moneyParticle;
         }
@@ -98,7 +108,16 @@ namespace Gameplay.UI
 
         private void MoveValueSlider()
         {
-            _levelSlider.DOValue(_levelSlider.value + 1, 0.5f);
+            _sliderTween.Kill();
+            _sliderTween = _levelSlider.DOValue(_levelSlider.value + 1, 0.5f);
+        }
+
+        private void ShakeIconGold()
+        {
+            if (_goldsTween.IsActive() == false)
+            {
+                _goldsTween = _goldsIconRectTransform.DOShakePosition(0.3f, 10);
+            }
         }
 
         private void OnDestroy()
@@ -107,6 +126,9 @@ namespace Gameplay.UI
             AllServices.Container.Get<EventBus>().onGetGoldFrom -= UpdateUIMoney;
             AllServices.Container.Get<EventBus>().onCreatedEnemyCrowd -= AddMaxValueSlider;
             AllServices.Container.Get<EventBus>().onDeathEnemyCrowd -= MoveValueSlider;
+
+            _goldsTween.Kill();
+            _sliderTween.Kill();
         }
     }
 }

@@ -146,6 +146,11 @@ namespace Services.Factories
             return Object.Instantiate(_assetProvider.GetAsset<LoseMenu>(Constants.AssetPaths.LOSE_MENU));
         }
 
+        public SettingsWindow CreateSettingsWindow()
+        {
+            return Object.Instantiate(_assetProvider.GetAsset<SettingsWindow>(Constants.AssetPaths.SETTINGS_WINDOW));
+        }
+
         public WinMenu CreateWinMenu()
         {
             return Object.Instantiate(_assetProvider.GetAsset<WinMenu>(Constants.AssetPaths.WIN_MENU));

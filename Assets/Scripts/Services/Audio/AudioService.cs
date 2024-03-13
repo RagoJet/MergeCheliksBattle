@@ -28,7 +28,7 @@ namespace Services.Audio
             set => _musicAudioSource.mute = value;
         }
         
-        public bool MutedClips
+        public bool MutedSounds
         {
             get => _clipsAudioSource.mute;
             set => _clipsAudioSource.mute = value;

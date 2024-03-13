@@ -3,7 +3,7 @@ namespace Services.Audio
     public interface IAudioService : IService
     {
         public bool MutedMusic { get; set; }
-        public bool MutedClips { get; set; }
+        public bool MutedSounds { get; set; }
 
         public void PlayGameplayMusic();
         public void PlayAttackSound();

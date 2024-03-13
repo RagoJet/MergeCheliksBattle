@@ -40,10 +40,10 @@ namespace Gameplay.Units.Crowds
         private void Patrol()
         {
             base.FormatUnits();
-            if (Time.time - _timeFromLastMove >= 7f)
+            if (Time.time - _timeFromLastMove >= 6f)
             {
-                float x = Random.Range(-10, 10);
-                float z = Random.Range(-10, 10);
+                float x = Random.Range(-15, 15);
+                float z = Random.Range(-15, 15);
                 Vector3 pos = _startPos + new Vector3(x, 0, z);
                 _agent.SetDestination(pos);
                 _timeFromLastMove = Time.time;

@@ -15,6 +15,7 @@ namespace Services.Factories
         public EnemyPointerImage CreateEnemyPointerImage(Transform parent);
         public EnemyPointersCanvas CreateEnemyPointersCanvas();
         public LoseMenu CreateLoseMenu();
+        public SettingsWindow CreateSettingsWindow();
         public WinMenu CreateWinMenu();
         public PrepareForBattleMenu CreatePrepareForBattleMenu();
         public InfoPanel CreateInfoPanel();
