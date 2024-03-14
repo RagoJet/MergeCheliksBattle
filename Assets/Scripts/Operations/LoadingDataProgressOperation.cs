@@ -7,7 +7,7 @@ namespace Operations
 {
     public class LoadingDataProgressOperation : ILoadingOperation
     {
-        public string Description => "Loading data progress...";
+        public string Description => "Loading saved progress...";
 
         public async UniTask Load(Action<float> onProgress)
         {

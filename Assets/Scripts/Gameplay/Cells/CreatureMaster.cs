@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Gameplay.Cells.MasterOfCreaturesStates;
 using Gameplay.Units;
@@ -33,6 +34,9 @@ namespace Gameplay.Cells
         {
             _islandLayerMask = 1 << LayerMask.NameToLayer("Island");
             _cellLayerMask = 1 << LayerMask.NameToLayer("Cell");
+
+            AllServices.Container.Get<EventBus>()._onOpenSettingsWindow += TurnOff;
+            AllServices.Container.Get<EventBus>()._onCloseSettingsWindow += TurnOn;
         }
 
         private void Start()
@@ -100,7 +104,7 @@ namespace Gameplay.Cells
 
             Creature newCreature = AllServices.Container.Get<IGameFactory>().CreateCreature(isRange, newLevel, cell);
             CurrentCreatures.Add(newCreature);
-            AllServices.Container.Get<IAudioService>().PlayMergeSound();
+            AllServices.Container.Get<IAudioService>().MergeSound();
             _mergeEffect.transform.position = newCreature.transform.position;
             _mergeEffect.Play();
         }
@@ -153,6 +157,22 @@ namespace Gameplay.Cells
         private bool CheckNoNewCell()
         {
             return cellTarget == creatureTarget.CurrentCell || cellTarget == null;
+        }
+
+        private void TurnOff()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void TurnOn()
+        {
+            gameObject.SetActive(true);
+        }
+
+        private void OnDestroy()
+        {
+            AllServices.Container.Get<EventBus>()._onOpenSettingsWindow -= TurnOff;
+            AllServices.Container.Get<EventBus>()._onCloseSettingsWindow -= TurnOn;
         }
     }
 }

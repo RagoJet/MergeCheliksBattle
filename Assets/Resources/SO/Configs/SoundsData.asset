@@ -13,13 +13,17 @@ MonoBehaviour:
   m_Name: SoundsData
   m_EditorClassIdentifier: 
   gameplayMusics:
-  - {fileID: 8300000, guid: 0da460f7d58cc5a4e83215e8cae2a780, type: 3}
-  winClip: {fileID: 0}
-  loseClip: {fileID: 0}
-  startBattleClip: {fileID: 0}
-  enemyKilledClip: {fileID: 0}
-  mergeClip: {fileID: 8300000, guid: ec08abb3e2617cd4896b0a5781d8af14, type: 3}
-  pickUpCreatureClip: {fileID: 8300000, guid: d765659784529ca4b8b7ef8669568253, type: 3}
-  downCreatureClip: {fileID: 8300000, guid: 145323a715d1f004280365cc2e272f34, type: 3}
+  - {fileID: 8300000, guid: 38f776ba5a389bc48b103289b8792d8a, type: 3}
+  - {fileID: 8300000, guid: 0a5e582eaa2ed25498f7aaf2b4ebcadb, type: 3}
+  - {fileID: 8300000, guid: 76a54676e449ac14d8b68c84d5f8e5ec, type: 3}
+  startBattleClip: {fileID: 8300000, guid: e0a54d068aac916478445e0b032ebc6f, type: 3}
+  winClip: {fileID: 8300000, guid: 1c222f9f218bec141bf4418ab6606368, type: 3}
+  loseClip: {fileID: 8300000, guid: 064a2bca2f67d8a4cbcc17541800b382, type: 3}
+  mergeClip: {fileID: 8300000, guid: 30f6ce7528611ae46bd4a8b24fac05bd, type: 3}
+  pickUpCreatureClip: {fileID: 8300000, guid: 84df8ec1731f17e41b4115ffd896eb29, type: 3}
+  downCreatureClip: {fileID: 8300000, guid: 3688bccf620fad74f81455c1076dcece, type: 3}
   attackClip: {fileID: 8300000, guid: 595a6e4e92b65014e8cd08d57bcf309d, type: 3}
-  buyCreatureClip: {fileID: 0}
+  getGoldClip: {fileID: 8300000, guid: a649381eb8b6ec247ad96edbe01d94fa, type: 3}
+  buyClip: {fileID: 8300000, guid: 6b887f50b9807664e907551fb8fad5ea, type: 3}
+  noGoldClip: {fileID: 8300000, guid: 4a2fcc82450fb4e4282f1297daa16930, type: 3}
+  pressButtonClip: {fileID: 8300000, guid: d02e42be8c48faa44984dbb644ee14a9, type: 3}

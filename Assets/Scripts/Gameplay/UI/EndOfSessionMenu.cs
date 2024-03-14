@@ -1,5 +1,6 @@
 using Operations.SceneLoadingOperations;
 using Services;
+using Services.Audio;
 using Services.LoadingScreenNS;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ namespace Gameplay.UI
 
         private void StartLevel()
         {
+            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
             ILoadingScreenProvider loadingScreenProvider = AllServices.Container.Get<ILoadingScreenProvider>();
             loadingScreenProvider.LoadAndDestroy(new GameSceneLoadingOperation());
         }

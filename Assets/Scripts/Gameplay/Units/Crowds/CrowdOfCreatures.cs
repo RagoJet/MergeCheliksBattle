@@ -18,14 +18,11 @@ namespace Gameplay.Units.Crowds
 
         private IJoyStick _joyStick;
         Camera _mainCamera;
-        // private float _YHeightOfCamera;
 
         private void Start()
         {
             _joyStick = AllServices.Container.Get<IJoyStick>();
             _mainCamera = Camera.main;
-
-            // _YHeightOfCamera = _mainCamera.transform.position.y + 3;
 
             VagrancyCrowdState vagrancyCrowdState = new VagrancyCrowdState(HandleCrowd);
             BattleCrowdState
@@ -98,7 +95,7 @@ namespace Gameplay.Units.Crowds
         protected override void Die()
         {
             AllServices.Container.Get<EventBus>().OnDeathCreatureCrowd();
-            AllServices.Container.Get<IAudioService>().PlayLoseSound();
+            AllServices.Container.Get<IAudioService>().LoseSound();
             base.Die();
         }
     }

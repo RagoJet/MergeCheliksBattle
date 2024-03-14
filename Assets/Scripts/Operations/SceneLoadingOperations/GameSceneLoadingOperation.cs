@@ -13,7 +13,7 @@ namespace Operations.SceneLoadingOperations
 {
     public class GameSceneLoadingOperation : ILoadingOperation
     {
-        public string Description => "Loading game scene...";
+        public string Description => "Loading world...";
 
         public async UniTask Load(Action<float> onProgress)
         {
@@ -24,7 +24,7 @@ namespace Operations.SceneLoadingOperations
                 await SceneManager.UnloadSceneAsync(gameScene);
             }
 
-            AllServices.Container.Get<IAudioService>().PlayGameplayMusic();
+            AllServices.Container.Get<IAudioService>().GameplayMusic();
             onProgress.Invoke(0.97f);
             await SceneManager.LoadSceneAsync(Constants.Scenes.GAME, LoadSceneMode.Additive);
             CreatingObjectsForGame();

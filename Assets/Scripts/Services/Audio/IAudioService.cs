@@ -4,20 +4,17 @@ namespace Services.Audio
     {
         public bool MutedMusic { get; set; }
         public bool MutedSounds { get; set; }
-
-        public void PlayGameplayMusic();
-        public void PlayAttackSound();
-        public void PlayStartBattleSound();
-        public void PlayGetGoldFromKillSound();
-
-        public void PlayLoseSound();
-
-        public void PlayWinSound();
-
-        public void PlayMergeSound();
-
-        public void PlayPickUpCreatureSound();
+        public void GameplayMusic();
+        public void StartBattleSound();
+        public void PlayPressButtonSound();
+        public void AttackSound();
+        public void GoldSound();
+        public void LoseSound();
+        public void WinSound();
+        public void MergeSound();
+        public void PickUpCreatureSound();
         public void DownCreatureSound();
-        public void PlayBuyCreatureSound();
+        public void BuySound();
+        public void NoGoldSound();
     }
 }

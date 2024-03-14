@@ -1,3 +1,4 @@
+using System;
 using Services;
 using Services.Audio;
 using UnityEngine;
@@ -19,9 +20,15 @@ namespace Gameplay.UI
 
         private void Awake()
         {
+            AllServices.Container.Get<EventBus>().OnOpenSettingsWindow();
+
             _closeButton.onClick.AddListener(CloseWindow);
             _muteMusicButton.onClick.AddListener(SwitchMusic);
             _muteSoundsButton.onClick.AddListener(SwitchSound);
+        }
+
+        private void OnEnable()
+        {
             IAudioService audioService = AllServices.Container.Get<IAudioService>();
             if (audioService.MutedSounds)
             {
@@ -49,6 +56,7 @@ namespace Gameplay.UI
             {
                 audioService.MutedSounds = false;
                 _muteSoundsButton.image.sprite = _soundIcon;
+                AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
             }
             else
             {
@@ -59,6 +67,7 @@ namespace Gameplay.UI
 
         private void SwitchMusic()
         {
+            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
             IAudioService audioService = AllServices.Container.Get<IAudioService>();
             if (audioService.MutedMusic)
             {
@@ -74,6 +83,8 @@ namespace Gameplay.UI
 
         private void CloseWindow()
         {
+            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
+            AllServices.Container.Get<EventBus>().OnCloseSettingsWindow();
             Destroy(gameObject);
         }
     }

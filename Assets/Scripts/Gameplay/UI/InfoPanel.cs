@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using AssetKits.ParticleImage;
 using DG.Tweening;
 using Services;
+using Services.Audio;
 using Services.Factories;
 using Services.SaveLoad;
 using TMPro;
@@ -50,6 +51,7 @@ namespace Gameplay.UI
 
         private void OpenSettingsWindow()
         {
+            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
             AllServices.Container.Get<IGameFactory>().CreateSettingsWindow();
         }
 
@@ -70,7 +72,7 @@ namespace Gameplay.UI
 
         private void InstantUpdateMoneyText()
         {
-            _money = _wallet.Money;
+            _money = _wallet.Gold;
             _moneyText.text = $"{_money}";
         }
 
@@ -99,6 +101,7 @@ namespace Gameplay.UI
         {
             _money += _addValue;
             _moneyText.text = $"{_money}";
+            AllServices.Container.Get<IAudioService>().GoldSound();
         }
 
         private void AddMaxValueSlider()

@@ -14,6 +14,9 @@ namespace Services
 
         public event Action<Transform, int> onGetGoldFrom;
 
+        public event Action _onOpenSettingsWindow;
+        public event Action _onCloseSettingsWindow;
+
 
         public void OnBuy()
         {
@@ -44,6 +47,16 @@ namespace Services
         public void OnCreatedEnemyCrowd()
         {
             onCreatedEnemyCrowd?.Invoke();
+        }
+
+        public void OnOpenSettingsWindow()
+        {
+            _onOpenSettingsWindow?.Invoke();
+        }
+
+        public void OnCloseSettingsWindow()
+        {
+            _onCloseSettingsWindow?.Invoke();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Gameplay.Cells.MasterOfCreaturesStates
         public HasCreatureState(CreatureMaster creatureMaster, int cellLayerMask, int islandlayerMask,
             Camera mainCamera)
         {
-            _creatureMaster= creatureMaster;
+            _creatureMaster = creatureMaster;
             _cellLayerMask = cellLayerMask;
             _islandlayerMask = islandlayerMask;
             _mainCamera = mainCamera;
@@ -54,7 +54,7 @@ namespace Gameplay.Cells.MasterOfCreaturesStates
         public void OnEnter()
         {
             _creatureMaster.creatureTarget.GetUp();
-            AllServices.Container.Get<IAudioService>().PlayPickUpCreatureSound();
+            AllServices.Container.Get<IAudioService>().PickUpCreatureSound();
         }
 
         public void OnExit()

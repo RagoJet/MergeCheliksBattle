@@ -52,12 +52,11 @@ namespace Gameplay.UI
             AllServices.Container.Get<IJoyStick>().SwitchOn();
             gameObject.SetActive(false);
 
-            AllServices.Container.Get<IAudioService>().PlayStartBattleSound();
+            AllServices.Container.Get<IAudioService>().StartBattleSound();
         }
 
         private void TryBuyMeleeCreature()
         {
-            AllServices.Container.Get<IAudioService>().PlayBuyCreatureSound();
             if (_grid.TryGetAvailableCell(out Cell cell))
             {
                 if (_wallet.TryBuy(_priceCreature))
@@ -69,7 +68,6 @@ namespace Gameplay.UI
 
         private void TryBuyRangeCreature()
         {
-            AllServices.Container.Get<IAudioService>().PlayBuyCreatureSound();
             if (_grid.TryGetAvailableCell(out Cell cell))
             {
                 if (_wallet.TryBuy(_priceCreature))

@@ -32,7 +32,7 @@ namespace Gameplay
             {
                 AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame++;
                 AllServices.Container.Get<EventBus>().OnAllDeadEnemies();
-                AllServices.Container.Get<IAudioService>().PlayWinSound();
+                AllServices.Container.Get<IAudioService>().WinSound();
                 Destroy(gameObject);
             }
         }

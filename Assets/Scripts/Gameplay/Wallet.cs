@@ -7,35 +7,38 @@ namespace Gameplay
 {
     public class Wallet : MonoBehaviour
     {
-        private int _money;
+        private int _gold;
 
-        public int Money => _money;
+        public int Gold => _gold;
 
         private void Awake()
         {
-            _money = AllServices.Container.Get<ISaveLoadService>().DataProgress.money;
+            _gold = AllServices.Container.Get<ISaveLoadService>().DataProgress.gold;
             AllServices.Container.Get<EventBus>().onEnemyUnitDeath += AddMoney;
         }
 
 
         private void AddMoney(int value)
         {
-            _money += value;
-            AllServices.Container.Get<ISaveLoadService>().DataProgress.money += value;
-            AllServices.Container.Get<IAudioService>().PlayGetGoldFromKillSound();
+            _gold += value;
+            AllServices.Container.Get<ISaveLoadService>().DataProgress.gold += value;
         }
 
         public bool TryBuy(int price)
         {
-            if (_money >= price)
+            if (_gold >= price)
             {
-                _money -= price;
-                AllServices.Container.Get<ISaveLoadService>().DataProgress.money -= price;
+                AllServices.Container.Get<IAudioService>().BuySound();
+                _gold -= price;
+                AllServices.Container.Get<ISaveLoadService>().DataProgress.gold -= price;
                 AllServices.Container.Get<EventBus>().OnBuy();
                 return true;
             }
-
-            return false;
+            else
+            {
+                AllServices.Container.Get<IAudioService>().NoGoldSound();
+                return false;
+            }
         }
 
         private void OnDestroy()

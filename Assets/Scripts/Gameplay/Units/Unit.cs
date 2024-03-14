@@ -36,7 +36,7 @@ namespace Gameplay.Units
 
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
-            _agent.enabled = false;
+            NavMeshAgentOff();
             InitStateMachine();
             StopFight();
         }
@@ -116,7 +116,7 @@ namespace Gameplay.Units
             {
                 if (_targetHealth.IsAlive)
                 {
-                    AllServices.Container.Get<IAudioService>().PlayAttackSound();
+                    AllServices.Container.Get<IAudioService>().AttackSound();
                     _targetHealth.TakeDamage(_data.Damage);
                 }
             }
@@ -132,9 +132,14 @@ namespace Gameplay.Units
             _agent.enabled = true;
         }
 
+        private void NavMeshAgentOff()
+        {
+            _agent.enabled = false;
+        }
+
         private void Dying()
         {
-            _agent.isStopped = true;
+            NavMeshAgentOff();
             _myCrowd.GetComponent<InfoOfCrowd>().RemoveDamage(_data.Damage);
             int money = _data.MoneyFromDeath;
             if (money > 0)

@@ -6,7 +6,7 @@ namespace Services.SaveLoad
     [Serializable]
     public class DataProgress
     {
-        public int money = 60000;
+        public int gold = 1200;
         public int levelOfGame = 0;
         public List<CellDTO> cellsDTO = new List<CellDTO>();
 
