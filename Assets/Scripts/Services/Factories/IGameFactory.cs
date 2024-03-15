@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Gameplay;
 using Gameplay.Cells;
 using Gameplay.UI;
@@ -20,6 +21,7 @@ namespace Services.Factories
         public PrepareForBattleMenu CreatePrepareForBattleMenu();
         public InfoPanel CreateInfoPanel();
         public LoadingScreen CreateLoadingScreen();
+        public UIPopUp GetUiPopupAsync();
         public CurrentSessionManager CreateSessionManager();
         public Wallet CreateWallet();
         public MyJoyStick CreateMyJoystick();

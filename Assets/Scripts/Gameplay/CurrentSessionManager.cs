@@ -30,7 +30,7 @@ namespace Gameplay
             _currentAliveEnemySpawns--;
             if (_currentAliveEnemySpawns == 0)
             {
-                AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame++;
+                AllServices.Container.Get<ISaveLoadService>().SavedData.levelOfGame++;
                 AllServices.Container.Get<EventBus>().OnAllDeadEnemies();
                 AllServices.Container.Get<IAudioService>().WinSound();
                 Destroy(gameObject);

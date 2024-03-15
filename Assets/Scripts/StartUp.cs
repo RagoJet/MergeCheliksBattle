@@ -3,6 +3,7 @@ using Configs;
 using Operations;
 using Operations.SceneLoadingOperations;
 using Services;
+using Services.Ads;
 using Services.AssetManagement;
 using Services.Audio;
 using Services.Factories;
@@ -30,6 +31,7 @@ public class StartUp : MonoBehaviour
         AllServices containerServices = AllServices.Container;
 
         containerServices.Register<ISaveLoadService>(new SaveLoadService());
+        containerServices.Register<IAdsService>(new AdsService());
         containerServices.Register<EventBus>(new EventBus());
         containerServices.Register<ILoadingScreenProvider>(new LoadingScreenProvider());
         containerServices.Register<IAssetProvider>(new AssetProvider());

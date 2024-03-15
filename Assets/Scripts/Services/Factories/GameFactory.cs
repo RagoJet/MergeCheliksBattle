@@ -90,6 +90,12 @@ namespace Services.Factories
                 Quaternion.identity);
         }
 
+        public UIPopUp GetUiPopupAsync()
+        {
+            return Object.Instantiate(
+                _assetProvider.GetAsset<UIPopUp>(Constants.AssetPaths.UI_POPUP));
+        }
+
         public CurrentSessionManager CreateSessionManager()
         {
             return Object.Instantiate(

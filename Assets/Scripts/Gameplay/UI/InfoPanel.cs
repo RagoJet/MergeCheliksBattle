@@ -67,7 +67,7 @@ namespace Gameplay.UI
 
         private void UpdateLevelText()
         {
-            _levelText.text = $"{AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame}";
+            _levelText.text = $"{AllServices.Container.Get<ISaveLoadService>().SavedData.levelOfGame}";
         }
 
         private void InstantUpdateMoneyText()

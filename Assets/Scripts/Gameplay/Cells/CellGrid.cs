@@ -68,8 +68,8 @@ namespace Gameplay.Cells
             }
 
 
-            DataProgress dataProgress = AllServices.Container.Get<ISaveLoadService>().DataProgress;
-            dataProgress.cellsDTO = newCellsDTO;
+            SavedData savedData = AllServices.Container.Get<ISaveLoadService>().SavedData;
+            savedData.cellsDTO = newCellsDTO;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Services;
+using Services.Ads;
 using Services.SaveLoad;
 
 namespace Operations
@@ -14,6 +15,11 @@ namespace Operations
             onProgress.Invoke(0.9f);
             ISaveLoadService saveLoadService = AllServices.Container.Get<ISaveLoadService>();
             saveLoadService.LoadProgress();
+            if (saveLoadService.SavedData.dateTimeExpirationSub.CompareTo(DateTime.Now) > 0)
+            {
+                AllServices.Container.Get<IAdsService>().Initialize();
+            }
+
             await UniTask.CompletedTask;
         }
     }

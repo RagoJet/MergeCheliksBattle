@@ -13,7 +13,7 @@ namespace Gameplay
 
         private void Awake()
         {
-            _gold = AllServices.Container.Get<ISaveLoadService>().DataProgress.gold;
+            _gold = AllServices.Container.Get<ISaveLoadService>().SavedData.gold;
             AllServices.Container.Get<EventBus>().onEnemyUnitDeath += AddMoney;
         }
 
@@ -21,7 +21,7 @@ namespace Gameplay
         private void AddMoney(int value)
         {
             _gold += value;
-            AllServices.Container.Get<ISaveLoadService>().DataProgress.gold += value;
+            AllServices.Container.Get<ISaveLoadService>().SavedData.gold += value;
         }
 
         public bool TryBuy(int price)
@@ -30,7 +30,7 @@ namespace Gameplay
             {
                 AllServices.Container.Get<IAudioService>().BuySound();
                 _gold -= price;
-                AllServices.Container.Get<ISaveLoadService>().DataProgress.gold -= price;
+                AllServices.Container.Get<ISaveLoadService>().SavedData.gold -= price;
                 AllServices.Container.Get<EventBus>().OnBuy();
                 return true;
             }

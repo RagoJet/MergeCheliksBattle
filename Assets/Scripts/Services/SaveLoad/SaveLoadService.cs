@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -7,24 +6,19 @@ namespace Services.SaveLoad
     public class SaveLoadService : ISaveLoadService
     {
         private const string myPath = "/MyGame.json";
-        private List<ISaveable> _saveables = new List<ISaveable>();
 
-        private DataProgress _dataProgress;
-        public DataProgress DataProgress => _dataProgress;
+        private SavedData _savedData;
+        public SavedData SavedData => _savedData;
+
 
         public SaveLoadService()
         {
-            _dataProgress = new DataProgress();
+            _savedData = new SavedData();
         }
 
         public void SaveProgress()
         {
-            foreach (var isavable in _saveables)
-            {
-                isavable.Save(_dataProgress);
-            }
-
-            string JSONString = JsonUtility.ToJson(_dataProgress);
+            string JSONString = JsonUtility.ToJson(_savedData);
             File.WriteAllText(Application.persistentDataPath + myPath, JSONString);
         }
 
@@ -34,17 +28,12 @@ namespace Services.SaveLoad
             if (File.Exists(pathToData))
             {
                 var dataProgressFromJson =
-                    JsonUtility.FromJson<DataProgress>(File.ReadAllText(Application.persistentDataPath + myPath));
+                    JsonUtility.FromJson<SavedData>(File.ReadAllText(Application.persistentDataPath + myPath));
                 if (dataProgressFromJson != null)
                 {
-                    _dataProgress = dataProgressFromJson;
+                    _savedData = dataProgressFromJson;
                 }
             }
-        }
-
-        public void Register(ISaveable saveable)
-        {
-            _saveables.Add(saveable);
         }
     }
 }

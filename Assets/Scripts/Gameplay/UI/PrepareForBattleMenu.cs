@@ -1,8 +1,11 @@
+using System;
 using Gameplay.Cells;
 using Gameplay.Units.Crowds;
 using Services;
+using Services.Ads;
 using Services.Audio;
 using Services.JoySticks;
+using Services.SaveLoad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +21,7 @@ namespace Gameplay.UI
 
         [SerializeField] private int _priceCreature = 200;
 
+        [SerializeField] private Button _adsButton;
         [SerializeField] private Button _startBattleButton;
         [SerializeField] private Button _buyMeleeButton;
         [SerializeField] private Button _buyRangeButton;
@@ -31,6 +35,12 @@ namespace Gameplay.UI
             _buyRangeButton.onClick.AddListener(TryBuyRangeCreature);
             _priceMeleeText.text = _priceCreature.ToString();
             _priceRangeText.text = _priceCreature.ToString();
+
+            if (AllServices.Container.Get<ISaveLoadService>()
+                    .SavedData.dateTimeExpirationSub.CompareTo(DateTime.Now) < 0)
+            {
+                Destroy(_adsButton.gameObject);
+            }
         }
 
         public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds, Wallet wallet)
@@ -46,13 +56,14 @@ namespace Gameplay.UI
             _spawnerCrowds.SpawnAllCrowds(_grid.transform.position, _creatureMaster.CurrentCreatures);
 
             _grid.SetCellsInfo();
-            Destroy(_grid.gameObject);
-            Destroy(_creatureMaster.gameObject);
 
             AllServices.Container.Get<IJoyStick>().SwitchOn();
-            gameObject.SetActive(false);
-
             AllServices.Container.Get<IAudioService>().StartBattleSound();
+            AllServices.Container.Get<IAdsService>().ShowBanner();
+
+            Destroy(_grid.gameObject);
+            Destroy(_creatureMaster.gameObject);
+            Destroy(gameObject);
         }
 
         private void TryBuyMeleeCreature()

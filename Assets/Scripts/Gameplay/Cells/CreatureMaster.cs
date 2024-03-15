@@ -82,8 +82,8 @@ namespace Gameplay.Cells
         public void Construct(CellGrid cellGrid)
         {
             _cellGrid = cellGrid;
-            DataProgress dataProgress = AllServices.Container.Get<ISaveLoadService>().DataProgress;
-            foreach (var cellDTO in dataProgress.cellsDTO)
+            SavedData savedData = AllServices.Container.Get<ISaveLoadService>().SavedData;
+            foreach (var cellDTO in savedData.cellsDTO)
             {
                 Creature creature = AllServices.Container.Get<IGameFactory>().CreateCreature(cellDTO.isRange,
                     cellDTO.levelOfCreature,

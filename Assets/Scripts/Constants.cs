@@ -12,6 +12,8 @@ public static class Constants
         public const string CREATURE_MASTER = "CreatureMaster";
         public const string MY_JOYSTICK = "MyJoyStick";
 
+
+        public const string UI_POPUP = "UI/UIPopUp";
         public const string SETTINGS_WINDOW = "UI/SettingsWindow";
         public const string PREPARE_FOR_BATTLE_MENU = "UI/PrepareForBattleMenu";
         public const string INFO_PANEL = "UI/InfoPanel";

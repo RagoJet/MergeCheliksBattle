@@ -4,13 +4,15 @@ using System.Collections.Generic;
 namespace Services.SaveLoad
 {
     [Serializable]
-    public class DataProgress
+    public class SavedData
     {
         public int gold = 1200;
         public int levelOfGame = 0;
         public List<CellDTO> cellsDTO = new List<CellDTO>();
 
-        public DataProgress()
+        public DateTime dateTimeExpirationSub = DateTime.MinValue;
+
+        public SavedData()
         {
             cellsDTO.Add(new CellDTO(false, 6, 0));
             cellsDTO.Add(new CellDTO(true, 9, 0));

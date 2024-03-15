@@ -38,7 +38,7 @@ namespace Gameplay.Units.Crowds
 
         private async UniTask SpawningEnemyCrowds(Transform playerCrowdTransform)
         {
-            int levelOfGame = AllServices.Container.Get<ISaveLoadService>().DataProgress.levelOfGame;
+            int levelOfGame = AllServices.Container.Get<ISaveLoadService>().SavedData.levelOfGame;
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
 
             EnemyPointersCanvas enemyPointersCanvas = gameFactory.CreateEnemyPointersCanvas();

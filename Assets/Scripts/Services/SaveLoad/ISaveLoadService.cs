@@ -2,7 +2,7 @@ namespace Services.SaveLoad
 {
     public interface ISaveLoadService : IService
     {
-        public DataProgress DataProgress { get; }
+        public SavedData SavedData { get; }
         void SaveProgress();
         void LoadProgress();
     }

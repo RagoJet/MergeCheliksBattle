@@ -18,6 +18,7 @@ namespace Gameplay.UI
 
         private void StartLevel()
         {
+            
             AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
             ILoadingScreenProvider loadingScreenProvider = AllServices.Container.Get<ILoadingScreenProvider>();
             loadingScreenProvider.LoadAndDestroy(new GameSceneLoadingOperation());
