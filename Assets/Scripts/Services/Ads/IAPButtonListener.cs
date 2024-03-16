@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
-namespace Services.Ads.AdsScripts
+namespace Services.Ads
 {
     public class IAPButtonListener : MonoBehaviour
     {
@@ -25,12 +25,11 @@ namespace Services.Ads.AdsScripts
             {
                 AllServices.Container.Get<IAdsService>().RemoveAds();
 
-                AllServices.Container.Get<ISaveLoadService>().SavedData.dateTimeExpirationSub = datetime;
+                AllServices.Container.Get<ISaveLoadService>().SavedData.dateTimeExpirationSub.SetNewDateTime(datetime);
                 AllServices.Container.Get<ISaveLoadService>().SaveProgress();
                 ShowPopup(true);
                 Destroy(gameObject);
-            }
-            else
+            } else
             {
                 ShowPopup(false);
             }
@@ -42,15 +41,14 @@ namespace Services.Ads.AdsScripts
         }
 
         public void OnProductFetched(Product product)
-        {
-        }
+        { }
 
         private void ShowPopup(bool success)
         {
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
             UIPopUp uiPopUp = gameFactory.GetUiPopupAsync();
             // UiPopup uiPopup = await _gameFactory.InstantiateAsync<UiPopup>(Constants.Assets.UI_POPUP);
-            uiPopUp.Show(success ? "Ads Removed!" : "Smth went wrong Try again later");
+            uiPopUp.Show(success ? "Ads Removed!" : "Smth went wrong. Try again later");
         }
 
         bool IsSubscribedTo(Product subscription, out DateTime subExpireDate)

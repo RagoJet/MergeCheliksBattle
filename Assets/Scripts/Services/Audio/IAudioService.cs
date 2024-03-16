@@ -6,7 +6,7 @@ namespace Services.Audio
         public bool MutedSounds { get; set; }
         public void GameplayMusic();
         public void StartBattleSound();
-        public void PlayPressButtonSound();
+        public void PressButtonSound();
         public void AttackSound();
         public void GoldSound();
         public void LoseSound();

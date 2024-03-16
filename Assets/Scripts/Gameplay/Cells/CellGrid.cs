@@ -70,6 +70,7 @@ namespace Gameplay.Cells
 
             SavedData savedData = AllServices.Container.Get<ISaveLoadService>().SavedData;
             savedData.cellsDTO = newCellsDTO;
+            AllServices.Container.Get<ISaveLoadService>().SaveProgress();
         }
     }
 }

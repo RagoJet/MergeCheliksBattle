@@ -15,8 +15,8 @@ MonoBehaviour:
   _unitPrefab: {fileID: 2549263377257382576, guid: 1d68d66d348aa12478ac0c1992dac134,
     type: 3}
   _level: 6
-  _damage: 4
-  _maxHealth: 6
+  _damage: 9
+  _maxHealth: 10
   _moveSpeed: 4.5
   _rangeAttack: 1.6
   _moneyFromDeath: 0

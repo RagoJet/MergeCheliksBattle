@@ -28,7 +28,7 @@ namespace Gameplay.UI
         private Tween _sliderTween;
         private Tween _goldsTween;
         private int _money;
-        private int _addValue = 10;
+        private int _addValue = 30;
 
         public void Construct(Wallet wallet)
         {
@@ -51,7 +51,7 @@ namespace Gameplay.UI
 
         private void OpenSettingsWindow()
         {
-            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
+            AllServices.Container.Get<IAudioService>().PressButtonSound();
             AllServices.Container.Get<IGameFactory>().CreateSettingsWindow();
         }
 

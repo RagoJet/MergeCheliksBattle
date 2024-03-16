@@ -37,9 +37,12 @@ namespace Gameplay.UI
             _priceRangeText.text = _priceCreature.ToString();
 
             if (AllServices.Container.Get<ISaveLoadService>()
-                    .SavedData.dateTimeExpirationSub.CompareTo(DateTime.Now) < 0)
+                    .SavedData.dateTimeExpirationSub.ToDateTime().CompareTo(DateTime.Now) > 0)
             {
                 Destroy(_adsButton.gameObject);
+            } else
+            {
+                AllServices.Container.Get<IAdsService>().HideBanner();
             }
         }
 

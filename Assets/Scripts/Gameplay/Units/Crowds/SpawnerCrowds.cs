@@ -71,7 +71,7 @@ namespace Gameplay.Units.Crowds
                 < 10 => gameFactory.CreateElf,
                 < 20 => gameFactory.CreateUndead,
                 < 30 => gameFactory.CreateOrc,
-                _ => throw new ArgumentOutOfRangeException(nameof(levelOfGame), levelOfGame, null)
+                _ => gameFactory.CreateOrc
             };
 
             int level = Mathf.Clamp(levelOfGame % 10, 0, 8);

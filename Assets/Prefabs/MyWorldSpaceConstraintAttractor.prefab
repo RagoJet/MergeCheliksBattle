@@ -76,7 +76,7 @@ MonoBehaviour:
   _spread: 0
   _spreadLoop: 1
   _startDelay: 0
-  _radius: 50
+  _radius: 5
   _width: 100
   _height: 100
   _angle: 45
@@ -107,7 +107,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_ConstantMin: 0
-      m_ConstantMax: 180
+      m_ConstantMax: 160
     xCurve:
       m_Mode: 0
       m_CurveMultiplier: 0
@@ -981,7 +981,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_ConstantMin: 0
-    m_ConstantMax: 1
+    m_ConstantMax: 5
   _alignToDirection: 0
   _gravity:
     m_Mode: 0

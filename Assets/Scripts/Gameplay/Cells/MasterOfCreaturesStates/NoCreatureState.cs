@@ -22,6 +22,7 @@ namespace Gameplay.Cells.MasterOfCreaturesStates
             {
                 Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
+
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
                 {
                     if (hit.collider.TryGetComponent(out Cell cell))
@@ -44,7 +45,6 @@ namespace Gameplay.Cells.MasterOfCreaturesStates
         }
 
         public void OnExit()
-        {
-        }
+        { }
     }
 }

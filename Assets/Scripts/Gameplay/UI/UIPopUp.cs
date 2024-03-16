@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Services;
+using Services.Audio;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ namespace Gameplay.UI
             _canvas = GetComponent<Canvas>();
             _canvas.enabled = false;
             OkBtn.onClick.AddListener(OnOkBtnClicked);
+            AllServices.Container.Get<EventBus>().OnOpenedUIWindow();
         }
 
         public void Show(string info)
@@ -27,6 +29,8 @@ namespace Gameplay.UI
 
         private void OnOkBtnClicked()
         {
+            AllServices.Container.Get<IAudioService>().PressButtonSound();
+            AllServices.Container.Get<EventBus>().OnClosedUIWindow();
             Destroy(gameObject);
         }
     }

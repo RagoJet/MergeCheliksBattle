@@ -1,4 +1,3 @@
-using System;
 using Services;
 using Services.Audio;
 using UnityEngine;
@@ -20,11 +19,10 @@ namespace Gameplay.UI
 
         private void Awake()
         {
-            AllServices.Container.Get<EventBus>().OnOpenSettingsWindow();
-
             _closeButton.onClick.AddListener(CloseWindow);
             _muteMusicButton.onClick.AddListener(SwitchMusic);
             _muteSoundsButton.onClick.AddListener(SwitchSound);
+            AllServices.Container.Get<EventBus>().OnOpenedUIWindow();
         }
 
         private void OnEnable()
@@ -33,8 +31,7 @@ namespace Gameplay.UI
             if (audioService.MutedSounds)
             {
                 _muteSoundsButton.image.sprite = _noSoundIcon;
-            }
-            else
+            } else
             {
                 _muteSoundsButton.image.sprite = _soundIcon;
             }
@@ -42,8 +39,7 @@ namespace Gameplay.UI
             if (audioService.MutedMusic)
             {
                 _muteMusicButton.image.sprite = _noMusicIcon;
-            }
-            else
+            } else
             {
                 _muteMusicButton.image.sprite = _musicIcon;
             }
@@ -56,9 +52,8 @@ namespace Gameplay.UI
             {
                 audioService.MutedSounds = false;
                 _muteSoundsButton.image.sprite = _soundIcon;
-                AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
-            }
-            else
+                AllServices.Container.Get<IAudioService>().PressButtonSound();
+            } else
             {
                 audioService.MutedSounds = true;
                 _muteSoundsButton.image.sprite = _noSoundIcon;
@@ -67,14 +62,13 @@ namespace Gameplay.UI
 
         private void SwitchMusic()
         {
-            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
+            AllServices.Container.Get<IAudioService>().PressButtonSound();
             IAudioService audioService = AllServices.Container.Get<IAudioService>();
             if (audioService.MutedMusic)
             {
                 audioService.MutedMusic = false;
                 _muteMusicButton.image.sprite = _musicIcon;
-            }
-            else
+            } else
             {
                 audioService.MutedMusic = true;
                 _muteMusicButton.image.sprite = _noMusicIcon;
@@ -83,8 +77,8 @@ namespace Gameplay.UI
 
         private void CloseWindow()
         {
-            AllServices.Container.Get<IAudioService>().PlayPressButtonSound();
-            AllServices.Container.Get<EventBus>().OnCloseSettingsWindow();
+            AllServices.Container.Get<IAudioService>().PressButtonSound();
+            AllServices.Container.Get<EventBus>().OnClosedUIWindow();
             Destroy(gameObject);
         }
     }

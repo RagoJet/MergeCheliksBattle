@@ -34,9 +34,8 @@ namespace Gameplay.Cells
         {
             _islandLayerMask = 1 << LayerMask.NameToLayer("Island");
             _cellLayerMask = 1 << LayerMask.NameToLayer("Cell");
-
-            AllServices.Container.Get<EventBus>()._onOpenSettingsWindow += TurnOff;
-            AllServices.Container.Get<EventBus>()._onCloseSettingsWindow += TurnOn;
+            AllServices.Container.Get<EventBus>().onOpenedUIWindow += TurnOff;
+            AllServices.Container.Get<EventBus>().onClosedUIWindow += TurnOn;
         }
 
         private void Start()
@@ -171,8 +170,8 @@ namespace Gameplay.Cells
 
         private void OnDestroy()
         {
-            AllServices.Container.Get<EventBus>()._onOpenSettingsWindow -= TurnOff;
-            AllServices.Container.Get<EventBus>()._onCloseSettingsWindow -= TurnOn;
+            AllServices.Container.Get<EventBus>().onOpenedUIWindow -= TurnOff;
+            AllServices.Container.Get<EventBus>().onClosedUIWindow -= TurnOn;
         }
     }
 }

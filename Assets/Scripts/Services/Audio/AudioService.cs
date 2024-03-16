@@ -63,7 +63,7 @@ namespace Services.Audio
             _musicAudioSource.PlayOneShot(_soundsData.winClip);
         }
 
-        public void PlayPressButtonSound()
+        public void PressButtonSound()
         {
             _clipsAudioSource.PlayOneShot(_soundsData.pressButtonClip);
         }
