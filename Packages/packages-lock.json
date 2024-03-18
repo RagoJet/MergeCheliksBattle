@@ -17,7 +17,7 @@
       "hash": "809d23edae0df58fd0f61b4b6f67855c59d1b2fb"
     },
     "com.google.external-dependency-manager": {
-      "version": "file:D:/Downloads/com.google.external-dependency-manager-1.2.179.tgz",
+      "version": "file:C:/Users/Ragim/Desktop/com.google.external-dependency-manager-1.2.179.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {}

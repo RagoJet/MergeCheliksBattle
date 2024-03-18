@@ -2,7 +2,7 @@
   "dependencies": {
     "com.appodeal.mediation": "https://github.com/appodeal/appodeal-unity-plugin-upm.git#v3.2.1",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-    "com.google.external-dependency-manager": "file:D:/Downloads/com.google.external-dependency-manager-1.2.179.tgz",
+    "com.google.external-dependency-manager": "file:C:/Users/Ragim/Desktop/com.google.external-dependency-manager-1.2.179.tgz",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.collab-proxy": "2.2.0",
