@@ -40,10 +40,10 @@ namespace Operations.SceneLoadingOperations
             gameFactory.CreateSessionManager();
 
             CellGrid cellGrid = gameFactory.CreateCellGrid();
-            CreatureMaster creatureMaster = gameFactory.CreateCreatureMaster();
-            creatureMaster.Construct(cellGrid);
+            MergeMaster mergeMaster = gameFactory.CreateCreatureMaster();
+            mergeMaster.Construct(cellGrid);
             SpawnerCrowds spawnerCrowds = gameFactory.CreateSpawnerCrowds(new Vector3(0, 3, 0));
-            gameFactory.CreatePrepareForBattleMenu().Construct(cellGrid, creatureMaster, spawnerCrowds, wallet);
+            gameFactory.CreatePrepareForBattleMenu().Construct(cellGrid, mergeMaster, spawnerCrowds, wallet);
 
 
             gameFactory.CreateInfoPanel().Construct(wallet);

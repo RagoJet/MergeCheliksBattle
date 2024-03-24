@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 8332782807316001236}
   - component: {fileID: 7717052457222675390}
   - component: {fileID: 6156768313632220290}
-  - component: {fileID: 7066092255030490979}
+  - component: {fileID: -6560536604968295678}
   m_Layer: 0
   m_Name: DemonHunter
   m_TagString: Untagged
@@ -268,7 +268,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &7066092255030490979
+--- !u!114 &-6560536604968295678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1685938236335837796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2062037466024253465

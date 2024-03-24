@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 7308752527449654754}
   - component: {fileID: 8625733228839230549}
   - component: {fileID: 2478359265130981413}
-  - component: {fileID: 3935600619516895515}
+  - component: {fileID: 8910063039841235973}
   m_Layer: 0
   m_Name: DeathKnight
   m_TagString: Untagged
@@ -681,7 +681,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &3935600619516895515
+--- !u!114 &8910063039841235973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -690,7 +690,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6129344447228920436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6931144033180202630

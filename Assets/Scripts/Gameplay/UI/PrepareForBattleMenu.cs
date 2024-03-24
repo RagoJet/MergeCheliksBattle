@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Gameplay.Cells;
+using Gameplay.Units;
 using Gameplay.Units.Crowds;
 using Services;
 using Services.Ads;
@@ -15,7 +17,7 @@ namespace Gameplay.UI
     public class PrepareForBattleMenu : MonoBehaviour
     {
         private CellGrid _grid;
-        private CreatureMaster _creatureMaster;
+        private MergeMaster _mergeMaster;
         private SpawnerCrowds _spawnerCrowds;
         private Wallet _wallet;
 
@@ -40,23 +42,30 @@ namespace Gameplay.UI
                     .SavedData.dateTimeExpirationSub.ToDateTime().CompareTo(DateTime.Now) > 0)
             {
                 Destroy(_adsButton.gameObject);
-            } else
+            }
+            else
             {
                 AllServices.Container.Get<IAdsService>().HideBanner();
             }
         }
 
-        public void Construct(CellGrid grid, CreatureMaster creatureMaster, SpawnerCrowds spawnerCrowds, Wallet wallet)
+        public void Construct(CellGrid grid, MergeMaster mergeMaster, SpawnerCrowds spawnerCrowds, Wallet wallet)
         {
             _grid = grid;
-            _creatureMaster = creatureMaster;
+            _mergeMaster = mergeMaster;
             _spawnerCrowds = spawnerCrowds;
             _wallet = wallet;
         }
 
         private void StartBattle()
         {
-            _spawnerCrowds.SpawnAllCrowds(_grid.transform.position, _creatureMaster.CurrentCreatures);
+            List<Unit> mergeEntitiesList = new List<Unit>();
+            foreach (var mergeChelick in _mergeMaster.CurrentMergeEntities)
+            {
+                mergeEntitiesList.Add(mergeChelick.GetComponent<Unit>());
+            }
+
+            _spawnerCrowds.SpawnAllCrowds(_grid.transform.position, mergeEntitiesList);
 
             _grid.SetCellsInfo();
 
@@ -65,7 +74,7 @@ namespace Gameplay.UI
             AllServices.Container.Get<IAdsService>().ShowBanner();
 
             Destroy(_grid.gameObject);
-            Destroy(_creatureMaster.gameObject);
+            Destroy(_mergeMaster.gameObject);
             Destroy(gameObject);
         }
 
@@ -75,7 +84,7 @@ namespace Gameplay.UI
             {
                 if (_wallet.TryBuy(_priceCreature))
                 {
-                    _creatureMaster.CreateMeleeFirstLevel(cell);
+                    _mergeMaster.CreateMeleeFirstLevel(cell);
                 }
             }
         }
@@ -86,7 +95,7 @@ namespace Gameplay.UI
             {
                 if (_wallet.TryBuy(_priceCreature))
                 {
-                    _creatureMaster.CreateRangeFirstLevel(cell);
+                    _mergeMaster.CreateRangeFirstLevel(cell);
                 }
             }
         }

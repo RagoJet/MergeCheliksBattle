@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6df990ab084c90ba729cda03f5513b, type: 3}
+  m_Name: UnitData 9
+  m_EditorClassIdentifier: 
+  _unitPrefab: {fileID: -4265183652540632055, guid: 824fb56c4368b9b44bf837c2b96c25e7,
+    type: 3}
+  _level: 9
+  _damage: 20
+  _maxHealth: 20
+  _moveSpeed: 4.5
+  _rangeAttack: 2
+  _moneyFromDeath: 0

@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 4254530134240781433}
   - component: {fileID: 8922400554148557772}
   - component: {fileID: 1668629984805173905}
-  - component: {fileID: 1133781407336614278}
+  - component: {fileID: 1667083259214385793}
   m_Layer: 0
   m_Name: Crossbowman
   m_TagString: Untagged
@@ -786,7 +786,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &1133781407336614278
+--- !u!114 &1667083259214385793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6863678756409709707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7147228543659195425

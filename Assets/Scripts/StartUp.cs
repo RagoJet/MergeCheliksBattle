@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Configs;
 using Operations;
 using Operations.SceneLoadingOperations;
 using Services;
@@ -17,7 +16,7 @@ public class StartUp : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        RegisterOperation();
+        RegisterServices();
         Queue<ILoadingOperation> operationQueue = new Queue<ILoadingOperation>();
         operationQueue.Enqueue(new LoadingDataProgressOperation());
         operationQueue.Enqueue(new GameSceneLoadingOperation());
@@ -26,7 +25,7 @@ public class StartUp : MonoBehaviour
         loadingScreenProvider.LoadAndDestroy(operationQueue);
     }
 
-    public void RegisterOperation()
+    private void RegisterServices()
     {
         AllServices containerServices = AllServices.Container;
 
@@ -39,8 +38,6 @@ public class StartUp : MonoBehaviour
         containerServices.Register<IGameFactory>(new GameFactory());
         containerServices.Register<IAudioService>(new AudioService());
 
-        MyJoyStick myJoyStick = containerServices.Get<IGameFactory>().CreateMyJoystick();
-        myJoyStick.SwitchOff();
-        AllServices.Container.Register<IJoyStick>(myJoyStick);
+        AllServices.Container.Register<IJoyStick>(containerServices.Get<IGameFactory>().CreateMyJoystick());
     }
 }

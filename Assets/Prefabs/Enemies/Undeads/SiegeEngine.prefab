@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: -6755502885825416111}
   - component: {fileID: 2753163916242591912}
   - component: {fileID: -6346806440188488611}
-  - component: {fileID: -840986262111491552}
+  - component: {fileID: -8707237705359336195}
   m_Layer: 0
   m_Name: SiegeEngine
   m_TagString: Untagged
@@ -496,7 +496,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &-840986262111491552
+--- !u!114 &-8707237705359336195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4311168663633980245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4441521903565525341

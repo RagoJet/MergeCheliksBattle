@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 1028484959712693633}
   - component: {fileID: 8210598619437630390}
   - component: {fileID: 8740519464862721865}
-  - component: {fileID: 2393413784031118212}
+  - component: {fileID: 164213003860440435}
   m_Layer: 0
   m_Name: ElfRanger
   m_TagString: Untagged
@@ -708,7 +708,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &2393413784031118212
+--- !u!114 &164213003860440435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4863084237128755534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5031517013273373209

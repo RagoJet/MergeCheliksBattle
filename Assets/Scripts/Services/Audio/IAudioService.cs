@@ -12,8 +12,8 @@ namespace Services.Audio
         public void LoseSound();
         public void WinSound();
         public void MergeSound();
-        public void PickUpCreatureSound();
-        public void DownCreatureSound();
+        public void PickUpMergeEntitySound();
+        public void DownMergeEntitySound();
         public void BuySound();
         public void NoGoldSound();
     }

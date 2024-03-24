@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6df990ab084c90ba729cda03f5513b, type: 3}
   m_Name: UnitData 5
   m_EditorClassIdentifier: 
-  _unitPrefab: {fileID: 6770381857235922973, guid: cd1f28a4e3a0e3c4399cd2aca7ade65f,
+  _unitPrefab: {fileID: -6075800399849030722, guid: cd1f28a4e3a0e3c4399cd2aca7ade65f,
     type: 3}
   _level: 5
   _damage: 5

@@ -29,7 +29,7 @@ public static class Constants
         public const string SOUNDS_DATA = "SO/Configs/SoundsData";
         public const string GRID_CELL_DATA = "SO/Configs/GridStaticData";
         public const string ENEMY_DESCRIPTIONS = "SO/Enemies/EnemyDescriptions";
-        public const string CREATURE_DESCRIPTIONS = "SO/Creatures/CREATUREDESCRIPTIONS";
+        public const string MERGE_ENTITIES_DESCRIPTIONS = "SO/Humans/MergeEntitiesDescriptions";
     }
 
     public sealed class Scenes

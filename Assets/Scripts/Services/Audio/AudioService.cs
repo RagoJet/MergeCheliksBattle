@@ -79,14 +79,14 @@ namespace Services.Audio
             _clipsAudioSource.PlayOneShot(_soundsData.mergeClip);
         }
 
-        public void PickUpCreatureSound()
+        public void PickUpMergeEntitySound()
         {
-            _clipsAudioSource.PlayOneShot(_soundsData.pickUpCreatureClip);
+            _clipsAudioSource.PlayOneShot(_soundsData.pickUpMergeEntityClip);
         }
 
-        public void DownCreatureSound()
+        public void DownMergeEntitySound()
         {
-            _clipsAudioSource.PlayOneShot(_soundsData.downCreatureClip);
+            _clipsAudioSource.PlayOneShot(_soundsData.downMergeEntityClip);
         }
 
         public void BuySound()

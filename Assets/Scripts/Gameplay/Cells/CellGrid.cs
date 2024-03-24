@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Configs;
-using Gameplay.Units.Creatures;
+using Gameplay.MergeEntities;
 using Services;
 using Services.Factories;
 using Services.SaveLoad;
@@ -17,16 +17,14 @@ namespace Gameplay.Cells
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
             IStaticDataFactory dataFactory = AllServices.Container.Get<IStaticDataFactory>();
             GridStaticData staticData = dataFactory.GetGridStaticData();
-            int _collumns = staticData.Collumns;
-            int _rows = staticData.Rows;
-            float _offset = staticData.Offset;
             Vector3 startPosition = transform.position +
-                                    new Vector3((1 - _collumns) * _offset / 2f, 0, (_rows - 1) * _offset / 2f);
-            for (int i = 0; i < _rows; i++)
+                                    new Vector3((1 - staticData.Collumns) * staticData.Offset / 2f, 0,
+                                        (staticData.Rows - 1) * staticData.Offset / 2f);
+            for (int i = 0; i < staticData.Rows; i++)
             {
-                for (int j = 0; j < _collumns; j++)
+                for (int j = 0; j < staticData.Collumns; j++)
                 {
-                    Vector3 pos = startPosition + new Vector3(_offset * j, 0, -_offset * i);
+                    Vector3 pos = startPosition + new Vector3(staticData.Offset * j, 0, -staticData.Offset * i);
                     Cell cell = gameFactory.CreateCell(pos, transform);
                     _cells.Add(cell);
                 }
@@ -42,7 +40,7 @@ namespace Gameplay.Cells
         {
             foreach (var cell in _cells)
             {
-                if (cell.currentCreature == null)
+                if (cell.currentMergeEntity == null)
                 {
                     theCell = cell;
                     return true;
@@ -59,10 +57,10 @@ namespace Gameplay.Cells
 
             for (int i = 0; i < _cells.Count; i++)
             {
-                if (_cells[i].currentCreature != null)
+                if (_cells[i].currentMergeEntity != null)
                 {
-                    Creature creature = _cells[i].currentCreature;
-                    CellDTO cellDto = new CellDTO(creature.IsRange, i, creature.Level);
+                    MergeEntity mergeEntity = _cells[i].currentMergeEntity;
+                    CellDTO cellDto = new CellDTO(mergeEntity.IsRange, i, mergeEntity.Level);
                     newCellsDTO.Add(cellDto);
                 }
             }

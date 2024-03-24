@@ -18,22 +18,22 @@ namespace Gameplay.Units.Crowds
 
         public void SpawnAllCrowds(Vector3 pos, List<Unit> creatureList)
         {
-            CrowdOfCreatures crowdOfCreatures = SpawnCreaturesCrowd(pos, creatureList);
-            SpawningEnemyCrowds(crowdOfCreatures.transform);
+            CrowdOfMerged crowdOfMerged = SpawnCreaturesCrowd(pos, creatureList);
+            SpawningEnemyCrowds(crowdOfMerged.transform);
         }
 
-        private CrowdOfCreatures SpawnCreaturesCrowd(Vector3 pos, List<Unit> creatureList)
+        private CrowdOfMerged SpawnCreaturesCrowd(Vector3 pos, List<Unit> creatureList)
         {
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
-            CrowdOfCreatures crowdOfCreatures = gameFactory.CreateCrowdOfCreatures(pos);
+            CrowdOfMerged crowdOfMerged = gameFactory.CreateCrowdOfCreatures(pos);
             foreach (var unit in creatureList)
             {
-                unit.SetCrowd(crowdOfCreatures);
+                unit.SetCrowd(crowdOfMerged);
             }
 
-            crowdOfCreatures.Construct(creatureList);
-            crowdOfCreatures.GetComponent<InfoOfCrowd>().Init();
-            return crowdOfCreatures;
+            crowdOfMerged.Construct(creatureList);
+            crowdOfMerged.GetComponent<InfoOfCrowd>().Init();
+            return crowdOfMerged;
         }
 
         private async UniTask SpawningEnemyCrowds(Transform playerCrowdTransform)
@@ -66,7 +66,7 @@ namespace Gameplay.Units.Crowds
         {
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
             List<Unit> enemies = new List<Unit>();
-            Func<int, Vector3, Enemy> CreateEnemy = levelOfGame switch
+            Func<int, Vector3, Unit> CreateEnemy = levelOfGame switch
             {
                 < 10 => gameFactory.CreateElf,
                 < 20 => gameFactory.CreateUndead,
@@ -78,7 +78,7 @@ namespace Gameplay.Units.Crowds
             for (int i = 0; i < 8; i++)
             {
                 int levelOfUnit = Random.Range(0, level);
-                Enemy enemy = CreateEnemy.Invoke(levelOfUnit, crowdOfEnemies.transform.position);
+                Unit enemy = CreateEnemy.Invoke(levelOfUnit, crowdOfEnemies.transform.position);
                 enemy.SetCrowd(crowdOfEnemies);
                 enemies.Add(enemy);
                 await UniTask.Delay(70);

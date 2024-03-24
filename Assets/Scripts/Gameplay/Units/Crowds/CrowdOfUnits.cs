@@ -35,17 +35,16 @@ namespace Gameplay.Units.Crowds
 
             IStaticDataFactory dataFactory = AllServices.Container.Get<IStaticDataFactory>();
             GridStaticData staticData = dataFactory.GetGridStaticData();
-            int _collumns = staticData.Collumns;
-            int _rows = staticData.Rows;
-            float _offset = staticData.Offset * 0.8f;
             List<Vector3> positions = new List<Vector3>();
 
-            Vector3 startPosition = new Vector3((1 - _collumns) * _offset / 2f, 0, (1 - _rows) * _offset / 2f);
-            for (int i = 0; i < _rows; i++)
+            Vector3 startPosition = new Vector3((1 - staticData.Collumns) * staticData.Offset * 0.8f / 2f, 0,
+                (1 - staticData.Rows) * staticData.Offset * 0.8f / 2f);
+            for (int i = 0; i < staticData.Rows; i++)
             {
-                for (int j = 0; j < _collumns; j++)
+                for (int j = 0; j < staticData.Collumns; j++)
                 {
-                    Vector3 position = startPosition + new Vector3(j * _offset, 0, i * _offset);
+                    Vector3 position = startPosition +
+                                       new Vector3(j * staticData.Offset * 0.8f, 0, i * staticData.Offset * 0.8f);
                     positions.Add(position);
                 }
             }

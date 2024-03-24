@@ -1,8 +1,8 @@
 using Gameplay;
 using Gameplay.Cells;
+using Gameplay.MergeEntities;
 using Gameplay.UI;
 using Gameplay.Units;
-using Gameplay.Units.Creatures;
 using Gameplay.Units.Crowds;
 using Gameplay.Units.Enemies;
 using Services.AssetManagement;
@@ -15,34 +15,34 @@ namespace Services.Factories
     public class GameFactory : IGameFactory
     {
         private IAssetProvider _assetProvider;
-        private CreatureDescriptions _creatureDescriptions;
+        private MergeEntitiesDescriptions _mergeEntitiesDescriptions;
         private EnemyDescriptions _enemyDescriptions;
 
         public GameFactory()
         {
             _assetProvider = AllServices.Container.Get<IAssetProvider>();
-            _creatureDescriptions =
-                _assetProvider.GetAsset<CreatureDescriptions>(Constants.StaticData.CREATURE_DESCRIPTIONS);
+            _mergeEntitiesDescriptions =
+                _assetProvider.GetAsset<MergeEntitiesDescriptions>(Constants.StaticData.MERGE_ENTITIES_DESCRIPTIONS);
             _enemyDescriptions =
                 _assetProvider.GetAsset<EnemyDescriptions>(Constants.StaticData.ENEMY_DESCRIPTIONS);
         }
 
-        public Enemy CreateElf(int level, Vector3 pos)
+        public Unit CreateElf(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetElvesData(level);
-            return CreateUnit(data, pos) as Enemy;
+            return CreateUnit(data, pos);
         }
 
-        public Enemy CreateUndead(int level, Vector3 pos)
+        public Unit CreateUndead(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetUndeadData(level);
-            return CreateUnit(data, pos) as Enemy;
+            return CreateUnit(data, pos);
         }
 
-        public Enemy CreateOrc(int level, Vector3 pos)
+        public Unit CreateOrc(int level, Vector3 pos)
         {
             UnitData data = _enemyDescriptions.GetOrcData(level);
-            return CreateUnit(data, pos) as Enemy;
+            return CreateUnit(data, pos);
         }
 
         private Unit CreateUnit(UnitData data, Vector3 pos)
@@ -53,28 +53,28 @@ namespace Services.Factories
             return unit;
         }
 
-        public Creature CreateCreature(bool isRange, int level, Cell cell, Transform parent = null)
+        public MergeEntity CreateMergeEntity(bool isRange, int level, Cell cell, Transform parent = null)
         {
             UnitData data;
             if (isRange)
             {
-                data = _creatureDescriptions.GetRangeUnitData(level);
+                data = _mergeEntitiesDescriptions.GetRangeUnitData(level);
             }
             else
             {
-                data = _creatureDescriptions.GetMeleeUnitData(level);
+                data = _mergeEntitiesDescriptions.GetMeleeUnitData(level);
             }
 
-            Creature creature = CreateUnit(data, cell.GetPosition) as Creature;
-            creature.SetNewCell(cell);
+            MergeEntity mergeEntity = CreateUnit(data, cell.GetPosition).GetComponent<MergeEntity>();
+            mergeEntity.SetNewCell(cell);
 
-            return creature;
+            return mergeEntity;
         }
 
-        public CrowdOfCreatures CreateCrowdOfCreatures(Vector3 pos)
+        public CrowdOfMerged CreateCrowdOfCreatures(Vector3 pos)
         {
             return Object.Instantiate(
-                _assetProvider.GetAsset<CrowdOfCreatures>(Constants.AssetPaths.CROWD_OF_CREATURES), pos,
+                _assetProvider.GetAsset<CrowdOfMerged>(Constants.AssetPaths.CROWD_OF_CREATURES), pos,
                 Quaternion.identity);
         }
 
@@ -118,9 +118,9 @@ namespace Services.Factories
             return Object.Instantiate(cellGrid, cellGrid.transform.position, Quaternion.identity);
         }
 
-        public CreatureMaster CreateCreatureMaster()
+        public MergeMaster CreateCreatureMaster()
         {
-            return Object.Instantiate(_assetProvider.GetAsset<CreatureMaster>(Constants.AssetPaths.CREATURE_MASTER));
+            return Object.Instantiate(_assetProvider.GetAsset<MergeMaster>(Constants.AssetPaths.CREATURE_MASTER));
         }
 
 

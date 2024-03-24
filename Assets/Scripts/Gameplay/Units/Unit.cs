@@ -23,6 +23,9 @@ namespace Gameplay.Units
         private CrowdOfUnits _myCrowd;
 
         private Health _targetHealth;
+        
+        public bool IsRange => _data.RangeAttack > 2.5f;
+        public int Level => _data.Level;
 
         public int Damage => _data.Damage;
         public int MaxHealth => _data.MaxHealth;

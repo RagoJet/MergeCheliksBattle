@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,11 @@ namespace Services.JoySticks
         [SerializeField] private Image _botLeft;
 
         private Camera _mainCamera;
+
+        private void Awake()
+        {
+            SwitchOff();
+        }
 
         private void OnEnable()
         {
@@ -31,8 +37,12 @@ namespace Services.JoySticks
             Vector3 joyStickeDirection = new Vector3(_joystick.Direction.x, 0, _joystick.Direction.y);
             Vector3 direction = _mainCamera.transform.TransformDirection(joyStickeDirection);
             direction.y = 0;
-            LightCorner();
             return direction.normalized;
+        }
+
+        private void Update()
+        {
+            LightCorner();
         }
 
         private void LightCorner()

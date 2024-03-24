@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3973756539805993703}
   - component: {fileID: 4374052623054567226}
   - component: {fileID: 90647319772392252}
-  - component: {fileID: 7837378195038662388}
+  - component: {fileID: -6248602815782189141}
   m_Layer: 0
   m_Name: Drake
   m_TagString: Untagged
@@ -105,7 +105,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &7837378195038662388
+--- !u!114 &-6248602815782189141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 14774963195199534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &59085168424996632

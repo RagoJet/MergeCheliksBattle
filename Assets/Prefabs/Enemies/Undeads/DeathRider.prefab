@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 1136916666982167252}
   - component: {fileID: 7622507390947690614}
   - component: {fileID: 2438289518204320345}
-  - component: {fileID: 6770381857235922973}
+  - component: {fileID: -6075800399849030722}
   m_Layer: 0
   m_Name: DeathRider
   m_TagString: Untagged
@@ -1029,7 +1029,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &6770381857235922973
+--- !u!114 &-6075800399849030722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1038,7 +1038,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6169638864407697217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6176464121483170926

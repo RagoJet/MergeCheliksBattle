@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4132791475708775814}
   - component: {fileID: 1294647520422891743}
   - component: {fileID: 1291756491624238185}
-  - component: {fileID: 5643948144013121170}
+  - component: {fileID: 6525941193968963678}
   m_Layer: 0
   m_Name: Berserker
   m_TagString: Untagged
@@ -140,7 +140,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &5643948144013121170
+--- !u!114 &6525941193968963678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 948683674287331710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1022479198813647162

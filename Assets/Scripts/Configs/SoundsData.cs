@@ -12,8 +12,8 @@ namespace Configs
         public AudioClip loseClip;
 
         public AudioClip mergeClip;
-        public AudioClip pickUpCreatureClip;
-        public AudioClip downCreatureClip;
+        public AudioClip pickUpMergeEntityClip;
+        public AudioClip downMergeEntityClip;
 
         public AudioClip attackClip;
 

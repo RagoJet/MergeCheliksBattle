@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 6119764648728006323}
   - component: {fileID: 4190852779449698464}
   - component: {fileID: 2555229782328042937}
-  - component: {fileID: 1931961692848862429}
+  - component: {fileID: 3173062507106210319}
   m_Layer: 0
   m_Name: HeadHunter
   m_TagString: Untagged
@@ -747,7 +747,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
---- !u!114 &1931961692848862429
+--- !u!114 &3173062507106210319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -756,7 +756,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6422679038740300859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9662d8147f074057bf6a96e1fb94be03, type: 3}
+  m_Script: {fileID: 11500000, guid: f931f5527152490b8c6d338c7c3d2a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6895658171317973543
