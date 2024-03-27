@@ -1,13 +1,14 @@
+using Gameplay.Cells;
 using States;
 using UnityEngine;
 
-namespace Gameplay.Cells.MasterOfMergeStates
+namespace Gameplay.MergeEntities.MasterOfMergeStates
 {
     public class NoEntityState : IState
     {
-        private int _layerMask;
-        private MergeMaster _mergeMaster;
-        private Camera _mainCamera;
+        private readonly int _layerMask;
+        private readonly MergeMaster _mergeMaster;
+        private readonly Camera _mainCamera;
 
         public NoEntityState(MergeMaster mergeMaster, int layerMask, Camera mainCamera)
         {

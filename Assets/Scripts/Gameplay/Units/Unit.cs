@@ -21,7 +21,7 @@ namespace Gameplay.Units
         private CrowdOfUnits _myCrowd;
         private Health _targetHealth;
         public Health TargetHealth => _targetHealth;
-        private StateMachine _stateMachine = new StateMachine();
+        private readonly StateMachine _stateMachine = new StateMachine();
         private bool _fightMode;
 
         public bool IsRange => _data.RangeAttack > 2.5f;

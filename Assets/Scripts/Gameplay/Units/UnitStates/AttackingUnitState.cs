@@ -5,7 +5,7 @@ namespace Gameplay.Units.UnitStates
 {
     public class AttackingUnitState : IState
     {
-        private Unit _unit;
+        private readonly Unit _unit;
 
         public AttackingUnitState(Unit unit)
         {

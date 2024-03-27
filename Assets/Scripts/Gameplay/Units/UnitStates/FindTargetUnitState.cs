@@ -4,7 +4,7 @@ namespace Gameplay.Units.UnitStates
 {
     public class FindTargetUnitState : IState
     {
-        private Unit _unit;
+        private readonly Unit _unit;
 
         public FindTargetUnitState(Unit unit)
         {

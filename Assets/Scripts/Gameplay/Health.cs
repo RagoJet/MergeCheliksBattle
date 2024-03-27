@@ -1,6 +1,4 @@
 using System;
-using Gameplay.Units;
-using Gameplay.Units.Crowds;
 using UnityEngine;
 
 namespace Gameplay

@@ -1,10 +1,10 @@
 using States;
 
-namespace Gameplay.Cells.MasterOfMergeStates
+namespace Gameplay.MergeEntities.MasterOfMergeStates
 {
     public class BackToCellState : IState
     {
-        private MergeMaster _mergeMaster;
+        private readonly MergeMaster _mergeMaster;
 
         public BackToCellState(MergeMaster mergeMaster)
         {

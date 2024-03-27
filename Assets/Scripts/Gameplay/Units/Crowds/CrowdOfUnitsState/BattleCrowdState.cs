@@ -5,8 +5,8 @@ namespace Gameplay.Units.Crowds.CrowdOfUnitsState
 {
     public class BattleCrowdState : IState
     {
-        private Action _onEnter;
-        private Action _onTick;
+        private readonly Action _onEnter;
+        private readonly Action _onTick;
 
         public BattleCrowdState(Action onEnter, Action onTick)
         {

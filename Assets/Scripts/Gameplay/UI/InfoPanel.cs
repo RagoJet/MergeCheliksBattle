@@ -28,7 +28,7 @@ namespace Gameplay.UI
         private Tween _sliderTween;
         private Tween _goldsTween;
         private int _money;
-        private int _addValue = 30;
+        private readonly int _addValue = 30;
 
         public void Construct(Wallet wallet)
         {

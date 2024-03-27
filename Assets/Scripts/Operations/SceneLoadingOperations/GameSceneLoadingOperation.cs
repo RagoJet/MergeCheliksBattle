@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using Gameplay;
 using Gameplay.Cells;
+using Gameplay.MergeEntities;
 using Gameplay.Units.Crowds;
 using Services;
 using Services.Audio;

@@ -20,8 +20,9 @@ MonoBehaviour:
   winClip: {fileID: 8300000, guid: 1c222f9f218bec141bf4418ab6606368, type: 3}
   loseClip: {fileID: 8300000, guid: 064a2bca2f67d8a4cbcc17541800b382, type: 3}
   mergeClip: {fileID: 8300000, guid: 30f6ce7528611ae46bd4a8b24fac05bd, type: 3}
-  pickUpCreatureClip: {fileID: 8300000, guid: 84df8ec1731f17e41b4115ffd896eb29, type: 3}
-  downCreatureClip: {fileID: 8300000, guid: 3688bccf620fad74f81455c1076dcece, type: 3}
+  pickUpMergeEntityClip: {fileID: 8300000, guid: 84df8ec1731f17e41b4115ffd896eb29,
+    type: 3}
+  downMergeEntityClip: {fileID: 8300000, guid: 3688bccf620fad74f81455c1076dcece, type: 3}
   attackClip: {fileID: 8300000, guid: 595a6e4e92b65014e8cd08d57bcf309d, type: 3}
   getGoldClip: {fileID: 8300000, guid: a649381eb8b6ec247ad96edbe01d94fa, type: 3}
   buyClip: {fileID: 8300000, guid: 6b887f50b9807664e907551fb8fad5ea, type: 3}

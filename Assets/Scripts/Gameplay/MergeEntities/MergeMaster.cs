@@ -1,22 +1,22 @@
 using System.Collections.Generic;
-using Gameplay.Cells.MasterOfMergeStates;
-using Gameplay.MergeEntities;
+using Gameplay.Cells;
+using Gameplay.MergeEntities.MasterOfMergeStates;
 using Services;
 using Services.Audio;
 using Services.Factories;
 using Services.SaveLoad;
 using States;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Gameplay.Cells
+
+namespace Gameplay.MergeEntities
 {
     public class MergeMaster : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _mergeEffect;
-        private StateMachine _stateMachine = new StateMachine();
+        private readonly StateMachine _stateMachine = new StateMachine();
 
-        [FormerlySerializedAs("creatureTarget")] public MergeEntity mergeEntityTarget;
+        public MergeEntity mergeEntityTarget;
         public Cell cellTarget;
         public bool draggingCreature;
         public bool creatureProcessed;
@@ -100,7 +100,8 @@ namespace Gameplay.Cells
             Destroy(firstEntity.gameObject);
             Destroy(secondEntity.gameObject);
 
-            MergeEntity newMergeEntity = AllServices.Container.Get<IGameFactory>().CreateMergeEntity(isRange, newLevel, cell);
+            MergeEntity newMergeEntity =
+                AllServices.Container.Get<IGameFactory>().CreateMergeEntity(isRange, newLevel, cell);
             CurrentMergeEntities.Add(newMergeEntity);
             AllServices.Container.Get<IAudioService>().MergeSound();
             _mergeEffect.transform.position = newMergeEntity.transform.position;
@@ -110,7 +111,8 @@ namespace Gameplay.Cells
         public void CreateMeleeFirstLevel(Cell cell)
         {
             int level = 0;
-            MergeEntity newMergeEntity = AllServices.Container.Get<IGameFactory>().CreateMergeEntity(false, level, cell);
+            MergeEntity newMergeEntity =
+                AllServices.Container.Get<IGameFactory>().CreateMergeEntity(false, level, cell);
             CurrentMergeEntities.Add(newMergeEntity);
         }
 
@@ -157,6 +159,7 @@ namespace Gameplay.Cells
             return cellTarget == mergeEntityTarget.CurrentCell || cellTarget == null;
         }
 
+
         private void TurnOff()
         {
             gameObject.SetActive(false);
@@ -166,6 +169,8 @@ namespace Gameplay.Cells
         {
             gameObject.SetActive(true);
         }
+
+      
 
         private void OnDestroy()
         {

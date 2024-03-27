@@ -71,10 +71,10 @@ namespace Services.Factories
             return mergeEntity;
         }
 
-        public CrowdOfMerged CreateCrowdOfCreatures(Vector3 pos)
+        public CrowdOfMerged CreateCrowdOfMerges(Vector3 pos)
         {
             return Object.Instantiate(
-                _assetProvider.GetAsset<CrowdOfMerged>(Constants.AssetPaths.CROWD_OF_CREATURES), pos,
+                _assetProvider.GetAsset<CrowdOfMerged>(Constants.AssetPaths.CROWD_OF_MERGES), pos,
                 Quaternion.identity);
         }
 

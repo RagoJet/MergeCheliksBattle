@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Gameplay.UI;
-using Gameplay.Units.Enemies;
 using Services;
 using Services.Factories;
 using Services.SaveLoad;
@@ -16,22 +15,23 @@ namespace Gameplay.Units.Crowds
         [SerializeField] private Transform[] _enemyCrowdsSpawns;
 
 
-        public void SpawnAllCrowds(Vector3 pos, List<Unit> creatureList)
+        public void SpawnAllCrowds(Vector3 pos, List<Unit> mergesList)
         {
-            CrowdOfMerged crowdOfMerged = SpawnCreaturesCrowd(pos, creatureList);
+            CrowdOfMerged crowdOfMerged = SpawnMergesCrowd(pos, mergesList);
             SpawningEnemyCrowds(crowdOfMerged.transform);
         }
 
-        private CrowdOfMerged SpawnCreaturesCrowd(Vector3 pos, List<Unit> creatureList)
+        private CrowdOfMerged SpawnMergesCrowd(Vector3 pos, List<Unit> mergesList)
         {
             IGameFactory gameFactory = AllServices.Container.Get<IGameFactory>();
-            CrowdOfMerged crowdOfMerged = gameFactory.CreateCrowdOfCreatures(pos);
-            foreach (var unit in creatureList)
+            CrowdOfMerged crowdOfMerged = gameFactory.CreateCrowdOfMerges(pos);
+            foreach (var unit in mergesList)
             {
                 unit.SetCrowd(crowdOfMerged);
             }
 
-            crowdOfMerged.Construct(creatureList);
+
+            crowdOfMerged.Construct(mergesList);
             crowdOfMerged.GetComponent<InfoOfCrowd>().Init();
             return crowdOfMerged;
         }

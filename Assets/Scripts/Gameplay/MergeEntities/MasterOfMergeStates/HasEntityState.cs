@@ -1,24 +1,25 @@
+using Gameplay.Cells;
 using Services;
 using Services.Audio;
 using States;
 using UnityEngine;
 
-namespace Gameplay.Cells.MasterOfMergeStates
+namespace Gameplay.MergeEntities.MasterOfMergeStates
 {
     public class HasEntityState : IState
     {
-        public MergeMaster MergeMaster;
-        private int _islandlayerMask;
-        private int _cellLayerMask;
+        private readonly MergeMaster _mergeMaster;
+        private readonly int _islandLayerMask;
+        private readonly int _cellLayerMask;
 
-        private Camera _mainCamera;
+        private readonly Camera _mainCamera;
 
-        public HasEntityState(MergeMaster mergeMaster, int cellLayerMask, int islandlayerMask,
+        public HasEntityState(MergeMaster mergeMaster, int cellLayerMask, int islandLayerMask,
             Camera mainCamera)
         {
-            MergeMaster = mergeMaster;
+            _mergeMaster = mergeMaster;
             _cellLayerMask = cellLayerMask;
-            _islandlayerMask = islandlayerMask;
+            _islandLayerMask = islandLayerMask;
             _mainCamera = mainCamera;
         }
 
@@ -27,11 +28,11 @@ namespace Gameplay.Cells.MasterOfMergeStates
             Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _islandlayerMask))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _islandLayerMask))
             {
                 if (hit.collider)
                 {
-                    Transform creatureTransform = MergeMaster.mergeEntityTarget.transform;
+                    Transform creatureTransform = _mergeMaster.mergeEntityTarget.transform;
                     Vector3 newPosition = new Vector3(hit.point.x, creatureTransform.position.y, hit.point.z);
                     creatureTransform.position = newPosition;
                 }
@@ -43,17 +44,17 @@ namespace Gameplay.Cells.MasterOfMergeStates
                 {
                     if (hit.collider.TryGetComponent(out Cell cell))
                     {
-                        MergeMaster.cellTarget = cell;
+                        _mergeMaster.cellTarget = cell;
                     }
                 }
 
-                MergeMaster.draggingCreature = false;
+                _mergeMaster.draggingCreature = false;
             }
         }
 
         public void OnEnter()
         {
-            MergeMaster.mergeEntityTarget.GetUp();
+            _mergeMaster.mergeEntityTarget.GetUp();
             AllServices.Container.Get<IAudioService>().PickUpMergeEntitySound();
         }
 

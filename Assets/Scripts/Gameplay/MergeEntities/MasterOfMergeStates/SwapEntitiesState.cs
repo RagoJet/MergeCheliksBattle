@@ -1,11 +1,11 @@
-using Gameplay.MergeEntities;
+using Gameplay.Cells;
 using States;
 
-namespace Gameplay.Cells.MasterOfMergeStates
+namespace Gameplay.MergeEntities.MasterOfMergeStates
 {
     public class SwapEntitiesState : IState
     {
-        private MergeMaster _mergeMaster;
+        private readonly MergeMaster _mergeMaster;
 
         public SwapEntitiesState(MergeMaster mergeMaster)
         {

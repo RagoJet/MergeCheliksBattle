@@ -7,7 +7,7 @@ public static class Constants
         public const string CELL = "Cell";
         public const string SPAWNER_CROWDS = "SpawnerCrowds";
         public const string CROWD_OF_ENEMIES = "CrowdOfEnemies";
-        public const string CROWD_OF_CREATURES = "CrowdOfCreatures";
+        public const string CROWD_OF_MERGES = "CrowdOfMerges";
         public const string CELL_GRID = "CellGrid";
         public const string CREATURE_MASTER = "CreatureMaster";
         public const string MY_JOYSTICK = "MyJoyStick";

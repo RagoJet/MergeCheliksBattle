@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Gameplay.Cells;
+using Gameplay.MergeEntities;
 using Gameplay.Units;
 using Gameplay.Units.Crowds;
 using Services;
@@ -59,6 +60,7 @@ namespace Gameplay.UI
 
         private void StartBattle()
         {
+
             List<Unit> mergeEntitiesList = new List<Unit>();
             foreach (var mergeChelick in _mergeMaster.CurrentMergeEntities)
             {

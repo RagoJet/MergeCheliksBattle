@@ -24,7 +24,7 @@ namespace Services.Factories
         public CurrentSessionManager CreateSessionManager();
         public Wallet CreateWallet();
         public MyJoyStick CreateMyJoystick();
-        public CrowdOfMerged CreateCrowdOfCreatures(Vector3 pos);
+        public CrowdOfMerged CreateCrowdOfMerges(Vector3 pos);
         public CrowdOfEnemies CreateCrowdOfEnemies(Vector3 pos);
         public SpawnerCrowds CreateSpawnerCrowds(Vector3 pos);
         public CellGrid CreateCellGrid();

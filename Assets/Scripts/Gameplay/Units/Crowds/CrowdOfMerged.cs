@@ -55,7 +55,8 @@ namespace Gameplay.Units.Crowds
         private void HandleCrowd()
         {
             base.FormatUnits();
-            transform.Translate(_joyStick.GetDirection() * Time.deltaTime * 8f);
+            transform.forward = Vector3.Lerp(transform.forward, _joyStick.GetDirection(), Time.deltaTime * 5);
+            transform.Translate(_joyStick.GetDirection() * (Time.deltaTime * 8), Space.World);
         }
 
         private void LateUpdate()

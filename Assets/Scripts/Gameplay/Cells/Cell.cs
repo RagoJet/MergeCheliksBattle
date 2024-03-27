@@ -1,6 +1,5 @@
 using Gameplay.MergeEntities;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Gameplay.Cells
 {
@@ -8,7 +7,7 @@ namespace Gameplay.Cells
     public class Cell : MonoBehaviour
     {
         [SerializeField] private Transform _placeForCreature;
-        [FormerlySerializedAs("currentCreature")] public MergeEntity currentMergeEntity;
+        public MergeEntity currentMergeEntity;
         public Vector3 GetPosition => _placeForCreature.position;
     }
 }

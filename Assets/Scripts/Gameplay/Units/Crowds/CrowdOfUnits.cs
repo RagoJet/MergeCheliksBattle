@@ -26,7 +26,7 @@ namespace Gameplay.Units.Crowds
         private BoxCollider _collider;
         private Vector3 _sizeOfCollider;
 
-        private List<Vector3> dotsPos = new List<Vector3>();
+        private List<Vector3> _dotsPos = new List<Vector3>();
 
         private void Awake()
         {
@@ -35,7 +35,7 @@ namespace Gameplay.Units.Crowds
 
             IStaticDataFactory dataFactory = AllServices.Container.Get<IStaticDataFactory>();
             GridStaticData staticData = dataFactory.GetGridStaticData();
-            List<Vector3> positions = new List<Vector3>();
+            List<Vector3> _positions = new List<Vector3>();
 
             Vector3 startPosition = new Vector3((1 - staticData.Collumns) * staticData.Offset * 0.8f / 2f, 0,
                 (1 - staticData.Rows) * staticData.Offset * 0.8f / 2f);
@@ -45,27 +45,28 @@ namespace Gameplay.Units.Crowds
                 {
                     Vector3 position = startPosition +
                                        new Vector3(j * staticData.Offset * 0.8f, 0, i * staticData.Offset * 0.8f);
-                    positions.Add(position);
+                    _positions.Add(position);
                 }
             }
 
-            dotsPos.Add(positions[9]);
-            dotsPos.Add(positions[10]);
-            dotsPos.Add(positions[5]);
-            dotsPos.Add(positions[6]);
-            dotsPos.Add(positions[12]);
-            dotsPos.Add(positions[15]);
-            dotsPos.Add(positions[0]);
-            dotsPos.Add(positions[3]);
-            dotsPos.Add(positions[13]);
-            dotsPos.Add(positions[14]);
-            dotsPos.Add(positions[1]);
-            dotsPos.Add(positions[2]);
-            dotsPos.Add(positions[11]);
-            dotsPos.Add(positions[4]);
-            dotsPos.Add(positions[7]);
-            dotsPos.Add(positions[8]);
+            _dotsPos.Add(_positions[9]);
+            _dotsPos.Add(_positions[10]);
+            _dotsPos.Add(_positions[5]);
+            _dotsPos.Add(_positions[6]);
+            _dotsPos.Add(_positions[12]);
+            _dotsPos.Add(_positions[15]);
+            _dotsPos.Add(_positions[0]);
+            _dotsPos.Add(_positions[3]);
+            _dotsPos.Add(_positions[13]);
+            _dotsPos.Add(_positions[14]);
+            _dotsPos.Add(_positions[1]);
+            _dotsPos.Add(_positions[2]);
+            _dotsPos.Add(_positions[11]);
+            _dotsPos.Add(_positions[4]);
+            _dotsPos.Add(_positions[7]);
+            _dotsPos.Add(_positions[8]);
         }
+
 
         public void Construct(List<Unit> newUnits)
         {
@@ -159,7 +160,7 @@ namespace Gameplay.Units.Crowds
             {
                 for (int i = 0; i < units.Count; i++)
                 {
-                    units[i].GoTo(transform.TransformPoint(dotsPos[i]));
+                    units[i].GoTo(transform.TransformPoint(_dotsPos[i]));
                 }
 
                 _timeFromLastFormat = Time.time;

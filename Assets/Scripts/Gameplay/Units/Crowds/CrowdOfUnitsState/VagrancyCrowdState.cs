@@ -5,7 +5,7 @@ namespace Gameplay.Units.Crowds.CrowdOfUnitsState
 {
     public class VagrancyCrowdState : IState
     {
-        private Action _onVagrancy;
+        private readonly Action _onVagrancy;
 
         public VagrancyCrowdState(Action onVagrancy)
         {

@@ -7,11 +7,11 @@ namespace States
     {
         private IState _currentState;
 
-        private Dictionary<Type, List<Transition>> _transitions = new Dictionary<Type, List<Transition>>();
+        private readonly Dictionary<Type, List<Transition>> _transitions = new Dictionary<Type, List<Transition>>();
 
         private List<Transition> _currentTransitions = new List<Transition>();
-        private List<Transition> _anyTransition = new List<Transition>();
-        private static List<Transition> EmptyTransitions = new List<Transition>(0);
+        private readonly List<Transition> _anyTransition = new List<Transition>();
+        private static readonly List<Transition> EmptyTransitions = new List<Transition>(0);
 
 
         public void Tick()
