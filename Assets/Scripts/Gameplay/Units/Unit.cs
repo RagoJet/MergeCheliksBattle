@@ -15,15 +15,15 @@ namespace Gameplay.Units
         private NavMeshAgent _agent;
         private UnitAnimator _unitAnimator;
 
-        protected UnitData _data;
-        protected Health health;
+        private UnitData _data;
+        private Health _health;
 
-        private bool _fightMode;
-        private StateMachine _stateMachine = new StateMachine();
         private CrowdOfUnits _myCrowd;
-
         private Health _targetHealth;
-        
+        public Health TargetHealth => _targetHealth;
+        private StateMachine _stateMachine = new StateMachine();
+        private bool _fightMode;
+
         public bool IsRange => _data.RangeAttack > 2.5f;
         public int Level => _data.Level;
 
@@ -32,10 +32,10 @@ namespace Gameplay.Units
 
         private void Awake()
         {
-            health = GetComponent<Health>();
-            health.onDie += RemoveFromCrowd;
-            health.onDie += StopFight;
-            health.onDie += Dying;
+            _health = GetComponent<Health>();
+            _health.onDie += RemoveFromCrowd;
+            _health.onDie += StopFight;
+            _health.onDie += Dying;
 
             _unitAnimator = GetComponent<UnitAnimator>();
             _agent = GetComponent<NavMeshAgent>();
@@ -47,12 +47,36 @@ namespace Gameplay.Units
         private void InitStateMachine()
         {
             VagrancyUnitState vagrancyUnitState = new VagrancyUnitState();
-            BattleUnitState battleUnitState = new BattleUnitState(this);
+            FindTargetUnitState findTargetUnitState = new FindTargetUnitState(this);
+            MovingToTargetUnitState movingToTargetUnitState = new MovingToTargetUnitState(this);
+            AttackingUnitState attackingUnitState = new AttackingUnitState(this);
 
-            _stateMachine.AddTransition(vagrancyUnitState, battleUnitState, () => _fightMode);
-            _stateMachine.AddTransition(battleUnitState, vagrancyUnitState, () => _fightMode == false);
+            _stateMachine.AddTransition(vagrancyUnitState, findTargetUnitState, () => _fightMode);
+            _stateMachine.AddTransition(findTargetUnitState, movingToTargetUnitState, HasTarget);
 
+            _stateMachine.AddTransition(movingToTargetUnitState, attackingUnitState, IsTargetNear);
+            _stateMachine.AddTransition(movingToTargetUnitState, findTargetUnitState, () => HasTarget() == false);
+
+            _stateMachine.AddTransition(attackingUnitState, movingToTargetUnitState, () => IsTargetNear() == false);
+            _stateMachine.AddTransition(attackingUnitState, findTargetUnitState, () => HasTarget() == false);
+
+
+            _stateMachine.AddAnyTransition(vagrancyUnitState, () => _fightMode == false);
             _stateMachine.SetState(vagrancyUnitState);
+
+
+            bool HasTarget()
+            {
+                return _targetHealth != null && _targetHealth.IsAlive;
+            }
+
+            bool IsTargetNear()
+            {
+                float sqrDistance = (transform.position - _targetHealth.transform.position).sqrMagnitude;
+                float _sqrRange = _agent.stoppingDistance * _agent.stoppingDistance;
+
+                return sqrDistance <= _sqrRange;
+            }
         }
 
 
@@ -64,7 +88,7 @@ namespace Gameplay.Units
         public void SetCrowd(CrowdOfUnits crowd)
         {
             _myCrowd = crowd;
-            health.onTakeDamage += _myCrowd.GetComponent<InfoOfCrowd>().RemoveHealth;
+            _health.onTakeDamage += _myCrowd.GetComponent<InfoOfCrowd>().RemoveHealth;
         }
 
         private void RemoveFromCrowd()
@@ -74,7 +98,7 @@ namespace Gameplay.Units
 
         public void Refresh()
         {
-            health.Refresh(_data.MaxHealth);
+            _health.Refresh(_data.MaxHealth);
         }
 
         private void Update()
